@@ -1,0 +1,557 @@
+<div class="min-h-screen bg-white font-sans text-ink antialiased selection:bg-gold/20" (click)="onClick($event)">
+
+  <!-- HEADER -->
+  <header class="relative z-50 bg-white">
+    <div class="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+      <a href="m-incorporated.html" aria-label="M Incorporated home" class="flex w-[142px] shrink-0 flex-col items-center leading-none">
+        <span class="mb-[-2px] text-[15px] leading-none text-gold">♛</span>
+        <span class="font-serif text-[48px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+        <span class="mt-2 text-[7px] font-semibold tracking-[.28em]">INCORPORATED</span>
+        <span class="mt-1 text-[6px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 xl:flex" aria-label="Primary navigation">
+        <a href="m-incorporated.html" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">HOME</a>
+        <a href="models.html" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">MODELS</a>
+        <a href="/services" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">SERVICES</a>
+        <a href="m-incorporated.html#about" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">ABOUT</a>
+        <a href="/gallery" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">GALLERY</a>
+        <a href="m-incorporated.html#journal" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">JOURNAL</a>
+        <a href="m-incorporated.html#contact" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">CONTACT</a>
+      </nav>
+
+      <a href="booking.html" class="hidden min-w-[148px] items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-semibold tracking-[.13em] text-white transition hover:bg-black md:flex">
+        BOOK A MODEL <span class="text-base leading-none">→</span>
+      </a>
+
+      <button id="menuBtn" class="flex h-10 items-center gap-2 border border-ink px-4 text-[10px] font-semibold tracking-[.16em] md:hidden" aria-expanded="false" aria-controls="mobileNav">
+        MENU
+      </button>
+    </div>
+
+    <div id="mobileNav" class="hidden bg-white px-5 py-5 md:hidden">
+      <div class="grid gap-4 text-[11px] font-semibold tracking-[.15em]">
+        <a href="m-incorporated.html">HOME</a>
+        <a href="models.html">MODELS</a>
+        <a href="/services">SERVICES</a>
+        <a href="m-incorporated.html#about">ABOUT</a>
+        <a href="/gallery">GALLERY</a>
+        <a href="m-incorporated.html#journal">JOURNAL</a>
+        <a href="m-incorporated.html#contact">CONTACT</a>
+        <a href="booking.html" class="mt-2 inline-flex w-fit items-center gap-3 bg-ink px-5 py-3 text-white">BOOK A MODEL <span>→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section class="bg-white">
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 pb-10 pt-10 sm:px-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:px-14 lg:pb-14 lg:pt-14 xl:px-16">
+        <div>
+          <p class="mb-4 text-[9px] font-semibold tracking-[.18em] text-gold">BOOKING INQUIRY</p>
+          <h1 class="max-w-[760px] font-serif text-[54px] font-medium leading-[.86] tracking-[-.05em] sm:text-[66px] lg:text-[74px] xl:text-[80px]">
+            Tell us about<br>the project.
+          </h1>
+        </div>
+        <div class="lg:pb-2">
+          <p class="max-w-[430px] text-[11px] leading-[1.9] text-charcoal sm:text-[12px]">
+            Share the essentials and our booking team will review availability, usage, timing and production requirements before getting back to you.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-[7px] font-semibold tracking-[.14em] text-muted">
+            <span>01 · SELECT TALENT</span>
+            <span>02 · PROJECT DETAILS</span>
+            <span>03 · REVIEW & RESPONSE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING CONTENT -->
+    <section class="pb-16 lg:pb-24">
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 px-5 sm:px-8 lg:grid-cols-[.72fr_1.28fr] lg:gap-14 lg:px-14 xl:gap-20 xl:px-16">
+
+        <!-- LEFT / SELECTED MODEL -->
+        <aside class="lg:sticky lg:top-6 lg:self-start">
+          <div id="selectedModelCard" class="selected-model overflow-hidden bg-ivory">
+            <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+              <img id="selectedModelImage" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90" alt="Selected model" class="model-image h-full w-full object-cover object-center" />
+              <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">SELECTED TALENT</div>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start justify-between gap-5">
+                <div>
+                  <p class="mb-2 text-[7px] font-semibold tracking-[.15em] text-gold">BOOKING FOR</p>
+                  <h2 id="selectedModelName" class="font-serif text-[32px] leading-none tracking-[-.03em]">No model selected</h2>
+                  <p id="selectedModelMeta" class="mt-3 text-[7px] font-semibold tracking-[.13em] text-muted">CHOOSE A MODEL IN THE FORM</p>
+                </div>
+                <a id="viewProfileLink" href="models.html" class="shrink-0 text-[7px] font-semibold tracking-[.13em] text-muted transition hover:text-gold">VIEW →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 grid grid-cols-2 gap-5">
+            <div>
+              <p class="text-[7px] font-semibold tracking-[.15em] text-muted">RESPONSE</p>
+              <p class="mt-2 font-serif text-[21px] leading-none">Within 1–2 days</p>
+            </div>
+            <div>
+              <p class="text-[7px] font-semibold tracking-[.15em] text-muted">BOOKINGS</p>
+              <p class="mt-2 font-serif text-[21px] leading-none">Worldwide</p>
+            </div>
+          </div>
+
+          <p class="mt-7 max-w-[420px] text-[9px] leading-[1.8] text-muted">
+            Need help choosing talent? Select “No preference” and describe the brief. Our team can recommend suitable models based on the project.
+          </p>
+        </aside>
+
+        <!-- FORM -->
+        <div>
+          <form id="bookingForm" class="space-y-11" novalidate (submit)="onSubmit($event)">
+
+            <!-- 01 CLIENT -->
+            <section>
+              <div class="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">01 / CLIENT</p>
+                  <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em]">Your details.</h2>
+                </div>
+                <p class="text-[7px] font-medium tracking-[.12em] text-muted">* REQUIRED</p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">FULL NAME *</span>
+                  <input required name="fullName" type="text" placeholder="Your full name" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">COMPANY / BRAND</span>
+                  <input name="company" type="text" placeholder="Company or brand" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">EMAIL ADDRESS *</span>
+                  <input required name="email" type="email" placeholder="name@company.com" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">PHONE NUMBER</span>
+                  <input name="phone" type="tel" placeholder="+1 000 000 0000" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+              </div>
+            </section>
+
+            <!-- 02 TALENT -->
+            <section>
+              <div class="mb-6">
+                <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">02 / TALENT</p>
+                <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em]">Who do you need?</h2>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">PREFERRED MODEL</span>
+                  <div class="relative">
+                    <select id="modelSelect" name="model" class="field h-[52px] w-full appearance-none border border-line bg-white px-4 pr-12 text-[10px] outline-none transition" (change)="onModelChange($event)">
+                      <option value="">No preference — recommend talent</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted">⌄</span>
+                  </div>
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">TALENT CATEGORY</span>
+                  <div class="relative">
+                    <select name="category" class="field h-[52px] w-full appearance-none border border-line bg-white px-4 pr-12 text-[10px] outline-none transition">
+                      <option value="">Any category</option>
+                      <option>Women</option>
+                      <option>Men</option>
+                      <option>New Faces</option>
+                      <option>Commercial</option>
+                      <option>Creators</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted">⌄</span>
+                  </div>
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">NUMBER OF MODELS</span>
+                  <input name="modelCount" type="number" min="1" value="1" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition" />
+                </label>
+              </div>
+            </section>
+
+            <!-- 03 PROJECT -->
+            <section>
+              <div class="mb-6">
+                <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">03 / PROJECT</p>
+                <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em]">The production.</h2>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">PROJECT TYPE *</span>
+                  <div class="relative">
+                    <select required name="projectType" class="field h-[52px] w-full appearance-none border border-line bg-white px-4 pr-12 text-[10px] outline-none transition">
+                      <option value="">Select project type</option>
+                      <option>Editorial</option>
+                      <option>Campaign</option>
+                      <option>E-commerce</option>
+                      <option>Lookbook</option>
+                      <option>Beauty</option>
+                      <option>Runway / Fashion Show</option>
+                      <option>Commercial / Advertising</option>
+                      <option>Social / Digital Content</option>
+                      <option>Event / Appearance</option>
+                      <option>Other</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted">⌄</span>
+                  </div>
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">PROJECT / CAMPAIGN NAME</span>
+                  <input name="projectName" type="text" placeholder="Campaign or production name" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">SHOOT / START DATE *</span>
+                  <input required name="date" type="date" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition" />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">DURATION *</span>
+                  <div class="relative">
+                    <select required name="duration" class="field h-[52px] w-full appearance-none border border-line bg-white px-4 pr-12 text-[10px] outline-none transition">
+                      <option value="">Select duration</option>
+                      <option>Half day — up to 4 hours</option>
+                      <option>Full day — up to 8 hours</option>
+                      <option>2 days</option>
+                      <option>3–5 days</option>
+                      <option>1 week</option>
+                      <option>Long-term / ongoing</option>
+                      <option>To be confirmed</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted">⌄</span>
+                  </div>
+                </label>
+
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">LOCATION *</span>
+                  <input required name="location" type="text" placeholder="City, country or production location" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+              </div>
+            </section>
+
+            <!-- 04 BUDGET / USAGE -->
+            <section>
+              <div class="mb-6">
+                <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">04 / BUDGET & USAGE</p>
+                <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em]">Commercial details.</h2>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-[.7fr_1.3fr]">
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">CURRENCY</span>
+                  <div class="relative">
+                    <select name="currency" class="field h-[52px] w-full appearance-none border border-line bg-white px-4 pr-12 text-[10px] outline-none transition">
+                      <option>USD</option>
+                      <option>EUR</option>
+                      <option>GBP</option>
+                      <option>PHP</option>
+                      <option>JPY</option>
+                      <option>KRW</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted">⌄</span>
+                  </div>
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">ESTIMATED BUDGET</span>
+                  <input name="budget" type="text" placeholder="e.g. 5,000–8,000" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">INTENDED USAGE</span>
+                  <input name="usage" type="text" placeholder="e.g. social media, web, print, OOH — 6 months — worldwide" class="field h-[52px] w-full border border-line bg-white px-4 text-[10px] outline-none transition placeholder:text-[#9d9991]" />
+                </label>
+
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-[7px] font-semibold tracking-[.14em] text-muted">PROJECT DETAILS *</span>
+                  <textarea required name="details" rows="7" placeholder="Tell us about the creative direction, deliverables, usage, production schedule, travel requirements and anything else the booking team should know." class="field w-full resize-none border border-line bg-white px-4 py-4 text-[10px] leading-[1.8] outline-none transition placeholder:text-[#9d9991]"></textarea>
+                </label>
+              </div>
+            </section>
+
+            <!-- 05 ATTACHMENTS -->
+            <section>
+              <div class="mb-6">
+                <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">05 / SUPPORTING FILES</p>
+                <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em]">Add the brief.</h2>
+              </div>
+
+              <label id="dropZone" class="group flex min-h-[150px] cursor-pointer flex-col items-center justify-center bg-ivory px-6 py-8 text-center transition hover:bg-[#f1eee8]">
+                <input id="fileInput" name="attachments" type="file" multiple class="hidden" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx" (change)="onFileChange($event)" />
+                <span class="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-lg">＋</span>
+                <span class="text-[8px] font-semibold tracking-[.14em]">UPLOAD CREATIVE BRIEF OR REFERENCES</span>
+                <span class="mt-2 text-[8px] leading-[1.6] text-muted">PDF, JPG, PNG, WEBP, DOC or DOCX · multiple files allowed</span>
+              </label>
+
+              <div id="fileList" class="mt-3 hidden space-y-2"></div>
+            </section>
+
+            <!-- CONSENT / SUBMIT -->
+            <section class="pt-1">
+              <label class="flex cursor-pointer items-start gap-3">
+                <input required type="checkbox" name="consent" class="mt-[2px] h-4 w-4 accent-[#111111]" />
+                <span class="max-w-[650px] text-[8px] leading-[1.75] text-muted">
+                  I confirm that the information provided is accurate and understand that this inquiry does not guarantee model availability or confirm a booking. Final rates and terms are subject to agency approval.
+                </span>
+              </label>
+
+              <div class="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p class="max-w-[380px] text-[8px] leading-[1.7] text-muted">
+                  Our booking team will contact you using the email provided above.
+                </p>
+                <button type="submit" class="inline-flex h-[50px] items-center justify-center gap-8 bg-ink px-7 text-[9px] font-semibold tracking-[.14em] text-white transition hover:bg-black">
+                  SUBMIT INQUIRY <span class="text-base leading-none">→</span>
+                </button>
+              </div>
+            </section>
+          </form>
+
+          <!-- SUCCESS STATE -->
+          <div id="successState" class="hidden py-14 sm:py-20">
+            <p class="mb-4 text-[9px] font-semibold tracking-[.18em] text-gold">INQUIRY RECEIVED</p>
+            <h2 class="max-w-[650px] font-serif text-[52px] font-medium leading-[.9] tracking-[-.045em] sm:text-[64px]">
+              Thank you.<br>We’ll be in touch.
+            </h2>
+            <p class="mt-6 max-w-[520px] text-[11px] leading-[1.9] text-charcoal">
+              Your project details have been captured for this front-end demo. When connected to your backend, this submission can create a booking inquiry record for your admin team to review.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="models.html" class="inline-flex h-[46px] items-center gap-6 bg-ink px-6 text-[9px] font-semibold tracking-[.13em] text-white">VIEW MODELS <span>→</span></a>
+              <button id="newInquiryBtn" type="button" class="h-[46px] border border-ink px-6 text-[9px] font-semibold tracking-[.13em]" (click)="newInquiry()">NEW INQUIRY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT STRIP -->
+    <section class="bg-ink text-white">
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 py-10 sm:px-8 md:grid-cols-[1fr_auto] md:items-center lg:px-14 xl:px-16">
+        <div>
+          <p class="mb-2 text-[8px] font-semibold tracking-[.17em] text-gold">DIRECT BOOKINGS</p>
+          <h2 class="font-serif text-[34px] font-medium leading-none tracking-[-.035em] sm:text-[40px]">Prefer to speak with the team?</h2>
+        </div>
+        <div class="flex flex-col gap-2 text-[8px] tracking-[.08em] text-white/70 md:text-right">
+          <a href="mailto:bookings@m-incorporated.com" class="transition hover:text-white">bookings&#64;m-incorporated.com</a>
+          <a href="tel:+12125550988" class="transition hover:text-white">+1 (212) 555 0988</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-white">
+    <div class="mx-auto grid max-w-[1440px] grid-cols-2 gap-8 px-5 py-12 sm:px-8 md:grid-cols-4 lg:px-14 xl:px-16">
+      <div class="col-span-2 md:col-span-1">
+        <a href="m-incorporated.html" class="inline-flex flex-col items-start leading-none">
+          <span class="text-[12px] text-gold">♛</span>
+          <span class="font-serif text-[42px] leading-[.72] tracking-[-.05em]">M</span>
+          <span class="mt-2 text-[6px] font-semibold tracking-[.24em]">INCORPORATED</span>
+        </a>
+        <p class="mt-5 max-w-[220px] text-[8px] leading-[1.75] text-muted">International model management with a considered approach to talent, image and long-term careers.</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">EXPLORE</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="models.html" class="hover:text-gold">Models</a></li>
+          <li><a href="m-incorporated.html#about" class="hover:text-gold">About</a></li>
+          <li><a href="m-incorporated.html#services" class="hover:text-gold">Services</a></li>
+          <li><a href="m-incorporated.html#gallery" class="hover:text-gold">Gallery</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">RESOURCES</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="m-incorporated.html#journal" class="hover:text-gold">Journal</a></li>
+          <li><a href="booking.html" class="text-gold">Booking Inquiry</a></li>
+          <li><a href="#" class="hover:text-gold">Become a Model</a></li>
+          <li><a href="#" class="hover:text-gold">Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">CONTACT</h3>
+        <div class="space-y-1.5 text-[8px] leading-[1.7] text-charcoal">
+          <p>hello&#64;m-incorporated.com</p>
+          <p>+1 (212) 555 0988</p>
+          <p>New York, NY</p>
+        </div>
+        <div class="mt-4 flex items-center gap-4">
+          <a href="#" aria-label="Instagram" class="text-[13px] hover:text-gold">◎</a>
+          <a href="#" aria-label="Facebook" class="text-[12px] font-semibold hover:text-gold">f</a>
+          <a href="#" aria-label="TikTok" class="text-[12px] font-semibold hover:text-gold">♪</a>
+          <a href="#" aria-label="Pinterest" class="text-[12px] font-semibold hover:text-gold">p</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Legacy standalone-page script replaced by BookingComponent. -->
+  <!--
+    const models = [
+      { slug: 'luna-martinez', name: 'Luna Martinez', location: 'NEW YORK', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'noah-valentino', name: 'Noah Valentino', location: 'MILAN', category: 'MEN · EDITORIAL', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'ella-roberts', name: 'Ella Roberts', location: 'PARIS', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'jordan-reid', name: 'Jordan Reid', location: 'LONDON', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'mia-laurent', name: 'Mia Laurent', location: 'PARIS', category: 'WOMEN · NEW FACE', image: 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'elias-ward', name: 'Elias Ward', location: 'LONDON', category: 'MEN · NEW FACE', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'sora-kim', name: 'Sora Kim', location: 'SEOUL', category: 'WOMEN · CREATOR', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'theo-rossi', name: 'Theo Rossi', location: 'MILAN', category: 'MEN · NEW FACE', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'amara-okafor', name: 'Amara Okafor', location: 'LONDON', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'mateo-cruz', name: 'Mateo Cruz', location: 'NEW YORK', category: 'MEN · CREATOR', image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'clara-moreau', name: 'Clara Moreau', location: 'PARIS', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'jin-park', name: 'Jin Park', location: 'SEOUL', category: 'MEN · CREATOR', image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'ava-sinclair', name: 'Ava Sinclair', location: 'NEW YORK', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'leo-moretti', name: 'Leo Moretti', location: 'MILAN', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'camille-duval', name: 'Camille Duval', location: 'PARIS', category: 'WOMEN · CREATOR', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'adrian-cole', name: 'Adrian Cole', location: 'LONDON', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'yuna-choi', name: 'Yuna Choi', location: 'SEOUL', category: 'WOMEN · NEW FACE', image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'nico-bellini', name: 'Nico Bellini', location: 'MILAN', category: 'MEN · NEW FACE', image: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'elena-voss', name: 'Elena Voss', location: 'LONDON', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'kai-nakamura', name: 'Kai Nakamura', location: 'SEOUL', category: 'MEN · CREATOR', image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'sofia-marin', name: 'Sofia Marin', location: 'NEW YORK', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'julien-marchand', name: 'Julien Marchand', location: 'PARIS', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'aria-bennett', name: 'Aria Bennett', location: 'LONDON', category: 'WOMEN · NEW FACE', image: 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'marco-leone', name: 'Marco Leone', location: 'MILAN', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'isla-hart', name: 'Isla Hart', location: 'NEW YORK', category: 'WOMEN · CREATOR', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'daniel-seo', name: 'Daniel Seo', location: 'SEOUL', category: 'MEN · NEW FACE', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'louise-garnier', name: 'Louise Garnier', location: 'PARIS', category: 'WOMEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'hugo-laurent', name: 'Hugo Laurent', location: 'PARIS', category: 'MEN · CREATOR', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'maya-collins', name: 'Maya Collins', location: 'NEW YORK', category: 'WOMEN · NEW FACE', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'lorenzo-ricci', name: 'Lorenzo Ricci', location: 'MILAN', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'nina-foster', name: 'Nina Foster', location: 'LONDON', category: 'WOMEN · CREATOR', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=90' },
+      { slug: 'ethan-blake', name: 'Ethan Blake', location: 'NEW YORK', category: 'MEN · COMMERCIAL', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=90' }
+    ];
+
+    const modelSelect = document.getElementById('modelSelect');
+    const selectedModelImage = document.getElementById('selectedModelImage');
+    const selectedModelName = document.getElementById('selectedModelName');
+    const selectedModelMeta = document.getElementById('selectedModelMeta');
+    const viewProfileLink = document.getElementById('viewProfileLink');
+
+    models.forEach(model => {
+      const option = document.createElement('option');
+      option.value = model.slug;
+      option.textContent = `${model.name} — ${model.location}`;
+      modelSelect.appendChild(option);
+    });
+
+    function renderSelectedModel(slug) {
+      const model = models.find(item => item.slug === slug);
+
+      if (!model) {
+        selectedModelImage.src = 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90';
+        selectedModelImage.alt = 'Editorial model';
+        selectedModelName.textContent = 'No model selected';
+        selectedModelMeta.textContent = 'CHOOSE A MODEL IN THE FORM';
+        viewProfileLink.href = 'models.html';
+        viewProfileLink.textContent = 'BROWSE →';
+        return;
+      }
+
+      selectedModelImage.src = model.image;
+      selectedModelImage.alt = `${model.name} model portrait`;
+      selectedModelName.textContent = model.name;
+      selectedModelMeta.textContent = `${model.location} · ${model.category}`;
+      viewProfileLink.href = `model-profile.html?model=${model.slug}`;
+      viewProfileLink.textContent = 'VIEW →';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedModel = params.get('model') || '';
+    if (models.some(model => model.slug === requestedModel)) {
+      modelSelect.value = requestedModel;
+      renderSelectedModel(requestedModel);
+    } else {
+      renderSelectedModel('');
+    }
+
+    modelSelect.addEventListener('change', () => {
+      renderSelectedModel(modelSelect.value);
+      const url = new URL(window.location.href);
+      if (modelSelect.value) url.searchParams.set('model', modelSelect.value);
+      else url.searchParams.delete('model');
+      history.replaceState({}, '', url);
+    });
+
+    // Attachments preview
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+
+    fileInput.addEventListener('change', () => {
+      const files = [...fileInput.files];
+      if (!files.length) {
+        fileList.classList.add('hidden');
+        fileList.innerHTML = '';
+        return;
+      }
+
+      fileList.classList.remove('hidden');
+      fileList.innerHTML = files.map(file => `
+        <div class="flex items-center justify-between gap-4 bg-ivory px-4 py-3">
+          <div class="min-w-0">
+            <p class="truncate text-[8px] font-semibold tracking-[.06em]">${file.name}</p>
+            <p class="mt-1 text-[7px] text-muted">${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+          </div>
+          <span class="text-[7px] font-semibold tracking-[.12em] text-gold">ATTACHED</span>
+        </div>
+      `).join('');
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileNav.classList.toggle('hidden');
+      menuBtn.textContent = isOpen ? 'MENU' : 'CLOSE';
+    });
+
+    // Front-end demo submit state
+    const bookingForm = document.getElementById('bookingForm');
+    const successState = document.getElementById('successState');
+    const newInquiryBtn = document.getElementById('newInquiryBtn');
+
+    bookingForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      bookingForm.classList.add('hidden');
+      successState.classList.remove('hidden');
+      successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    newInquiryBtn.addEventListener('click', () => {
+      bookingForm.reset();
+      modelSelect.value = requestedModel && models.some(model => model.slug === requestedModel) ? requestedModel : '';
+      renderSelectedModel(modelSelect.value);
+      fileList.classList.add('hidden');
+      fileList.innerHTML = '';
+      successState.classList.add('hidden');
+      bookingForm.classList.remove('hidden');
+      bookingForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  -->
+</div>

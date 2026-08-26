@@ -1,0 +1,49 @@
+<div class="topbar">
+    <!-- Logo -->
+    <a class="brand-mark" (click)="scrollToSection('hero-widget')" aria-label="M Incorporated home">
+        <span class="crown">♛</span><span class="brand-letter">M</span><span>INCORPORATED</span><small>MODEL MANAGEMENT</small>
+    </a>
+
+    <nav class="menu-container" aria-label="Primary navigation">
+        <ul class="nav-list">
+            <li *ngFor="let link of navLinks">
+                <button (click)="scrollToSection(link.fragment)" [class.active]="isActive(link.fragment)">
+                    {{ link.label }}
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <div class="nav-actions">
+        <button pButton [text]="true" severity="secondary" [rounded]="true" pRipple class="menu-toggle lg:!hidden" (click)="toggleMobileMenu()" aria-label="Open navigation">
+            <i class="pi pi-bars !text-2xl"></i>
+        </button>
+        <button type="button" class="book-button" (click)="bookAModel()">BOOK A MODEL <span>→</span></button>
+    </div>
+</div>
+
+<!-- Mobile Menu (Overlay) -->
+<div class="mobile-menu" [class.show]="isMobileMenuOpen">
+    <div class="mobile-menu-backdrop" (click)="toggleMobileMenu()"></div>
+    <div class="mobile-menu-content">
+        <div class="mobile-menu-header">
+            <img src="assets/img/logo1.png" alt="Logo" class="w-auto h-10" />
+            <button pButton [text]="true" severity="secondary" [rounded]="true" pRipple (click)="toggleMobileMenu()">
+                <i class="pi pi-times !text-2xl"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li *ngFor="let link of navLinks">
+                <button
+                    (click)="scrollToSection(link.fragment); toggleMobileMenu()"
+                    class="w-full text-left px-6 py-4 text-lg font-medium transition-all duration-300"
+                    [ngClass]="{
+                        'text-[#F2CE00] font-semibold bg-gray-100': isActive(link.fragment),
+                        'text-[#585858]': !isActive(link.fragment)
+                    }"
+                >
+                    <span>{{ link.label }}</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

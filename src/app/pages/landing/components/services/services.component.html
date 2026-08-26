@@ -1,0 +1,124 @@
+<div id="services-widget" #servicesWidget class="pt-20 bg-[#f9f9ff] min-h-[800px] overflow-visible px-5 lg:px-0">
+    <!-- Header -->
+    <div class="header-animate text-center max-w-[600px] mx-auto mb-16 lg:mb-20" [class.animate-visible]="isHeaderVisible">
+        <p class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#334155] mb-5 tracking-tight">Services We <span class="border-b-4 border-[#fe9d02] pb-1">Offer</span></p>
+        <p class="text-sm lg:text-base font-medium text-[#334155] leading-relaxed tracking-wide">
+            We provide reliable and scalable IT solutions designed to improve operations, enhance security, and support digital growth for businesses and local government units.
+        </p>
+    </div>
+
+    <!-- Carousel for larger screens -->
+    <div class="carousel-animate w-4/5 mx-auto px-10 mt-10 py-24" [class.animate-visible]="isCarouselVisible" *ngIf="!isMobile">
+        <p-carousel
+            #carousel
+            [value]="services"
+            [numVisible]="3"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="0"
+            [responsiveOptions]="responsiveOptions"
+            [showIndicators]="false"
+            [showNavigators]="true"
+            [page]="currentPage"
+            (onPage)="onPageChange($event)"
+        >
+            <ng-template let-service let-i="index" pTemplate="item">
+                <div class="px-3 py-8 transition-all duration-500 ease-out">
+                    <div
+                        class="rounded-3xl h-[380px] shadow-md transition-all duration-600 ease-out cursor-pointer relative"
+                        (click)="onCardClick(service)"
+                        [ngClass]="{
+                            'scale-90 opacity-60 border border-[#e2e8f0]': !isCenterCard(service),
+                            'scale-110 opacity-100 z-10 shadow-lg': isCenterCard(service)
+                        }"
+                        [ngStyle]="{ background: isCenterCard(service) ? service.gradient : 'white' }"
+                    >
+                        <div class="h-full flex flex-col justify-center text-left p-6 relative">
+                            <!-- Icon at top left with circle container -->
+                            <div class="absolute top-6 left-6">
+                                <div style="width: 100px; height: 100px; min-width: 90px; min-height: 90px" class="rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                    <i
+                                        [class]="service.icon"
+                                        [style.font-size.px]="80"
+                                        [style.width.px]="80"
+                                        [style.height.px]="80"
+                                        class="transition-all duration-500 flex items-center justify-center"
+                                        [ngClass]="{
+                                            'text-[#334155] opacity-40': !isCenterCard(service),
+                                            'text-[#2d3748] opacity-60': isCenterCard(service)
+                                        }"
+                                    >
+                                    </i>
+                                </div>
+                            </div>
+
+                            <!-- Title -->
+                            <h3
+                                class="text-lg lg:text-xl font-semibold mb-4 leading-snug tracking-tight transition-colors duration-300 uppercase pt-24"
+                                [ngClass]="{
+                                    'text-[#2d3748]': !isCenterCard(service),
+                                    'text-[#1a202c]': isCenterCard(service)
+                                }"
+                            >
+                                {{ service.title }}
+                            </h3>
+
+                            <!-- Description -->
+                            <p
+                                class="text-xs lg:text-sm leading-relaxed font-medium transition-colors duration-300 line-clamp-6"
+                                [ngClass]="{
+                                    'text-[#4a5568]': !isCenterCard(service),
+                                    'text-[#2d3748]': isCenterCard(service)
+                                }"
+                            >
+                                {{ service.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+
+        <!-- Custom Indicators with animation -->
+        <div class="indicators-animate flex justify-center gap-2 mt-8 flex-wrap max-w-[600px] mx-auto" [class.animate-visible]="isIndicatorsVisible">
+            <button
+                *ngFor="let service of services; let i = index"
+                (click)="goToPage(i)"
+                class="transition-all duration-400"
+                [ngClass]="{
+                    'w-6 h-2 rounded-sm bg-[#4a5568]': getCenterCardIndex() === i,
+                    'w-2 h-2 rounded-full bg-[#cbd5e0] hover:bg-[#a0aec0]': getCenterCardIndex() !== i
+                }"
+            ></button>
+        </div>
+
+        <!-- Card Counter with animation -->
+        <div class="counter-animate text-center mt-5" [class.animate-visible]="isCounterVisible">
+            <span class="text-sm text-[#718096] font-medium tracking-wide"> {{ getCenterCardIndex() + 1 }} / {{ services.length }} </span>
+        </div>
+    </div>
+
+    <!-- Vertical list for mobile screens with staggered animations -->
+    <div class="w-full max-w-[500px] mx-auto px-5 py-5 flex flex-col gap-5" *ngIf="isMobile">
+        <div *ngFor="let service of services; let i = index" class="mobile-card" [class.mobile-card-visible]="isMobileCardVisible(i)" [style.animation-delay]="getMobileCardDelay(i)">
+            <div class="rounded-3xl min-h-[350px] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" [ngStyle]="{ background: service.gradient }">
+                <div class="h-full flex flex-col justify-center items-center text-center p-8">
+                    <!-- Icon Circle -->
+                    <div class="w-20 h-20 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center mb-5">
+                        <i [class]="service.icon" class="text-3xl text-[#334155]"></i>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-lg font-normal text-[#1a202c] mb-5 leading-snug uppercase">
+                        {{ service.title }}
+                    </h3>
+
+                    <!-- Description -->
+                    <p class="text-sm text-[#2d3748] leading-relaxed font-light">
+                        {{ service.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

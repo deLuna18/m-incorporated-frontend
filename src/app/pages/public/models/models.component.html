@@ -1,0 +1,774 @@
+<div class="min-h-screen bg-white font-sans text-ink antialiased selection:bg-gold/20">
+
+  <!-- HEADER -->
+  <header class="relative z-50 bg-white">
+    <div class="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+      <a href="/" aria-label="M Incorporated home" class="flex w-[142px] shrink-0 flex-col items-center leading-none">
+        <span class="mb-[-2px] text-[15px] leading-none text-gold">♛</span>
+        <span class="font-serif text-[48px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+        <span class="mt-2 text-[7px] font-semibold tracking-[.28em]">INCORPORATED</span>
+        <span class="mt-1 text-[6px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 xl:flex" aria-label="Primary navigation">
+        <a href="/" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">HOME</a>
+        <a href="/models" class="text-[11px] font-semibold tracking-[.16em] text-gold">MODELS</a>
+        <a href="/services" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">SERVICES</a>
+        <a href="/#about" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">ABOUT</a>
+        <a href="/gallery" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">GALLERY</a>
+        <a href="/#journal" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">JOURNAL</a>
+        <a href="/#contact" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">CONTACT</a>
+      </nav>
+
+      <a href="/#booking" class="hidden min-w-[148px] items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-semibold tracking-[.13em] text-white transition hover:bg-black md:flex">
+        BOOK A MODEL <span class="text-base leading-none">→</span>
+      </a>
+
+      <button id="menuBtn" class="flex h-10 items-center gap-2 border border-ink px-4 text-[10px] font-semibold tracking-[.16em] md:hidden" aria-expanded="false" aria-controls="mobileNav">
+        MENU
+      </button>
+    </div>
+
+    <div id="mobileNav" class="hidden bg-white px-5 py-5 md:hidden">
+      <div class="grid gap-4 text-[11px] font-semibold tracking-[.15em]">
+        <a href="/">HOME</a>
+        <a href="/models" class="text-gold">MODELS</a>
+        <a href="/services">SERVICES</a>
+        <a href="/#about">ABOUT</a>
+        <a href="/gallery">GALLERY</a>
+        <a href="/#journal">JOURNAL</a>
+        <a href="/#contact">CONTACT</a>
+        <a href="/#booking" class="mt-2 inline-flex w-fit items-center gap-3 bg-ink px-5 py-3 text-white">BOOK A MODEL <span>→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE INTRO -->
+    <section>
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[1.1fr_.9fr] lg:items-end lg:px-14 lg:py-16 xl:px-16">
+        <div>
+          <p class="mb-4 text-[9px] font-semibold tracking-[.18em] text-gold">MODEL ROSTER</p>
+          <h1 class="max-w-[700px] font-serif text-[54px] font-medium leading-[.88] tracking-[-.045em] sm:text-[66px] lg:text-[70px]">
+            Distinctive talent.<br>Carefully represented.
+          </h1>
+        </div>
+        <div class="lg:pb-2">
+          <p class="max-w-[420px] text-[11px] leading-[1.85] text-charcoal sm:text-[12px]">
+            Explore our international roster of editorial, commercial and emerging talent. Search by name or category to find the right presence for your project.
+          </p>
+          <a href="/#booking" class="mt-5 inline-flex items-center gap-4 text-[8px] font-semibold tracking-[.15em] text-gold">
+            BOOKING INQUIRY <span class="text-sm">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH / FILTERS -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 py-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-[1.55fr_.8fr_.8fr_auto]">
+          <label class="flex h-[54px] items-center border border-line bg-white px-5">
+            <span class="mr-4 text-[12px] text-muted">⌕</span>
+            <span class="sr-only">Search models</span>
+            <input id="searchInput" type="search" placeholder="Search by model name" class="w-full bg-transparent text-[10px] tracking-[.02em] outline-none placeholder:text-muted" />
+          </label>
+
+          <details class="directory-dropdown relative h-[54px] border border-line bg-white">
+            <summary class="flex h-full cursor-pointer list-none items-center justify-between px-5 text-[9px] font-semibold tracking-[.10em]">
+              <span data-label>EDITORS PICK</span><span class="ml-4 text-[10px]">⌄</span>
+            </summary>
+            <input id="locationInput" type="hidden" value="">
+            <div class="absolute left-0 right-0 top-[calc(100%+4px)] z-40 border border-line bg-white py-1 shadow-editorial">
+              <button type="button" data-location="" class="location-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">EDITORS PICK</button>
+              <button type="button" data-location="" class="location-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">HIGHEST RATED</button>
+              <button type="button" data-location="" class="location-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">MOST LOVED THIS MONTH</button>
+              <button type="button" data-location="" class="location-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">MOST RECENT</button>
+            </div>
+          </details>
+
+          <details class="directory-dropdown relative h-[54px] border border-line bg-white">
+            <summary class="flex h-full cursor-pointer list-none items-center justify-between px-5 text-[9px] font-semibold tracking-[.10em]">
+              <span data-label>FEATURED FIRST</span><span class="ml-4 text-[10px]">⌄</span>
+            </summary>
+            <input id="sortInput" type="hidden" value="featured">
+            <div class="absolute left-0 right-0 top-[calc(100%+4px)] z-40 border border-line bg-white py-1 shadow-editorial">
+              <button type="button" data-sort="featured" class="sort-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">FEATURED FIRST</button>
+              <button type="button" data-sort="name-asc" class="sort-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">NAME A–Z</button>
+              <button type="button" data-sort="name-desc" class="sort-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.08em] hover:bg-[#f7f5f1]">NAME Z–A</button>
+            </div>
+          </details>
+
+          <button id="clearFilters" type="button" class="h-[54px] border border-ink px-6 text-[8px] font-semibold tracking-[.14em] transition hover:bg-ink hover:text-white">
+            CLEAR FILTERS
+          </button>
+        </div>
+
+        <div class="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div id="categoryTabs" class="flex flex-wrap gap-2">
+            <button data-category="all" class="filter-tab is-active border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition">ALL</button>
+            <button data-category="women" class="filter-tab border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition hover:border-ink">WOMEN</button>
+            <button data-category="men" class="filter-tab border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition hover:border-ink">MEN</button>
+            <button data-category="new-faces" class="filter-tab border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition hover:border-ink">NEW FACES</button>
+            <button data-category="commercial" class="filter-tab border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition hover:border-ink">COMMERCIAL</button>
+            <button data-category="creators" class="filter-tab border border-line px-4 py-2.5 text-[8px] font-semibold tracking-[.13em] transition hover:border-ink">CREATORS</button>
+          </div>
+
+          <div class="flex items-center gap-4 text-[8px] font-semibold tracking-[.14em] text-muted">
+            <span id="resultCount">12 MODELS</span>
+            <span class="h-3 w-px bg-line"></span>
+            <span>GLOBAL ROSTER</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODEL GRID -->
+    <section class="py-9 lg:py-12">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div id="modelGrid" class="grid grid-cols-1 gap-x-4 gap-y-9 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+          <article class="model-card group" data-name="Luna Martinez" data-category="women commercial" data-location="new-york" data-featured="1">
+            <a href="model-profile.html?model=luna-martinez" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=950&q=90" alt="Luna Martinez" class="h-full w-full object-cover object-[50%_20%] transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Luna Martinez</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Noah Valentino" data-category="men" data-location="milan" data-featured="1">
+            <a href="model-profile.html?model=noah-valentino" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=950&q=90" alt="Noah Valentino" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Noah Valentino</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Ella Roberts" data-category="women commercial" data-location="paris" data-featured="1">
+            <a href="model-profile.html?model=ella-roberts" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=950&q=90" alt="Ella Roberts" class="h-full w-full object-cover object-[50%_25%] transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Ella Roberts</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Jordan Reid" data-category="men commercial" data-location="london" data-featured="1">
+            <a href="model-profile.html?model=jordan-reid" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=950&q=90" alt="Jordan Reid" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Jordan Reid</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Mia Laurent" data-category="women new-faces" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=mia-laurent" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=950&q=90" alt="Mia Laurent" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Mia Laurent</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>WOMEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Elias Ward" data-category="men new-faces" data-location="london" data-featured="0">
+            <a href="model-profile.html?model=elias-ward" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=950&q=90" alt="Elias Ward" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Elias Ward</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>MEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Sora Kim" data-category="women new-faces creators" data-location="seoul" data-featured="0">
+            <a href="model-profile.html?model=sora-kim" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=950&q=90" alt="Sora Kim" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Sora Kim</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>SEOUL</span><span>WOMEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Theo Rossi" data-category="men new-faces" data-location="milan" data-featured="0">
+            <a href="model-profile.html?model=theo-rossi" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=950&q=90" alt="Theo Rossi" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Theo Rossi</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Amara Okafor" data-category="women commercial" data-location="london" data-featured="0">
+            <a href="model-profile.html?model=amara-okafor" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=950&q=90" alt="Amara Okafor" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Amara Okafor</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Mateo Cruz" data-category="men creators" data-location="new-york" data-featured="0">
+            <a href="model-profile.html?model=mateo-cruz" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=950&q=90" alt="Mateo Cruz" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Mateo Cruz</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>MEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Clara Moreau" data-category="women commercial" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=clara-moreau" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=950&q=90" alt="Clara Moreau" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Clara Moreau</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Jin Park" data-category="men creators" data-location="seoul" data-featured="0">
+            <a href="model-profile.html?model=jin-park" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=950&q=90" alt="Jin Park" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Jin Park</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>SEOUL</span><span>MEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="model-card group" data-name="Ava Sinclair" data-category="women commercial" data-location="new-york" data-featured="1">
+            <a href="model-profile.html?model=ava-sinclair" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=950&q=90" alt="Ava Sinclair" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Ava Sinclair</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Leo Moretti" data-category="men commercial" data-location="milan" data-featured="0">
+            <a href="model-profile.html?model=leo-moretti" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=950&q=90" alt="Leo Moretti" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Leo Moretti</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Camille Duval" data-category="women creators" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=camille-duval" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=950&q=90" alt="Camille Duval" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Camille Duval</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>WOMEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Adrian Cole" data-category="men commercial" data-location="london" data-featured="0">
+            <a href="model-profile.html?model=adrian-cole" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=950&q=90" alt="Adrian Cole" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Adrian Cole</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Yuna Choi" data-category="women new-faces" data-location="seoul" data-featured="0">
+            <a href="model-profile.html?model=yuna-choi" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=950&q=90" alt="Yuna Choi" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Yuna Choi</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>SEOUL</span><span>WOMEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Nico Bellini" data-category="men new-faces" data-location="milan" data-featured="0">
+            <a href="model-profile.html?model=nico-bellini" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=950&q=90" alt="Nico Bellini" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Nico Bellini</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Elena Voss" data-category="women commercial" data-location="london" data-featured="1">
+            <a href="model-profile.html?model=elena-voss" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=950&q=90" alt="Elena Voss" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Elena Voss</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Kai Nakamura" data-category="men creators" data-location="seoul" data-featured="0">
+            <a href="model-profile.html?model=kai-nakamura" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=950&q=90" alt="Kai Nakamura" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Kai Nakamura</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>SEOUL</span><span>MEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Sofia Marin" data-category="women commercial" data-location="new-york" data-featured="0">
+            <a href="model-profile.html?model=sofia-marin" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?auto=format&fit=crop&w=950&q=90" alt="Sofia Marin" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Sofia Marin</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Julien Marchand" data-category="men commercial" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=julien-marchand" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=950&q=90" alt="Julien Marchand" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Julien Marchand</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Aria Bennett" data-category="women new-faces creators" data-location="london" data-featured="0">
+            <a href="model-profile.html?model=aria-bennett" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=950&q=90" alt="Aria Bennett" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Aria Bennett</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>WOMEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Marco Leone" data-category="men commercial" data-location="milan" data-featured="0">
+            <a href="model-profile.html?model=marco-leone" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=950&q=90" alt="Marco Leone" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Marco Leone</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Isla Hart" data-category="women creators" data-location="new-york" data-featured="1">
+            <a href="model-profile.html?model=isla-hart" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=950&q=90" alt="Isla Hart" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Isla Hart</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>WOMEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Daniel Seo" data-category="men new-faces" data-location="seoul" data-featured="0">
+            <a href="model-profile.html?model=daniel-seo" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=950&q=90" alt="Daniel Seo" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Daniel Seo</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>SEOUL</span><span>MEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Louise Garnier" data-category="women commercial" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=louise-garnier" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=950&q=90" alt="Louise Garnier" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Louise Garnier</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Hugo Laurent" data-category="men creators" data-location="paris" data-featured="0">
+            <a href="model-profile.html?model=hugo-laurent" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=950&q=90" alt="Hugo Laurent" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Hugo Laurent</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>PARIS</span><span>MEN · CREATOR</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Maya Collins" data-category="women new-faces" data-location="new-york" data-featured="0">
+            <a href="model-profile.html?model=maya-collins" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=950&q=90" alt="Maya Collins" class="h-full w-full object-cover object-[50%_25%] transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em] text-gold">NEW FACE</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Maya Collins</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>WOMEN · NEW FACE</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Lorenzo Ricci" data-category="men commercial" data-location="milan" data-featured="1">
+            <a href="model-profile.html?model=lorenzo-ricci" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=950&q=90" alt="Lorenzo Ricci" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                <div class="absolute left-4 top-4 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.14em]">FEATURED</div>
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Lorenzo Ricci</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>MILAN</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Nina Foster" data-category="women commercial creators" data-location="london" data-featured="0">
+            <a href="model-profile.html?model=nina-foster" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=950&q=90" alt="Nina Foster" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Nina Foster</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>LONDON</span><span>WOMEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+          <article class="model-card group" data-name="Ethan Blake" data-category="men commercial" data-location="new-york" data-featured="0">
+            <a href="model-profile.html?model=ethan-blake" class="block">
+              <div class="relative aspect-[.78/1] overflow-hidden bg-neutral-200">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=950&q=90" alt="Ethan Blake" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
+                
+                <div class="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-black/60 to-transparent px-4 pb-4 pt-14 text-[8px] font-semibold tracking-[.14em] text-white transition-transform duration-300 group-hover:translate-y-0">VIEW PROFILE →</div>
+              </div>
+              <div class="pt-3">
+                <h2 class="font-serif text-[25px] leading-none tracking-[-.025em]">Ethan Blake</h2>
+                <div class="mt-2 flex items-center justify-between gap-3 text-[7px] font-semibold tracking-[.13em] text-muted"><span>NEW YORK</span><span>MEN · COMMERCIAL</span></div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div id="emptyState" class="hidden py-24 text-center">
+          <p class="text-[9px] font-semibold tracking-[.18em] text-gold">NO MATCHES</p>
+          <h2 class="mt-3 font-serif text-[38px] leading-none">No models match those filters.</h2>
+          <p class="mx-auto mt-4 max-w-[420px] text-[10px] leading-[1.8] text-charcoal">Try another category, location or search term.</p>
+          <button type="button" data-clear class="mt-6 border border-ink px-6 py-3 text-[8px] font-semibold tracking-[.14em]">RESET FILTERS</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTORY CTA -->
+    <section class="directory-cta bg-white">
+      <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 bg-black px-5 py-10 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-14 xl:px-16">
+        <div>
+          <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">CAN'T FIND THE RIGHT FIT?</p>
+          <h2 class="font-serif text-[34px] leading-none tracking-[-.03em] sm:text-[40px]">Tell us what the project needs.</h2>
+          <p class="mt-3 max-w-[600px] text-[10px] leading-[1.8] text-charcoal">Our booking team can recommend talent based on your brief, market, location and production requirements.</p>
+        </div>
+        <a href="/#booking" class="inline-flex h-[48px] items-center justify-center gap-7 bg-white px-7 text-[8px] font-semibold tracking-[.14em] text-ink">START AN INQUIRY <span class="text-sm">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-white">
+    <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 py-7 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.35fr_.8fr_.8fr_.8fr_1.3fr] lg:gap-10 lg:px-14 xl:px-16">
+      <div class="flex flex-col items-start lg:items-center">
+        <div class="flex w-[130px] flex-col items-center leading-none">
+          <span class="mb-[-2px] text-[12px] leading-none text-gold">♛</span>
+          <span class="font-serif text-[37px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+          <span class="mt-2 text-[6px] font-semibold tracking-[.28em]">INCORPORATED</span>
+          <span class="mt-1 text-[5px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+        </div>
+        <p class="mt-4 text-[7px] text-muted">© 2026 M Incorporated. All rights reserved.</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">AGENCY</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="/#about" class="hover:text-gold">About Us</a></li>
+          <li><a href="#" class="hover:text-gold">Our Team</a></li>
+          <li><a href="#" class="hover:text-gold">Careers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">MODELS</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="/models" class="hover:text-gold">Model Directory</a></li>
+          <li><a href="/#become-model" class="hover:text-gold">Become a Model</a></li>
+          <li><a href="#" class="hover:text-gold">Model Login</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">RESOURCES</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="/#journal" class="hover:text-gold">Journal</a></li>
+          <li><a href="/#gallery" class="hover:text-gold">Media Gallery</a></li>
+          <li><a href="#" class="hover:text-gold">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">CONTACT</h3>
+        <div class="space-y-2 text-[8px] text-charcoal">
+          <p>hello&#64;m-incorporated.com</p>
+          <p>+1 (212) 555 0988</p>
+          <p>New York, NY</p>
+        </div>
+        <div class="mt-5 flex items-center gap-5" aria-label="Social links">
+          <a href="#" aria-label="Instagram" class="text-[13px] hover:text-gold">◎</a>
+          <a href="#" aria-label="Facebook" class="text-[12px] font-semibold hover:text-gold">f</a>
+          <a href="#" aria-label="TikTok" class="text-[12px] font-semibold hover:text-gold">♪</a>
+          <a href="#" aria-label="Pinterest" class="text-[12px] font-semibold hover:text-gold">p</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Legacy standalone-page script replaced by ModelsComponent. -->
+  <!--
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const modelGrid = document.getElementById('modelGrid');
+    const cards = [...document.querySelectorAll('.model-card')];
+    const searchInput = document.getElementById('searchInput');
+    const locationInput = document.getElementById('locationInput');
+    const sortInput = document.getElementById('sortInput');
+    const resultCount = document.getElementById('resultCount');
+    const emptyState = document.getElementById('emptyState');
+    const clearFilters = document.getElementById('clearFilters');
+    const categoryTabs = [...document.querySelectorAll('.filter-tab')];
+    const dropdowns = [...document.querySelectorAll('.directory-dropdown')];
+
+    let activeCategory = 'all';
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileNav.classList.toggle('hidden');
+      menuBtn.textContent = isOpen ? 'MENU' : 'CLOSE';
+    });
+
+    dropdowns.forEach((dropdown) => {
+      dropdown.addEventListener('toggle', () => {
+        if (!dropdown.open) return;
+        dropdowns.forEach((other) => {
+          if (other !== dropdown) other.removeAttribute('open');
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(event.target)) dropdown.removeAttribute('open');
+      });
+    });
+
+    document.querySelectorAll('.location-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        const dropdown = option.closest('.directory-dropdown');
+        dropdown.querySelector('[data-label]').textContent = option.textContent.trim();
+        locationInput.value = option.dataset.location || '';
+        dropdown.removeAttribute('open');
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.sort-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        const dropdown = option.closest('.directory-dropdown');
+        dropdown.querySelector('[data-label]').textContent = option.textContent.trim();
+        sortInput.value = option.dataset.sort;
+        dropdown.removeAttribute('open');
+        applyFilters();
+      });
+    });
+
+    categoryTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        activeCategory = tab.dataset.category;
+        categoryTabs.forEach((item) => item.classList.toggle('is-active', item === tab));
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+
+    function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      const location = locationInput.value;
+
+      cards.forEach((card) => {
+        const matchesName = !query || card.dataset.name.toLowerCase().includes(query);
+        const matchesCategory = activeCategory === 'all' || card.dataset.category.split(' ').includes(activeCategory);
+        const matchesLocation = !location || card.dataset.location === location;
+        card.hidden = !(matchesName && matchesCategory && matchesLocation);
+      });
+
+      sortCards();
+
+      const visible = cards.filter((card) => !card.hidden);
+      resultCount.textContent = `${visible.length} ${visible.length === 1 ? 'MODEL' : 'MODELS'}`;
+      emptyState.classList.toggle('hidden', visible.length !== 0);
+    }
+
+    function sortCards() {
+      const mode = sortInput.value;
+      const sorted = [...cards].sort((a, b) => {
+        if (mode === 'name-asc') return a.dataset.name.localeCompare(b.dataset.name);
+        if (mode === 'name-desc') return b.dataset.name.localeCompare(a.dataset.name);
+        const featuredDiff = Number(b.dataset.featured) - Number(a.dataset.featured);
+        return featuredDiff || a.dataset.name.localeCompare(b.dataset.name);
+      });
+      sorted.forEach((card) => modelGrid.appendChild(card));
+    }
+
+    function resetFilters() {
+      searchInput.value = '';
+      locationInput.value = '';
+      sortInput.value = 'featured';
+      activeCategory = 'all';
+
+      categoryTabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.category === 'all'));
+      document.querySelectorAll('.directory-dropdown').forEach((dropdown) => dropdown.removeAttribute('open'));
+      document.querySelectorAll('.directory-dropdown [data-label]')[0].textContent = 'ALL LOCATIONS';
+      document.querySelectorAll('.directory-dropdown [data-label]')[1].textContent = 'FEATURED FIRST';
+      applyFilters();
+    }
+
+    clearFilters.addEventListener('click', resetFilters);
+    document.querySelector('[data-clear]')?.addEventListener('click', resetFilters);
+
+    function applyQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('search') || '';
+      const category = params.get('category') || 'all';
+      const location = params.get('location') || '';
+
+      searchInput.value = query;
+
+      if (categoryTabs.some((tab) => tab.dataset.category === category)) {
+        activeCategory = category;
+        categoryTabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.category === category));
+      }
+
+      if (location) {
+        locationInput.value = location;
+        const locationOption = document.querySelector(`.location-option[data-location="${location}"]`);
+        if (locationOption) document.querySelectorAll('.directory-dropdown [data-label]')[0].textContent = locationOption.textContent.trim();
+      }
+
+      applyFilters();
+    }
+
+    applyQueryParams();
+  -->
+</div>

@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  color: #000;
+}
+
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6,
+:host a,
+:host button,
+:host input,
+:host summary {
+  color: #000;
+}
+
+:host .text-charcoal { color: #222; }
+:host .text-muted { color: #6f6b63; }
+:host .text-gold { color: #000; }
+:host .text-white { color: #fff; }
+ summary::-webkit-details-marker { display: none; }
+ .model-card[hidden] { display: none !important; }
+.filter-tab.is-active { background: #111; border-color: #111; color: #fff; }
+:host .filter-tab.is-active,
+:host #clearFilters:hover {
+  color: #fff;
+}
+
+:host .directory-cta a {
+  color: #000;
+}
+
+:host .directory-cta h2,
+:host .directory-cta .text-gold {
+  color: #fff;
+}
+
+:host .directory-cta .text-charcoal {
+  color: rgba(255, 255, 255, .8);
+}
+
+// Keep the location and category together beneath each model name.
+.model-card a > div:last-child > div {
+  justify-content: flex-start;
+  gap: 2.25rem;
+}

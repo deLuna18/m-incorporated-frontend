@@ -1,0 +1,790 @@
+<div class="min-h-screen bg-white font-sans text-ink antialiased selection:bg-gold/20" (click)="closeDropdowns($event)">
+
+  <!-- HEADER -->
+  <header class="relative z-50 border-transparent bg-white">
+    <div class="mx-auto flex h-[88px] max-w-[1680px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+      <a href="#" aria-label="M Incorporated home" class="flex w-[142px] shrink-0 flex-col items-center leading-none">
+        <span class="mb-[-2px] text-[15px] leading-none text-gold">♛</span>
+        <span class="font-serif text-[48px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+        <span class="mt-2 text-[7px] font-semibold tracking-[.28em]">INCORPORATED</span>
+        <span class="mt-1 text-[6px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 xl:flex" aria-label="Primary navigation">
+        <a href="#" class="text-[11px] font-semibold tracking-[.16em] text-gold transition-colors">HOME</a>
+        <a href="/models" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">MODELS</a>
+        <a href="/services" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">SERVICES</a>
+        <a href="#about" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">ABOUT</a>
+        <a href="/gallery" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">GALLERY</a>
+        <a href="#journal" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">JOURNAL</a>
+        <a href="/contact" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">CONTACT</a>
+      </nav>
+
+      <a href="#booking" class="hidden min-w-[148px] items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-semibold tracking-[.13em] text-white transition hover:bg-black md:flex">
+        BOOK A MODEL <span class="text-base leading-none">→</span>
+      </a>
+
+      <button class="flex h-10 items-center gap-2 border border-ink px-4 text-[10px] font-semibold tracking-[.16em] md:hidden" [attr.aria-expanded]="menuOpen" aria-controls="mobileNav" (click)="toggleMenu()">
+        {{ menuOpen ? 'CLOSE' : 'MENU' }}
+      </button>
+    </div>
+
+    <div id="mobileNav" class="border-line bg-white px-5 py-5 md:hidden" [class.hidden]="!menuOpen">
+      <div class="grid gap-4 text-[11px] font-semibold tracking-[.15em]">
+        <a href="#" class="text-gold">HOME</a>
+        <a href="/models">MODELS</a>
+        <a href="/services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="/gallery">GALLERY</a>
+        <a href="#journal">JOURNAL</a>
+        <a href="/contact">CONTACT</a>
+        <a href="#booking" class="mt-2 inline-flex w-fit items-center gap-3 bg-ink px-5 py-3 text-white">BOOK A MODEL <span>→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- MODEL FINDER -->
+    <!-- <section id="model-search" class="bg-white">
+      <div class="mx-auto grid max-w-[1680px] grid-cols-1 px-5 py-3 sm:px-8 lg:grid-cols-[1.1fr_2.9fr] lg:items-center lg:px-14 xl:px-16">
+        <div class="pb-3 lg:pb-0 lg:pr-8">
+          <p class="mb-1 text-[7px] font-semibold tracking-[.18em] text-gold">FIND A MODEL</p>
+          <h2 class="font-serif text-[23px] font-medium leading-none tracking-[-.03em] sm:text-[25px]">Start with the right fit.</h2>
+        </div>
+
+        <form class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_auto]" action="#models">
+          <label class="flex h-[42px] items-center border border-line bg-white px-3">
+            <span class="sr-only">Search by model name</span>
+            <input type="search" placeholder="Search by model name" class="w-full bg-transparent text-[9px] tracking-[.02em] text-ink outline-none placeholder:text-muted" />
+          </label>
+
+          <details class="model-dropdown relative h-[42px] border border-line bg-white" [open]="openDropdown === 'category'" (toggle)="onDropdownToggle('category', $event)">
+            <summary class="flex h-full cursor-pointer list-none items-center justify-between px-4 text-[8px] font-medium tracking-[.08em] text-ink">
+              <span>{{ categoryLabel }}</span>
+              <span class="ml-4 text-[10px] transition-transform duration-200">⌄</span>
+            </summary>
+            <input type="hidden" name="category" [value]="category">
+            <div class="absolute left-0 right-0 top-[calc(100%+4px)] z-50 overflow-hidden border border-line bg-white shadow-[0_14px_30px_rgba(17,17,17,0.08)]">
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', '', 'ALL CATEGORIES')">ALL CATEGORIES</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', 'women', 'WOMEN')">WOMEN</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', 'men', 'MEN')">MEN</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', 'new-faces', 'NEW FACES')">NEW FACES</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', 'commercial', 'COMMERCIAL')">COMMERCIAL</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('category', 'creators', 'CREATORS')">CREATORS</button>
+            </div>
+          </details>
+
+          <details class="model-dropdown relative h-[42px] border border-line bg-white" [open]="openDropdown === 'location'" (toggle)="onDropdownToggle('location', $event)">
+            <summary class="flex h-full cursor-pointer list-none items-center justify-between px-4 text-[8px] font-medium tracking-[.08em] text-ink">
+              <span>{{ locationLabel }}</span>
+              <span class="ml-4 text-[10px] transition-transform duration-200">⌄</span>
+            </summary>
+            <input type="hidden" name="location" [value]="location">
+            <div class="absolute left-0 right-0 top-[calc(100%+4px)] z-50 overflow-hidden border border-line bg-white shadow-[0_14px_30px_rgba(17,17,17,0.08)]">
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', '', 'ALL LOCATIONS')">ALL LOCATIONS</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', 'new-york', 'NEW YORK')">NEW YORK</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', 'paris', 'PARIS')">PARIS</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', 'milan', 'MILAN')">MILAN</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', 'london', 'LONDON')">LONDON</button>
+              <button type="button" class="dropdown-option block w-full px-5 py-3 text-left text-[9px] font-medium tracking-[.06em] text-ink hover:bg-[#F7F5F1]" (click)="selectDropdown('location', 'seoul', 'SEOUL')">SEOUL</button>
+            </div>
+          </details>
+
+          <button type="submit" class="inline-flex h-[42px] items-center justify-center gap-4 bg-ink px-5 text-[7px] font-semibold tracking-[.15em] text-white transition hover:bg-black">
+            SEARCH MODELS <span class="text-sm">→</span>
+          </button>
+        </form>
+      </div>
+    </section> -->
+
+
+    <!-- HERO -->
+    <section class="mt-5 border-line lg:mt-7">
+      <div class="mx-auto grid max-w-[1680px] grid-cols-1 px-5 pb-9 pt-6 sm:px-8 lg:min-h-[400px] lg:grid-cols-[44%_56%] lg:px-14 lg:pt-8 xl:px-16">
+        <div class="relative flex items-center lg:pr-8">
+          <div class="hidden w-[42px] shrink-0 flex-col items-center lg:flex">
+            <span class="mb-3 text-[10px] font-semibold text-gold">01</span>
+            <span class="h-[60px] w-px bg-line"></span>
+            <span class="my-3 text-[10px] font-medium text-[#8f8b84]">02</span>
+            <span class="h-[32px] w-px bg-line"></span>
+            <span class="my-3 text-[10px] font-medium text-[#8f8b84]">03</span>
+          </div>
+
+          <div class="py-8 lg:py-4 lg:pl-5">
+            <p class="mb-5 text-[10px] font-semibold uppercase tracking-[.19em] text-gold">Worldwide Model &amp; Talent Agency</p>
+            <h1 class="max-w-[450px] font-serif text-[54px] font-medium leading-[.84] tracking-[-.045em] sm:text-[64px] lg:text-[67px] xl:text-[72px]">
+              Exceptional<br>
+              Talent.<br>
+              Endless<br>
+              Possibilities.
+            </h1>
+            <p class="mt-7 max-w-[345px] text-[27px] leading-[1.78] text-charcoal sm:text-[13px]">
+              Connecting visionaries with extraordinary talent for editorial, commercial and creative projects around the globe.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#models" class="inline-flex h-[46px] items-center gap-7 rounded-[6px] bg-ink px-6 text-[9px] font-semibold tracking-[.13em] text-white">EXPLORE MODELS <span class="text-base">→</span></a>
+              <a href="#booking" class="inline-flex h-[46px] items-center gap-7 rounded-[6px] border border-ink bg-transparent px-6 text-[9px] font-semibold tracking-[.13em]">BOOK A MODEL <span class="text-base">→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative min-h-[390px] sm:min-h-[450px] lg:min-h-0">
+          <div class="hero-portrait absolute bottom-0 left-0 top-0 w-[79%] bg-[#e8dfd1] sm:w-[76%] lg:w-[77%]">
+            <img
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90"
+              alt="Editorial model portrait"
+              class="image-soft h-full w-full object-cover object-[53%_38%]"
+            />
+          </div>
+
+          <article class="absolute bottom-7 right-0 w-[42%] min-w-[210px] max-w-[278px] overflow-hidden rounded-[18px] border border-white/70 bg-white shadow-editorial sm:bottom-12 sm:w-[38%] lg:bottom-[30px] lg:right-0 lg:w-[42%] xl:right-1">
+            <div class="relative aspect-[1.08/1] overflow-hidden bg-[#dedede]">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=90"
+                alt="Male fashion model"
+                class="h-full w-full object-cover object-[48%_34%]"
+              />
+              <div class="absolute left-4 top-4 flex h-10 w-10 flex-col items-center justify-center rounded-full bg-white shadow-sm">
+                <span class="mt-[-4px] text-[8px] leading-none text-gold">♛</span>
+                <span class="font-serif text-[18px] font-semibold leading-none">M</span>
+              </div>
+            </div>
+            <div class="px-5 py-5 sm:px-6 sm:py-6">
+              <h2 class="font-serif text-[25px] font-medium leading-[.96] tracking-[-.03em] sm:text-[28px]">Global reach.<br>Personal touch.</h2>
+              <a href="#about" class="mt-5 inline-flex items-center gap-3 text-[8px] font-semibold tracking-[.16em] text-gold">DISCOVER OUR STORY <span class="text-sm">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED MODELS -->
+    <section id="models" class="border-line py-7 lg:py-8">
+      <div class="mx-auto max-w-[1680px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-4 flex items-end justify-between gap-6">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">FEATURED MODELS</p>
+            <h2 class="font-serif text-[35px] font-medium leading-none tracking-[-.035em] sm:text-[40px]">Curated. Exceptional. Global.</h2>
+          </div>
+          <a href="#" class="hidden items-center gap-4 pb-1 text-[8px] font-semibold tracking-[.13em] md:inline-flex">VIEW ALL MODELS <span class="text-sm">→</span></a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="featured-model-card group relative aspect-[1.08/1] overflow-hidden rounded-[14px] bg-neutral-300">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=90" alt="Luna Martinez" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-[11px] font-semibold tracking-[.08em]">LUNA MARTINEZ</h3>
+              <p class="mt-1 text-[8px] font-medium tracking-[.12em]">NEW YORK</p>
+            </div>
+          </article>
+
+          <article class="featured-model-card group relative aspect-[1.08/1] overflow-hidden rounded-[14px] bg-neutral-300">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=90" alt="Noah Valentino" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-[11px] font-semibold tracking-[.08em]">NOAH VALENTINO</h3>
+              <p class="mt-1 text-[8px] font-medium tracking-[.12em]">MILAN</p>
+            </div>
+          </article>
+
+          <article class="featured-model-card group relative aspect-[1.08/1] overflow-hidden rounded-[14px] bg-neutral-300">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=90" alt="Ella Roberts" class="h-full w-full object-cover object-[50%_26%] transition duration-500 group-hover:scale-[1.025]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-[11px] font-semibold tracking-[.08em]">ELLA ROBERTS</h3>
+              <p class="mt-1 text-[8px] font-medium tracking-[.12em]">PARIS</p>
+            </div>
+          </article>
+
+          <article class="featured-model-card group relative aspect-[1.08/1] overflow-hidden rounded-[14px] bg-neutral-300">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=90" alt="Jordan Reid" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+              <h3 class="text-[11px] font-semibold tracking-[.08em]">JORDAN REID</h3>
+              <p class="mt-1 text-[8px] font-medium tracking-[.12em]">LONDON</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE TALENT -->
+    <section id="talent" class="border-line bg-white">
+      <div class="mx-auto grid max-w-[1680px] grid-cols-1 px-5 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:px-14 xl:px-16">
+        <div class="border-line px-5 py-10 sm:px-8 lg:border-r lg:px-14 lg:py-14 xl:px-16">
+          <p class="mb-3 text-[10px] font-semibold tracking-[.16em] text-gold">EXPLORE TALENT</p>
+          <h2 class="max-w-[400px] font-serif text-[38px] font-medium leading-[.98] tracking-[-.035em] sm:text-[44px] lg:text-[50px]">
+            Find the face<br>for the story.
+          </h2>
+          <p class="mt-5 max-w-[390px] text-[11px] leading-[1.8] text-charcoal sm:text-[12px]">
+            Browse our roster by discipline and discover talent selected for distinctive presence, versatility and creative range.
+          </p>
+          <a href="#models" class="mt-7 inline-flex items-center gap-4 border-black pb-1 text-[9px] font-semibold tracking-[.14em]">
+            VIEW FULL DIRECTORY <span class="text-sm">→</span>
+          </a>
+        </div>
+
+        <div class="divide-line">
+          <a href="#models" class="group relative block overflow-hidden">
+            <div class="absolute inset-0">
+              <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,243,0.20)_0%,rgba(248,247,243,0.10)_18%,rgba(248,247,243,0.72)_44%,rgba(248,247,243,0.92)_64%,rgba(248,247,243,0.98)_100%)] transition duration-300 group-hover:bg-[linear-gradient(90deg,rgba(248,247,243,0.14)_0%,rgba(248,247,243,0.08)_18%,rgba(248,247,243,0.62)_44%,rgba(248,247,243,0.88)_64%,rgba(248,247,243,0.96)_100%)]"></div>
+            </div>
+            <div class="absolute inset-0 overflow-hidden opacity-[.18] transition duration-500 group-hover:opacity-[.26]">
+              <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=90" alt="Women category background" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.04]" />
+            </div>
+            <div class="relative z-10 grid grid-cols-[38px_1fr_auto] items-center gap-4 px-5 py-5 sm:grid-cols-[52px_1fr_auto] sm:px-8 lg:px-10 lg:py-[22px] xl:px-12">
+              <span class="text-[8px] font-semibold tracking-[.16em] text-gold">01</span>
+              <div class="flex min-w-0 items-baseline gap-4 sm:gap-7">
+                <span class="font-serif text-[28px] leading-none tracking-[-.02em] sm:text-[34px]">Women</span>
+                <span class="hidden text-[8px] font-medium tracking-[.13em] text-charcoal sm:inline">EDITORIAL · COMMERCIAL</span>
+              </div>
+              <span class="translate-x-0 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+
+          <a href="#models" class="group relative block overflow-hidden">
+            <div class="absolute inset-0">
+              <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,243,0.20)_0%,rgba(248,247,243,0.10)_18%,rgba(248,247,243,0.72)_44%,rgba(248,247,243,0.92)_64%,rgba(248,247,243,0.98)_100%)] transition duration-300 group-hover:bg-[linear-gradient(90deg,rgba(248,247,243,0.14)_0%,rgba(248,247,243,0.08)_18%,rgba(248,247,243,0.62)_44%,rgba(248,247,243,0.88)_64%,rgba(248,247,243,0.96)_100%)]"></div>
+            </div>
+            <div class="absolute inset-0 overflow-hidden opacity-[.18] transition duration-500 group-hover:opacity-[.26]">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=90" alt="Men category background" class="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]" />
+            </div>
+            <div class="relative z-10 grid grid-cols-[38px_1fr_auto] items-center gap-4 px-5 py-5 sm:grid-cols-[52px_1fr_auto] sm:px-8 lg:px-10 lg:py-[22px] xl:px-12">
+              <span class="text-[8px] font-semibold tracking-[.16em] text-gold">02</span>
+              <div class="flex min-w-0 items-baseline gap-4 sm:gap-7">
+                <span class="font-serif text-[28px] leading-none tracking-[-.02em] sm:text-[34px]">Men</span>
+                <span class="hidden text-[8px] font-medium tracking-[.13em] text-charcoal sm:inline">EDITORIAL · COMMERCIAL</span>
+              </div>
+              <span class="translate-x-0 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+
+          <a href="#new-faces" class="group relative block overflow-hidden">
+            <div class="absolute inset-0">
+              <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,243,0.20)_0%,rgba(248,247,243,0.10)_18%,rgba(248,247,243,0.72)_44%,rgba(248,247,243,0.92)_64%,rgba(248,247,243,0.98)_100%)] transition duration-300 group-hover:bg-[linear-gradient(90deg,rgba(248,247,243,0.14)_0%,rgba(248,247,243,0.08)_18%,rgba(248,247,243,0.62)_44%,rgba(248,247,243,0.88)_64%,rgba(248,247,243,0.96)_100%)]"></div>
+            </div>
+            <div class="absolute inset-0 overflow-hidden opacity-[.18] transition duration-500 group-hover:opacity-[.26]">
+              <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=90" alt="New Faces category background" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.04]" />
+            </div>
+            <div class="relative z-10 grid grid-cols-[38px_1fr_auto] items-center gap-4 px-5 py-5 sm:grid-cols-[52px_1fr_auto] sm:px-8 lg:px-10 lg:py-[22px] xl:px-12">
+              <span class="text-[8px] font-semibold tracking-[.16em] text-gold">03</span>
+              <div class="flex min-w-0 items-baseline gap-4 sm:gap-7">
+                <span class="font-serif text-[28px] leading-none tracking-[-.02em] sm:text-[34px]">New Faces</span>
+                <span class="hidden text-[8px] font-medium tracking-[.13em] text-charcoal sm:inline">EMERGING TALENT</span>
+              </div>
+              <span class="translate-x-0 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+
+          <a href="#models" class="group relative block overflow-hidden">
+            <div class="absolute inset-0">
+              <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,243,0.20)_0%,rgba(248,247,243,0.10)_18%,rgba(248,247,243,0.72)_44%,rgba(248,247,243,0.92)_64%,rgba(248,247,243,0.98)_100%)] transition duration-300 group-hover:bg-[linear-gradient(90deg,rgba(248,247,243,0.14)_0%,rgba(248,247,243,0.08)_18%,rgba(248,247,243,0.62)_44%,rgba(248,247,243,0.88)_64%,rgba(248,247,243,0.96)_100%)]"></div>
+            </div>
+            <div class="absolute inset-0 overflow-hidden opacity-[.18] transition duration-500 group-hover:opacity-[.26]">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=90" alt="Commercial category background" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.04]" />
+            </div>
+            <div class="relative z-10 grid grid-cols-[38px_1fr_auto] items-center gap-4 px-5 py-5 sm:grid-cols-[52px_1fr_auto] sm:px-8 lg:px-10 lg:py-[22px] xl:px-12">
+              <span class="text-[8px] font-semibold tracking-[.16em] text-gold">04</span>
+              <div class="flex min-w-0 items-baseline gap-4 sm:gap-7">
+                <span class="font-serif text-[28px] leading-none tracking-[-.02em] sm:text-[34px]">Commercial</span>
+                <span class="hidden text-[8px] font-medium tracking-[.13em] text-charcoal sm:inline">LIFESTYLE · ADVERTISING</span>
+              </div>
+              <span class="translate-x-0 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+
+          <a href="#models" class="group relative block overflow-hidden">
+            <div class="absolute inset-0">
+              <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(248,247,243,0.20)_0%,rgba(248,247,243,0.10)_18%,rgba(248,247,243,0.72)_44%,rgba(248,247,243,0.92)_64%,rgba(248,247,243,0.98)_100%)] transition duration-300 group-hover:bg-[linear-gradient(90deg,rgba(248,247,243,0.14)_0%,rgba(248,247,243,0.08)_18%,rgba(248,247,243,0.62)_44%,rgba(248,247,243,0.88)_64%,rgba(248,247,243,0.96)_100%)]"></div>
+            </div>
+            <div class="absolute inset-0 overflow-hidden opacity-[.18] transition duration-500 group-hover:opacity-[.26]">
+              <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=90" alt="Creators category background" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.04]" />
+            </div>
+            <div class="relative z-10 grid grid-cols-[38px_1fr_auto] items-center gap-4 px-5 py-5 sm:grid-cols-[52px_1fr_auto] sm:px-8 lg:px-10 lg:py-[22px] xl:px-12">
+              <span class="text-[8px] font-semibold tracking-[.16em] text-gold">05</span>
+              <div class="flex min-w-0 items-baseline gap-4 sm:gap-7">
+                <span class="font-serif text-[28px] leading-none tracking-[-.02em] sm:text-[34px]">Creators</span>
+                <span class="hidden text-[8px] font-medium tracking-[.13em] text-charcoal sm:inline">DIGITAL · SOCIAL</span>
+              </div>
+              <span class="translate-x-0 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services-dark bg-white px-5 py-8 sm:px-8 lg:px-14 lg:py-10 xl:px-16">
+      <div class="services-panel mx-auto max-w-[1680px]">
+        <div class="services-layout grid grid-cols-1 px-6 py-9 sm:px-9 sm:py-11 lg:grid-cols-[30%_70%] lg:px-12 lg:py-14 xl:px-14">
+           <div class="services-intro pb-8 lg:pb-0 lg:pr-12">
+            <p class="mb-3 text-[9px] font-semibold tracking-[.16em] text-gold">OUR SERVICES</p>
+            <h2 class="max-w-[280px] font-serif text-[36px] font-medium leading-[.95] tracking-[-.035em]">Full-Service<br>Model Management</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+             <article class="border-line service-item py-6 sm:border-r sm:px-6 lg:first:border-l lg:py-4">
+              <svg viewBox="0 0 48 48" class="mb-4 h-8 w-8 fill-none stroke-gold stroke-[1.4]" aria-hidden="true">
+                <circle cx="20" cy="20" r="12"></circle><path d="M29 29l10 10"></path>
+              </svg>
+              <h3 class="font-serif text-[22px] font-medium leading-[1.02]">Scouting &amp;<br>Development</h3>
+              <p class="mt-4 text-[10px] leading-[1.7] text-charcoal">Discovering and nurturing fresh talent with potential and presence.</p>
+            </article>
+
+             <article class="border-line service-item py-6 sm:px-6 lg:border-r lg:py-4">
+              <svg viewBox="0 0 48 48" class="mb-4 h-8 w-8 fill-none stroke-gold stroke-[1.2]" aria-hidden="true">
+                <circle cx="24" cy="24" r="15"></circle><path d="M9 24h30M24 9c5 5 7 10 7 15s-2 10-7 15c-5-5-7-10-7-15s2-10 7-15z"></path>
+              </svg>
+              <h3 class="font-serif text-[22px] font-medium leading-[1.02]">Management &amp;<br>Representation</h3>
+              <p class="mt-4 text-[10px] leading-[1.7] text-charcoal">Strategic management and representation that elevate careers worldwide.</p>
+            </article>
+
+             <article class="border-line service-item py-6 sm:border-r sm:px-6 lg:py-4">
+              <svg viewBox="0 0 48 48" class="mb-4 h-8 w-8 fill-none stroke-gold stroke-[1.2]" aria-hidden="true">
+                <rect x="9" y="13" width="30" height="24" rx="3"></rect><circle cx="24" cy="25" r="7"></circle><path d="M17 13l2-4h10l2 4"></path>
+              </svg>
+              <h3 class="font-serif text-[22px] font-medium leading-[1.02]">Bookings &amp;<br>Placements</h3>
+              <p class="mt-4 text-[10px] leading-[1.7] text-charcoal">Connecting talent with the right opportunities across fashion, commercial and creative industries.</p>
+            </article>
+
+             <article class="border-line service-item py-6 sm:px-6 lg:border-r lg:py-4">
+              <svg viewBox="0 0 48 48" class="mb-4 h-8 w-8 fill-none stroke-gold stroke-[1.2]" aria-hidden="true">
+                <path d="M6 28l14-5 8-14 5-1-3 15 11 7-2 4-13-4-8 10-4-1 5-12-13 5z"></path>
+              </svg>
+              <h3 class="font-serif text-[22px] font-medium leading-[1.02]">Travel &amp;<br>Logistics</h3>
+              <p class="mt-4 text-[10px] leading-[1.7] text-charcoal">End-to-end travel coordination and logistics for seamless global assignments.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDIA GALLERY -->
+    <section id="gallery" class="border-line bg-white py-8 lg:py-10">
+      <div class="mx-auto max-w-[1680px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-6 flex items-end justify-between gap-6">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">MEDIA GALLERY</p>
+            <h2 class="font-serif text-[34px] font-medium leading-none tracking-[-.035em] sm:text-[40px]">Campaigns. Editorials. Moments.</h2>
+          </div>
+          <a href="#" class="hidden items-center gap-4 pb-1 text-[8px] font-semibold tracking-[.13em] md:inline-flex">VIEW MEDIA GALLERY <span class="text-sm">→</span></a>
+        </div>
+
+        <!-- Editorial masonry-style campaign gallery -->
+        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 lg:gap-2.5">
+          <!-- Column 1 -->
+          <div class="flex flex-col gap-2 lg:gap-2.5">
+            <a href="#" class="group relative h-[360px] overflow-hidden bg-neutral-200 sm:h-[410px] lg:h-[430px]">
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=90" alt="Editorial fashion cover" class="h-full w-full object-cover object-[50%_25%] transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">EDITORIAL · MILAN</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">New Perspective</h3>
+              </div>
+            </a>
+            <a href="#" class="group relative h-[270px] overflow-hidden bg-neutral-200 sm:h-[310px] lg:h-[290px]">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=90" alt="Campaign model in yellow" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">CAMPAIGN · 2026</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">Color Study</h3>
+              </div>
+            </a>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="flex flex-col gap-2 lg:gap-2.5">
+            <a href="#" class="group relative h-[315px] overflow-hidden bg-neutral-200 sm:h-[365px] lg:h-[360px]">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1100&q=90" alt="Luxury editorial campaign" class="h-full w-full object-cover object-[50%_18%] transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">FASHION ISSUE</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">Quiet Luxury</h3>
+              </div>
+            </a>
+            <a href="#" class="group relative h-[315px] overflow-hidden bg-neutral-200 sm:h-[355px] lg:h-[360px]">
+              <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1100&q=90" alt="Behind the scenes fashion campaign" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">BEHIND THE CAMPAIGN</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">In Motion</h3>
+              </div>
+            </a>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="flex flex-col gap-2 sm:col-span-2 lg:col-span-1 lg:gap-2.5">
+            <a href="#" class="group relative h-[390px] overflow-hidden bg-neutral-200 sm:h-[420px] lg:h-[410px]">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1100&q=90" alt="Magazine campaign portrait" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">GLOBAL EDITORIAL</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">Modern Form</h3>
+              </div>
+            </a>
+            <a href="#" class="group relative h-[250px] overflow-hidden bg-neutral-200 sm:h-[300px] lg:h-[310px]">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=90" alt="Minimal luxury campaign" class="h-full w-full object-cover object-[50%_22%] transition duration-700 group-hover:scale-[1.025]" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+              <div class="absolute bottom-0 left-0 right-0 translate-y-full p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+                <p class="text-[7px] font-semibold tracking-[.15em]">BEAUTY · PARIS</p>
+                <h3 class="mt-1 font-serif text-[22px] leading-none">After Hours</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + STATS -->
+    <section id="about" class="bg-white px-5 py-8 sm:px-8 lg:px-14 lg:py-10 xl:px-16">
+      <div class="about-panel mx-auto max-w-[1680px] overflow-hidden rounded-[20px] border border-line">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.08fr_.92fr] lg:items-stretch">
+        <div class="grid h-[280px] grid-cols-3 overflow-hidden bg-[#d9d0c6] sm:h-[320px] lg:h-[270px]">
+          <div class="overflow-hidden border-r border-white/30">
+            <img
+              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=90"
+              alt="Editorial model"
+              class="h-full w-full object-cover object-[50%_22%]"
+            />
+          </div>
+          <div class="overflow-hidden border-r border-white/30">
+            <img
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=90"
+              alt="Male model"
+              class="h-full w-full object-cover object-top"
+            />
+          </div>
+          <div class="overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=90"
+              alt="Agency model"
+              class="h-full w-full object-cover object-[50%_18%]"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center bg-[#fafafa] px-5 py-9 sm:px-8 lg:h-[270px] lg:px-12 lg:py-5 xl:px-14">
+          <div class="max-w-[420px]">
+            <p class="mb-3 text-[8px] font-semibold tracking-[.18em] text-gold">WHO WE ARE</p>
+            <h2 class="font-serif text-[32px] font-medium leading-[.94] tracking-[-.04em] sm:text-[36px] lg:text-[34px] xl:text-[38px]">More than an agency.<br>We build legacies.</h2>
+            <p class="mt-4 max-w-[390px] text-[9px] leading-[1.75] text-charcoal sm:text-[10px]">
+              M Incorporated is a premier model and talent agency representing exceptional talent across the world. We are dedicated to empowering individuals and shaping lasting careers in the global fashion and creative industries.
+            </p>
+            <a href="#" class="mt-5 inline-flex items-center gap-4 text-[7px] font-semibold tracking-[.18em] text-gold">LEARN MORE ABOUT US <span class="text-[10px]">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 border-t border-line bg-white lg:grid-cols-4">
+        <div class="border-r border-line px-5 py-6 text-center sm:py-7 lg:py-8">
+          <div class="mx-auto mb-3 h-px w-7 bg-gold"></div>
+          <div class="font-serif text-[40px] font-medium leading-none tracking-[-.045em] sm:text-[44px] lg:text-[46px]">25+</div>
+          <div class="mt-2 text-[7px] font-semibold tracking-[.16em]">YEARS OF EXPERIENCE</div>
+        </div>
+        <div class="border-line px-5 py-6 text-center lg:border-r sm:py-7 lg:py-8">
+          <div class="mx-auto mb-3 h-px w-7 bg-gold"></div>
+          <div class="font-serif text-[40px] font-medium leading-none tracking-[-.045em] sm:text-[44px] lg:text-[46px]">500+</div>
+          <div class="mt-2 text-[7px] font-semibold tracking-[.16em]">TALENTS WORLDWIDE</div>
+        </div>
+        <div class="border-r border-line px-5 py-6 text-center sm:py-7 lg:py-8">
+          <div class="mx-auto mb-3 h-px w-7 bg-gold"></div>
+          <div class="font-serif text-[40px] font-medium leading-none tracking-[-.045em] sm:text-[44px] lg:text-[46px]">30+</div>
+          <div class="mt-2 text-[7px] font-semibold tracking-[.16em]">COUNTRIES</div>
+        </div>
+        <div class="px-5 py-6 text-center sm:py-7 lg:py-8">
+          <div class="mx-auto mb-3 h-px w-7 bg-gold"></div>
+          <div class="font-serif text-[40px] font-medium leading-none tracking-[-.045em] sm:text-[44px] lg:text-[46px]">1000+</div>
+          <div class="mt-2 text-[7px] font-semibold tracking-[.16em]">CAMPAIGNS</div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- NEW FACES -->
+    <section id="new-faces" class="border-line py-8 lg:py-10">
+      <div class="mx-auto max-w-[1680px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-5 flex items-end justify-between gap-6">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">NEW FACES</p>
+            <h2 class="font-serif text-[34px] font-medium leading-none tracking-[-.035em] sm:text-[40px]">The next generation.</h2>
+          </div>
+          <a href="#" class="hidden items-center gap-4 pb-1 text-[8px] font-semibold tracking-[.13em] md:inline-flex">DISCOVER NEW FACES <span class="text-sm">→</span></a>
+        </div>
+        <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <article class="group">
+            <div class="aspect-[.82/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=850&q=90" alt="Mia Laurent" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" /></div>
+            <div class="pt-3"><h3 class="text-[10px] font-semibold tracking-[.08em]">MIA LAURENT</h3><p class="mt-1 text-[7px] tracking-[.12em] text-muted">PARIS · NEW FACE</p></div>
+          </article>
+          <article class="group">
+            <div class="aspect-[.82/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=850&q=90" alt="Elias Ward" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]" /></div>
+            <div class="pt-3"><h3 class="text-[10px] font-semibold tracking-[.08em]">ELIAS WARD</h3><p class="mt-1 text-[7px] tracking-[.12em] text-muted">LONDON · NEW FACE</p></div>
+          </article>
+          <article class="group">
+            <div class="aspect-[.82/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=850&q=90" alt="Sora Kim" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" /></div>
+            <div class="pt-3"><h3 class="text-[10px] font-semibold tracking-[.08em]">SORA KIM</h3><p class="mt-1 text-[7px] tracking-[.12em] text-muted">SEOUL · NEW FACE</p></div>
+          </article>
+          <article class="group">
+            <div class="aspect-[.82/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=850&q=90" alt="Theo Rossi" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.025]" /></div>
+            <div class="pt-3"><h3 class="text-[10px] font-semibold tracking-[.08em]">THEO ROSSI</h3><p class="mt-1 text-[7px] tracking-[.12em] text-muted">MILAN · NEW FACE</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUCCESS STORY -->
+    <section class="bg-white">
+      <div class="mx-auto grid max-w-[1680px] grid-cols-1 px-5 sm:px-8 lg:h-[300px] lg:grid-cols-[.9fr_1.1fr] lg:px-14 xl:px-16">
+        <div class="h-[300px] overflow-hidden lg:h-[300px]">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90" alt="Campaign success story" class="h-full w-full object-cover object-center" />
+        </div>
+        <div class="flex items-center px-5 py-9 sm:px-8 lg:px-14 xl:px-16">
+          <div class="max-w-[560px]">
+            <p class="mb-3 text-[9px] font-semibold tracking-[.16em] text-gold">SUCCESS STORY</p>
+            <blockquote class="font-serif text-[31px] font-medium leading-[1.02] tracking-[-.025em] sm:text-[36px] lg:text-[38px]">“They understood the brief, the casting and the energy we needed — from first call to final frame.”</blockquote>
+            <div class="mt-5 border-line pt-4 text-[8px] leading-[1.7] tracking-[.08em] text-charcoal">
+              <p class="font-semibold text-ink">CREATIVE DIRECTOR</p>
+              <p>International Fashion Campaign · 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED CLIENTS -->
+    <section #clientsSection class="clients-section border-b border-line py-8" [class.is-visible]="clientsVisible">
+      <div class="mx-auto max-w-[1680px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="clients-heading text-center">
+          <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">SELECTED CLIENTS</p>
+          <h2 class="font-serif text-[30px] font-medium tracking-[-.03em]">Trusted by leading creative teams.</h2>
+        </div>
+        <div class="clients-grid mt-7 grid grid-cols-2 items-center border-t border-b border-line sm:grid-cols-3 lg:grid-cols-6">
+          <div class="flex h-[72px] items-center justify-center border-r border-line font-serif text-[20px] tracking-[-.03em]">VOGUE</div>
+          <div class="flex h-[72px] items-center justify-center border-line font-serif text-[20px] tracking-[.08em] sm:border-r">DIOR</div>
+          <div class="flex h-[72px] items-center justify-center border-r border-line text-[18px] font-semibold italic">NIKE</div>
+          <div class="flex h-[72px] items-center justify-center border-line font-serif text-[21px] sm:border-r">CHANEL</div>
+          <div class="flex h-[72px] items-center justify-center border-r border-line text-[16px] font-semibold tracking-[.08em]">ZARA</div>
+          <div class="flex h-[72px] items-center justify-center font-serif text-[19px]">L'ORÉAL</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNAL -->
+    <!-- <section id="journal" class="border-line py-8 lg:py-10">
+      <div class="mx-auto max-w-[1680px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-5 flex items-end justify-between gap-6">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.16em] text-gold">FROM THE JOURNAL</p>
+            <h2 class="font-serif text-[34px] font-medium leading-none tracking-[-.035em] sm:text-[40px]">Inside the industry.</h2>
+          </div>
+          <a href="#" class="hidden items-center gap-4 pb-1 text-[8px] font-semibold tracking-[.13em] md:inline-flex">VIEW ALL STORIES <span class="text-sm">→</span></a>
+        </div>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <article class="group">
+            <div class="aspect-[1.45/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=90" alt="Fashion week" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" /></div>
+            <p class="mt-3 text-[7px] font-semibold tracking-[.14em] text-gold">INDUSTRY · AUGUST 2026</p>
+            <h3 class="mt-2 font-serif text-[24px] leading-[1.02]">Inside Paris Fashion Week</h3>
+          </article>
+          <article class="group">
+            <div class="aspect-[1.45/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90" alt="New model faces" class="h-full w-full object-cover object-[50%_28%] transition duration-500 group-hover:scale-[1.02]" /></div>
+            <p class="mt-3 text-[7px] font-semibold tracking-[.14em] text-gold">TALENT · AUGUST 2026</p>
+            <h3 class="mt-2 font-serif text-[24px] leading-[1.02]">Meet Our New Faces</h3>
+          </article>
+          <article class="group">
+            <div class="aspect-[1.45/1] overflow-hidden bg-neutral-300"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=90" alt="Behind the campaign" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" /></div>
+            <p class="mt-3 text-[7px] font-semibold tracking-[.14em] text-gold">EDITORIAL · JULY 2026</p>
+            <h3 class="mt-2 font-serif text-[24px] leading-[1.02]">Behind the Campaign</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL / FOLLOW M -->
+    <section id="social" class="bg-white px-5 py-8 sm:px-8 lg:px-14 lg:py-10 xl:px-16">
+      <div class="social-panel mx-auto max-w-[1680px]">
+        <div class="social-layout grid grid-cols-1 lg:grid-cols-[.72fr_3.28fr] lg:items-stretch">
+          <div class="social-copy flex flex-col py-2 lg:pr-8">
+            <div>
+              <p class="mb-3 text-[9px] font-semibold tracking-[.18em] text-gold">FOLLOW M</p>
+              <h2 class="font-serif text-[34px] font-medium leading-[.95] tracking-[-.035em] sm:text-[39px]">Behind the<br>bookings.</h2>
+              <p class="mt-4 max-w-[250px] text-[9px] leading-[1.75] text-charcoal">Casting days, backstage moments, new signings and life around the agency.</p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[8px] font-semibold tracking-[.13em]">
+              <a href="#" class="hover:text-gold">INSTAGRAM ↗</a>
+              <a href="#" class="hover:text-gold">TIKTOK ↗</a>
+            </div>
+          </div>
+
+          <div class="social-mosaic grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <a href="#" aria-label="View M Incorporated social post" class="group aspect-square overflow-hidden bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=88" alt="Backstage fashion moment" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" />
+              <span class="social-card-meta">01 / CASTING</span>
+            </a>
+            <a href="#" aria-label="View M Incorporated social post" class="group aspect-square overflow-hidden bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=88" alt="Model editorial moment" class="h-full w-full object-cover object-[50%_25%] transition duration-500 group-hover:scale-[1.025]" />
+              <span class="social-card-meta">02 / NEW FACE</span>
+            </a>
+            <a href="#" aria-label="View M Incorporated social post" class="group aspect-square overflow-hidden bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=88" alt="Fashion campaign moment" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" />
+              <span class="social-card-meta">03 / ON SET</span>
+            </a>
+            <a href="#" aria-label="View M Incorporated social post" class="group aspect-square overflow-hidden bg-neutral-200">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=88" alt="Agency editorial story" class="h-full w-full object-cover object-[50%_18%] transition duration-500 group-hover:scale-[1.025]" />
+              <span class="social-card-meta">04 / CITY NOTES</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BECOME A MODEL / OPEN CALL -->
+    <section id="become-model" class="bg-white px-5 py-8 sm:px-8 lg:px-14 lg:py-10 xl:px-16">
+      <div class="open-call-panel mx-auto grid max-w-[1680px] grid-cols-1 overflow-hidden rounded-[20px] border border-line lg:grid-cols-[.9fr_1.2fr_.9fr] lg:items-stretch">
+        <div class="border-line px-5 py-10 sm:px-8 lg:border-r lg:px-14 lg:py-12 xl:px-16">
+          <p class="mb-3 text-[10px] font-semibold tracking-[.18em] text-gold">OPEN CALL</p>
+          <h2 class="max-w-[430px] font-serif text-[44px] font-medium leading-[.93] tracking-[-.04em] sm:text-[50px] lg:text-[56px]">
+            New faces.<br>Real presence.
+          </h2>
+          <p class="mt-5 max-w-[390px] text-[11px] leading-[1.85] text-charcoal sm:text-[12px]">
+            We are interested in individuality, character and point of view — not a single idea of what a model should look like.
+          </p>
+          <a href="#" class="mt-7 inline-flex items-center gap-5 border-black pb-1 text-[9px] font-semibold tracking-[.15em]">
+            SUBMIT YOUR PROFILE <span class="text-sm">→</span>
+          </a>
+        </div>
+
+        <div class="grid h-[360px] grid-cols-3 overflow-hidden border-line sm:h-[420px] lg:h-auto lg:min-h-[340px] lg:border-r">
+          <div class="overflow-hidden border-r border-white/70">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=90" alt="Open call model portrait" class="h-full w-full object-cover object-[50%_28%]" />
+          </div>
+          <div class="overflow-hidden border-r border-white/70">
+            <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=800&q=90" alt="Open call model portrait" class="h-full w-full object-cover object-center" />
+          </div>
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=90" alt="Open call model portrait" class="h-full w-full object-cover object-top" />
+          </div>
+        </div>
+
+        <div class="flex items-center px-5 py-10 sm:px-8 lg:px-10 lg:py-12 xl:px-12">
+          <div class="w-full">
+            <p class="mb-5 text-[8px] font-semibold tracking-[.18em] text-gold">WHAT TO SEND</p>
+
+            <div class="what-to-send-list">
+              <div class="flex items-center justify-between py-4">
+                <span class="font-serif text-[22px] leading-none">Portrait</span>
+                <span class="text-[8px] tracking-[.12em] text-muted">NATURAL LIGHT</span>
+              </div>
+              <div class="flex items-center justify-between py-4">
+                <span class="font-serif text-[22px] leading-none">Profile</span>
+                <span class="text-[8px] tracking-[.12em] text-muted">SIDE VIEW</span>
+              </div>
+              <div class="flex items-center justify-between py-4">
+                <span class="font-serif text-[22px] leading-none">Full Length</span>
+                <span class="text-[8px] tracking-[.12em] text-muted">SIMPLE LOOK</span>
+              </div>
+            </div>
+
+            <p class="mt-5 max-w-[300px] text-[9px] leading-[1.75] text-charcoal">
+              No professional portfolio required. Clean, recent images are enough for an initial review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- FINAL CTA -->
+    <section id="booking" class="final-cta mx-auto mt-10 max-w-[1552px] overflow-hidden rounded-[20px] bg-ink">
+      <img
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1800&q=90"
+        alt="Fashion model close-up"
+        class="hidden absolute inset-0 h-full w-full object-cover object-[38%_42%] opacity-75"
+      />
+      <div class="hidden absolute inset-0 bg-gradient-to-r from-black/15 via-black/25 to-black/80"></div>
+      <div class="hidden relative mx-auto flex min-h-[210px] max-w-[1680px] items-center justify-end px-5 py-8 sm:px-8 lg:min-h-[135px] lg:px-14 xl:px-16">
+        <div class="cta-copy w-full max-w-[520px] text-white">
+          <h2 class="font-serif text-[36px] font-medium leading-[.93] tracking-[-.035em] sm:text-[43px]">Ready to work with<br>exceptional talent?</h2>
+          <p class="mt-3 text-[10px] text-white/85">Let's create something extraordinary together.</p>
+          <a href="#" class="cta-button mt-4 inline-flex h-[34px] items-center gap-8 bg-white px-4 text-[8px] font-semibold tracking-[.14em] text-ink">BOOK A MODEL <span class="text-sm">→</span></a>
+        </div>
+      </div>
+      <div class="hidden relative min-h-[230px] overflow-hidden sm:min-h-[280px]">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1800&q=90" alt="Fashion model close-up" class="h-full w-full object-cover object-[42%_42%]" />
+        <div class="absolute inset-0 bg-black/25"></div>
+        <p class="absolute bottom-6 left-6 text-[8px] font-semibold tracking-[.18em] text-white sm:bottom-8 sm:left-8">M INCORPORATED / BOOKINGS</p>
+      </div>
+      <div class="hidden final-cta-content flex min-h-[230px] flex-col justify-center px-7 py-10 text-white sm:min-h-[280px] sm:px-10 lg:px-14">
+        <p class="text-[8px] font-semibold tracking-[.18em] text-white/65">START A CONVERSATION</p>
+        <h2 class="mt-4 font-serif text-[42px] font-medium leading-[.92] tracking-[-.04em] sm:text-[50px]">Ready to work with exceptional talent?</h2>
+        <p class="mt-5 max-w-[350px] text-[11px] leading-[1.7] text-white/75">Tell us what you are creating, and we will connect you with the right talent.</p>
+        <a href="/booking" class="cta-button mt-7 inline-flex h-[46px] w-fit items-center gap-8 rounded-[6px] bg-white px-5 text-[9px] font-semibold tracking-[.14em] text-ink transition hover:bg-[#e9e9e9]">BOOK A MODEL <span class="text-base">→</span></a>
+      </div>
+      <div class="final-cta-simple flex flex-col gap-7 px-7 py-10 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:px-14 lg:py-12">
+        <div>
+          <p class="text-[8px] font-semibold tracking-[.18em] text-muted">BOOKINGS / WORLDWIDE</p>
+          <h2 class="mt-4 max-w-[610px] font-serif text-[42px] font-medium leading-[.94] tracking-[-.04em] sm:text-[50px]">The right talent changes everything.</h2>
+          <p class="mt-5 max-w-[520px] text-[11px] leading-[1.8] text-charcoal">Share your brief, timeline and creative direction. Our booking team will guide the next step.</p>
+        </div>
+        <a href="/booking" class="inline-flex h-[48px] w-fit items-center gap-8 rounded-[6px] bg-white px-6 text-[9px] font-semibold tracking-[.14em] text-ink transition hover:bg-[#e9e9e9]">BOOK A MODEL <span class="text-base">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-white">
+    <div class="mx-auto grid max-w-[1680px] grid-cols-1 gap-8 px-5 py-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.35fr_.8fr_.8fr_.8fr_1.3fr] lg:gap-10 lg:px-14 xl:px-16">
+      <div class="flex flex-col items-start lg:items-center">
+        <div class="flex w-[130px] flex-col items-center leading-none">
+          <span class="mb-[-2px] text-[12px] leading-none text-gold">♛</span>
+          <span class="font-serif text-[37px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+          <span class="mt-2 text-[6px] font-semibold tracking-[.28em]">INCORPORATED</span>
+          <span class="mt-1 text-[5px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+        </div>
+        <p class="mt-4 text-[7px] text-muted">© 2026 M Incorporated. All rights reserved.</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">AGENCY</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="#about" class="hover:text-gold">About Us</a></li>
+          <li><a href="#" class="hover:text-gold">Our Team</a></li>
+          <li><a href="#" class="hover:text-gold">Careers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">MODELS</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="#become-model" class="hover:text-gold">Become a Model</a></li>
+          <li><a href="#" class="hover:text-gold">Model Login</a></li>
+          <li><a href="#" class="hover:text-gold">Scouting</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">RESOURCES</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="#journal" class="hover:text-gold">Journal</a></li>
+          <li><a href="#gallery" class="hover:text-gold">Media Gallery</a></li>
+          <li><a href="#" class="hover:text-gold">FAQs</a></li>
+          <li><a href="#" class="hover:text-gold">Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">CONTACT</h3>
+        <div class="space-y-2 text-[8px] text-charcoal">
+          <p>hello&#64;m-incorporated.com</p>
+          <p>+1 (212) 555 0988</p>
+          <p>New York, NY</p>
+        </div>
+        <div class="mt-5 flex items-center gap-5" aria-label="Social links">
+          <a href="#" aria-label="Instagram" class="text-[13px] hover:text-gold">◎</a>
+          <a href="#" aria-label="Facebook" class="text-[12px] font-semibold hover:text-gold">f</a>
+          <a href="#" aria-label="TikTok" class="text-[12px] font-semibold hover:text-gold">♪</a>
+          <a href="#" aria-label="Pinterest" class="text-[12px] font-semibold hover:text-gold">p</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>

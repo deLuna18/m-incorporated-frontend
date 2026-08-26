@@ -1,0 +1,158 @@
+:host {
+  display: block;
+  color: #000;
+  background: #fff;
+  min-height: 100vh;
+}
+
+:host > div { background: #fff; }
+
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6,
+:host a,
+:host button {
+  color: #000;
+}
+
+// Preserve the page's intentional contrast treatment over dark media.
+:host .text-white { color: #fff; }
+:host .text-muted,
+:host .text-champagne,
+:host .text-gold { color: #000; }
+:host .bg-ivory,
+:host [class*="bg-[#F7F5F1]"] { background-color: #fff; }
+:host .border-line { border-color: #000; }
+
+// Dark editorial blocks need their labels and supporting copy to remain legible.
+:host .bg-ink .text-muted,
+:host .bg-ink .text-champagne,
+:host .bg-ink [class*='text-white/'],
+:host [class~='bg-[#111]'] .text-muted,
+:host [class~='bg-[#111]'] .text-champagne,
+:host [class~='bg-[#111]'] [class*='text-white/'] {
+  color: rgba(255, 255, 255, .72) !important;
+}
+
+:host .bg-ink .text-white,
+:host [class~='bg-[#111]'] .text-white {
+  color: #fff !important;
+}
+
+:host .gallery-page .reveal.show {
+  will-change: auto;
+}
+
+:host .gallery-page img,
+:host .gallery-page video {
+  color: #111;
+}
+
+.credits-panel {
+  background: #fafafa;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .04);
+}
+
+.credits-panel h2 {
+  color: #000;
+}
+
+.credit-brand-grid {
+  border-top: 1px solid #d4d4d4;
+  border-left: 1px solid #d4d4d4;
+}
+
+.credit-brand-grid span {
+  display: flex;
+  min-height: 62px;
+  align-items: center;
+  padding: .75rem 1rem;
+  border-right: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  color: #222;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.credit-brand-grid span:hover {
+  color: #fff;
+  background: #000;
+}
+
+.credits-stats {
+  border-top: 1px solid #d4d4d4;
+}
+
+.credits-stats > div {
+  padding: 1.5rem 1rem 0;
+}
+
+.gallery-footer {
+  background: #f4f3f0;
+}
+
+.gallery-footer a {
+  transition: color .2s ease, opacity .2s ease;
+}
+
+.gallery-footer a:hover {
+  color: #555;
+  opacity: .78;
+}
+
+// The social feed is intentionally static, so each post is available on first
+// view. A soft bottom scrim keeps the labels readable over light photographs.
+.feed-post::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 42%;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, .58), transparent);
+}
+
+.feed-post img {
+  transition: none;
+}
+
+.feed-post > span {
+  z-index: 1;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .52);
+}
+
+@media (min-width: 576px) {
+  .credits-stats > div:not(:first-child) {
+    border-left: 1px solid #d4d4d4;
+  }
+}
+
+// Keep the long-form gallery editorial, but prevent adjacent sections from
+// feeling disconnected by the original standalone-page spacing.
+:host main > section:not(:first-child) > .mx-auto {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+:host main > section:not(:first-child) .mt-10 { margin-top: 2rem; }
+:host main > section:not(:first-child) .mt-11 { margin-top: 2.25rem; }
+
+@media (min-width: 992px) {
+  :host main > section:not(:first-child) > .mx-auto {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host .gallery-page .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

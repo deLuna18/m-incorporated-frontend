@@ -1,0 +1,1486 @@
+<div class="gallery-page font-sans antialiased">
+  <title>Media Gallery — M Incorporated</title>
+
+  <!--
+    M INCORPORATED — MEDIA GALLERY
+
+    Optional local video files:
+    assets/videos/m-reel.mp4
+    assets/videos/luna-motion.mp4
+    assets/videos/noah-motion.mp4
+    assets/videos/camille-motion.mp4
+
+    If the MP4 files are not added yet, the video blocks will still display
+    their editorial poster images.
+  -->
+
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=90">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #fff; color: #111; }
+
+    /* Keep all media visible and stable while loading. */
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    img:not([src]),
+    img[src=""] {
+      background: #F1EEE8;
+    }
+
+    video {
+      display: block;
+      background-color: #E9E6DF;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .media-loading {
+      background:
+        linear-gradient(110deg, #F1EEE8 8%, #FAF8F4 18%, #F1EEE8 33%);
+      background-size: 200% 100%;
+      animation: mediaShimmer 1.3s linear infinite;
+    }
+
+    @keyframes mediaShimmer {
+      to { background-position-x: -200%; }
+    }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .filter-btn.active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: #f7f5f1;
+    }
+
+    .gallery-item img {
+      transition: transform .75s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.035);
+      filter: saturate(1.06);
+    }
+
+    .gallery-item .caption {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .3s ease;
+    }
+
+    .gallery-item:hover .caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .video-card video {
+      transition: transform .7s ease;
+    }
+
+    .video-card:hover video {
+      transform: scale(1.025);
+    }
+
+    .play-ring {
+      transition: transform .25s ease, background-color .25s ease;
+    }
+
+    .video-card:hover .play-ring {
+      transform: translate(-50%, -50%) scale(1.08);
+      background: rgba(255,255,255,.18);
+    }
+
+    .contact-mode .gallery-item {
+      grid-column: span 1 !important;
+      grid-row: span 2 !important;
+    }
+
+    .contact-mode {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    @media (max-width: 767px) {
+      .contact-mode {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    .film-strip {
+      animation: drift 35s linear infinite;
+    }
+
+    .film-strip:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(-35%); }
+    }
+
+    .hero-video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.15));
+      pointer-events: none;
+    }
+
+    .index-number {
+      -webkit-text-stroke: 1px rgba(17,17,17,.23);
+      color: transparent;
+    }
+  </style>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex h-[84px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+
+      <a href="/" class="flex shrink-0 flex-col items-center leading-none">
+        <span class="mb-[-2px] text-[14px] text-champagne">✦</span>
+        <span class="font-serif text-[46px] font-medium leading-[.68] tracking-[-.05em]">M</span>
+        <span class="mt-2 text-[8px] font-medium tracking-[.34em] text-muted">INCORPORATED</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 text-[11px] font-medium tracking-[.16em] lg:flex">
+        <a href="/" class="transition hover:text-champagne">HOME</a>
+        <a href="/models" class="transition hover:text-champagne">MODELS</a>
+        <a href="/services" class="transition hover:text-champagne">SERVICES</a>
+        <a href="/#about" class="transition hover:text-champagne">ABOUT</a>
+        <a href="/gallery" class="text-champagne">GALLERY</a>
+        <a href="/#journal" class="transition hover:text-champagne">JOURNAL</a>
+        <a href="/#contact" class="transition hover:text-champagne">CONTACT</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="/booking"
+           class="hidden border border-ink px-5 py-3 text-[10px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white sm:inline-flex">
+          BOOK A MODEL
+        </a>
+
+        <button id="menuBtn" class="grid h-10 w-10 place-items-center lg:hidden" aria-label="Open navigation">
+          <span class="relative block h-3 w-5">
+            <span class="absolute left-0 top-0 h-px w-5 bg-ink"></span>
+            <span class="absolute bottom-0 left-0 h-px w-5 bg-ink"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden bg-white px-5 pb-7 pt-2 sm:px-8 lg:hidden">
+      <div class="grid gap-4 text-[12px] font-medium tracking-[.16em]">
+        <a href="/">HOME</a>
+        <a href="/models">MODELS</a>
+        <a href="/services">SERVICES</a>
+        <a href="/#about">ABOUT</a>
+        <a href="/gallery" class="text-champagne">GALLERY</a>
+        <a href="/#journal">JOURNAL</a>
+        <a href="/#contact">CONTACT</a>
+        <a href="/booking" class="mt-2 w-max bg-ink px-5 py-3 text-white">BOOK A MODEL</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         CINEMATIC HERO
+    ========================================================== -->
+    <section class="mx-auto max-w-[1440px] px-5 pb-12 pt-6 sm:px-8 sm:pt-8 lg:px-14 lg:pb-16 lg:pt-10 xl:px-16">
+      <div class="grid gap-10 lg:grid-cols-[.78fr_1.22fr] lg:items-center xl:gap-14">
+
+        <div class="reveal max-w-[520px] lg:pr-3">
+          <div class="mb-7 flex items-center gap-4">
+            <span class="block h-px w-10 bg-champagne"></span>
+            <p class="text-[9px] font-medium tracking-[.28em] text-champagne">
+              MEDIA GALLERY · M / ARCHIVE
+            </p>
+          </div>
+
+          <h1 class="font-serif text-[60px] font-medium leading-[.88] tracking-[-.045em] sm:text-[74px] lg:text-[80px] xl:text-[86px]">
+            Still. <span class="italic font-normal">Motion.</span><br>
+            Presence.
+          </h1>
+
+          <p class="mt-6 max-w-[430px] text-[12px] font-light leading-6 text-muted sm:text-[13px]">
+            Campaigns, editorials, moving portraits, runway moments, and behind-the-scenes frames featuring M Incorporated talent.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-5">
+            <a href="#archive"
+               class="bg-ink px-6 py-4 text-[9px] font-medium tracking-[.18em] text-white transition hover:bg-champagne">
+              ENTER THE ARCHIVE
+            </a>
+
+            <button id="heroSoundBtn"
+                    class="flex items-center gap-2 text-[9px] font-medium tracking-[.16em] text-muted transition hover:text-ink">
+              <span id="soundIcon">○</span>
+              SOUND OFF
+            </button>
+          </div>
+
+          <div class="mt-10 hidden items-center gap-7 text-[8px] tracking-[.18em] text-muted lg:flex">
+            <span>EDITORIAL</span>
+            <span>CAMPAIGN</span>
+            <span>MOTION</span>
+          </div>
+        </div>
+
+        <!-- REAL VIDEO HERO -->
+        <div class="hero-video reveal relative h-[520px] overflow-hidden bg-[#e9e6df] sm:h-[590px] lg:h-[600px] xl:h-[620px]">
+
+          <video id="heroVideo"
+                 class="absolute inset-0 h-full w-full object-cover"
+                 autoplay
+                 muted
+                 loop
+                 playsinline
+                 preload="metadata"
+                 poster="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=90">
+            <source src="assets/videos/m-reel.mp4" type="video/mp4">
+          </video>
+
+          <div class="absolute left-5 top-5 z-10 flex items-center gap-2 bg-white/90 px-3 py-2 backdrop-blur">
+            <span class="h-1.5 w-1.5 rounded-full bg-champagne"></span>
+            <span class="text-[8px] font-medium tracking-[.19em]">M / FILM 001</span>
+          </div>
+
+          <div class="absolute bottom-0 left-0 z-10 w-full p-5 sm:p-7">
+            <div class="flex items-end justify-between gap-5 text-white">
+              <div>
+                <p class="text-[9px] tracking-[.2em] text-white/70">MOVING PORTRAIT · 2026</p>
+                <h2 class="mt-1 font-serif text-[34px] sm:text-[42px]">The M Reel</h2>
+              </div>
+
+              <button (click)="openVideo('assets/videos/m-reel.mp4','The M Reel','Moving Portrait · 2026','https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=90')"
+                      class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-white/70 bg-black/10 text-white backdrop-blur transition hover:bg-white hover:text-ink">
+                <span class="ml-1">▶</span>
+              </button>
+            </div>
+
+            <div class="mt-5 h-px w-full bg-white/30">
+              <div class="h-px w-[38%] bg-white"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         MOVING FILM STRIP — UNIQUE VISUAL DEVICE
+    ========================================================== -->
+    <section class="overflow-hidden bg-ink py-4 text-white">
+      <div class="film-strip flex w-max items-center gap-4 px-4">
+
+        <div class="flex items-center gap-4">
+          <span class="text-[9px] tracking-[.22em] text-white/50">EDITORIAL</span>
+          <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">CAMPAIGN</span>
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=450&q=80" class="h-20 w-28 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">RUNWAY</span>
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">BEAUTY</span>
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">MOTION</span>
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=450&q=80" class="h-20 w-28 object-cover" alt="" loading="lazy" decoding="async">
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="text-[9px] tracking-[.22em] text-white/50">EDITORIAL</span>
+          <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43d?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">CAMPAIGN</span>
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=450&q=80" class="h-20 w-28 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">RUNWAY</span>
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">BEAUTY</span>
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" class="h-20 w-14 object-cover" alt="" loading="lazy" decoding="async">
+          <span class="text-[9px] tracking-[.22em] text-white/50">MOTION</span>
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=450&q=80" class="h-20 w-28 object-cover" alt="" loading="lazy" decoding="async">
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         ARCHIVE FILTERS
+    ========================================================== -->
+    <section id="archive" class="bg-ivory">
+      <div class="mx-auto max-w-[1440px] px-5 py-11 sm:px-8 lg:px-14 xl:px-16">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+
+          <div>
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">VISUAL INDEX</p>
+            <h2 class="mt-2 font-serif text-[44px] leading-none sm:text-[54px]">The archive.</h2>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div class="hide-scrollbar flex max-w-full gap-2 overflow-x-auto">
+              <button class="filter-btn active whitespace-nowrap border border-line px-4 py-3 text-[9px] font-medium tracking-[.16em]" data-filter="all">ALL</button>
+              <button class="filter-btn whitespace-nowrap border border-line px-4 py-3 text-[9px] font-medium tracking-[.16em]" data-filter="editorial">EDITORIAL</button>
+              <button class="filter-btn whitespace-nowrap border border-line px-4 py-3 text-[9px] font-medium tracking-[.16em]" data-filter="campaign">CAMPAIGN</button>
+              <button class="filter-btn whitespace-nowrap border border-line px-4 py-3 text-[9px] font-medium tracking-[.16em]" data-filter="beauty">BEAUTY</button>
+              <button class="filter-btn whitespace-nowrap border border-line px-4 py-3 text-[9px] font-medium tracking-[.16em]" data-filter="runway">RUNWAY</button>
+            </div>
+
+            <button id="viewModeBtn"
+                    class="whitespace-nowrap border border-ink px-4 py-3 text-[9px] font-medium tracking-[.16em]">
+              CONTACT SHEET
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         ASYMMETRIC IMAGE ARCHIVE
+    ========================================================== -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-14 lg:py-20 xl:px-16">
+
+        <div id="galleryGrid"
+             class="grid auto-rows-[115px] grid-cols-2 gap-3 sm:auto-rows-[145px] sm:grid-cols-4 lg:auto-rows-[175px] lg:grid-cols-6">
+
+          <!-- 01 -->
+          <button class="gallery-item reveal col-span-2 row-span-4 lg:col-span-2"
+                  data-category="editorial"
+                  data-title="Noir Study"
+                  data-subtitle="Editorial · Paris · 2026"
+                  data-img="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43d?auto=format&fit=crop&w=1600&q=95">
+            <span class="index-number absolute left-4 top-2 z-10 font-serif text-[56px]">01</span>
+            <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43d?auto=format&fit=crop&w=900&q=90"
+                 alt="Noir Study"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">EDITORIAL · PARIS</p>
+              <h3 class="mt-1 font-serif text-[28px]">Noir Study</h3>
+            </div>
+          </button>
+
+          <!-- 02 -->
+          <button class="gallery-item reveal col-span-2 row-span-2 lg:col-span-4"
+                  data-category="campaign"
+                  data-title="Between Seasons"
+                  data-subtitle="Campaign · Milan · 2026"
+                  data-img="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1700&q=95">
+            <span class="index-number absolute left-4 top-2 z-10 font-serif text-[56px]">02</span>
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1300&q=90"
+                 alt="Between Seasons"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">CAMPAIGN · MILAN</p>
+              <h3 class="mt-1 font-serif text-[28px]">Between Seasons</h3>
+            </div>
+          </button>
+
+          <!-- 03 -->
+          <button class="gallery-item reveal col-span-1 row-span-2 lg:col-span-2"
+                  data-category="beauty"
+                  data-title="Soft Focus"
+                  data-subtitle="Beauty · Seoul · 2025"
+                  data-img="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=95">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=90"
+                 alt="Soft Focus"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">BEAUTY · SEOUL</p>
+              <h3 class="mt-1 font-serif text-[24px]">Soft Focus</h3>
+            </div>
+          </button>
+
+          <!-- 04 -->
+          <button class="gallery-item reveal col-span-1 row-span-2 lg:col-span-2"
+                  data-category="runway"
+                  data-title="After Dark"
+                  data-subtitle="Runway · London · 2025"
+                  data-img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1400&q=95">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=90"
+                 alt="After Dark"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">RUNWAY · LONDON</p>
+              <h3 class="mt-1 font-serif text-[24px]">After Dark</h3>
+            </div>
+          </button>
+
+          <!-- 05 -->
+          <button class="gallery-item reveal col-span-2 row-span-3 lg:col-span-3"
+                  data-category="editorial"
+                  data-title="Quiet Geometry"
+                  data-subtitle="Editorial · New York · 2026"
+                  data-img="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=95">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1100&q=90"
+                 alt="Quiet Geometry"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">EDITORIAL · NEW YORK</p>
+              <h3 class="mt-1 font-serif text-[29px]">Quiet Geometry</h3>
+            </div>
+          </button>
+
+          <!-- 06 -->
+          <button class="gallery-item reveal col-span-2 row-span-3 lg:col-span-3"
+                  data-category="campaign"
+                  data-title="Sunline"
+                  data-subtitle="Campaign · Barcelona · 2026"
+                  data-img="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&w=1600&q=95">
+            <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&w=1100&q=90"
+                 alt="Sunline"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">CAMPAIGN · BARCELONA</p>
+              <h3 class="mt-1 font-serif text-[29px]">Sunline</h3>
+            </div>
+          </button>
+
+          <!-- 07 -->
+          <button class="gallery-item reveal col-span-1 row-span-3 lg:col-span-2"
+                  data-category="beauty"
+                  data-title="Gloss"
+                  data-subtitle="Beauty · Paris · 2025"
+                  data-img="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1400&q=95">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=90"
+                 alt="Gloss"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">BEAUTY · PARIS</p>
+              <h3 class="mt-1 font-serif text-[24px]">Gloss</h3>
+            </div>
+          </button>
+
+          <!-- 08 -->
+          <button class="gallery-item reveal col-span-1 row-span-3 lg:col-span-2"
+                  data-category="editorial"
+                  data-title="Studio 08"
+                  data-subtitle="Editorial · Berlin · 2025"
+                  data-img="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1400&q=95">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=90"
+                 alt="Studio 08"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">EDITORIAL · BERLIN</p>
+              <h3 class="mt-1 font-serif text-[24px]">Studio 08</h3>
+            </div>
+          </button>
+
+          <!-- 09 -->
+          <button class="gallery-item reveal col-span-2 row-span-3 lg:col-span-2"
+                  data-category="runway"
+                  data-title="Line / Form"
+                  data-subtitle="Runway · Milan · 2026"
+                  data-img="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=95">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=850&q=90"
+                 alt="Line Form"
+                 class="h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="caption absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-left text-white">
+              <p class="text-[8px] tracking-[.2em]">RUNWAY · MILAN</p>
+              <h3 class="mt-1 font-serif text-[24px]">Line / Form</h3>
+            </div>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         REAL VIDEO / MOTION ARCHIVE
+    ========================================================== -->
+    <section class="bg-white text-black">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal grid gap-5 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+          <div>
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">MOTION ARCHIVE</p>
+            <h2 class="mt-3 max-w-[650px] font-serif text-[55px] leading-[.92] sm:text-[70px]">
+              A portfolio should move.
+            </h2>
+          </div>
+
+          <div class="lg:justify-self-end">
+            <p class="max-w-[430px] text-[12px] font-light leading-6 text-white/55">
+              Moving portraits, screen tests, campaign films, and backstage studies give clients a better sense of presence, expression, and movement.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-11 grid gap-4 md:grid-cols-12">
+
+          <!-- LARGE VIDEO -->
+          <article class="video-card reveal group relative min-h-[520px] overflow-hidden bg-white/10 md:col-span-7 lg:min-h-[640px]">
+
+            <video
+              class="motion-preview absolute inset-0 h-full w-full object-cover"
+              muted loop playsinline preload="metadata"
+              poster="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=90">
+              <source src="assets/videos/luna-motion.mp4" type="video/mp4">
+            </video>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/10"></div>
+
+            <button
+              (click)="openVideo('assets/videos/luna-motion.mp4','Luna / Moving Portrait','Screen Test · Paris · 00:42','https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1400&q=90')"
+              class="play-ring absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/65 bg-black/10 backdrop-blur">
+              <span class="ml-1 text-lg">▶</span>
+            </button>
+
+            <div class="absolute bottom-0 left-0 p-6 sm:p-8">
+              <p class="text-[9px] tracking-[.2em] text-white/55">01 · MOVING PORTRAIT · PARIS</p>
+              <h3 class="mt-2 font-serif text-[38px]">Luna / Motion 01</h3>
+              <p class="mt-1 text-[10px] tracking-[.16em] text-white/55">00:42</p>
+            </div>
+          </article>
+
+          <div class="grid gap-4 md:col-span-5">
+
+            <article class="video-card reveal group relative min-h-[250px] overflow-hidden bg-white/10 lg:min-h-[312px]">
+              <video
+                class="motion-preview absolute inset-0 h-full w-full object-cover"
+                muted loop playsinline preload="metadata"
+                poster="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1100&q=90">
+                <source src="assets/videos/noah-motion.mp4" type="video/mp4">
+              </video>
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+              <button
+                (click)="openVideo('assets/videos/noah-motion.mp4','Noah / Campaign Film','Campaign Film · Milan · 01:10','https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1300&q=90')"
+                class="play-ring absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/65 bg-black/10 backdrop-blur">
+                <span class="ml-1">▶</span>
+              </button>
+
+              <div class="absolute bottom-0 left-0 p-5">
+                <p class="text-[8px] tracking-[.2em] text-white/55">02 · CAMPAIGN FILM</p>
+                <h3 class="mt-1 font-serif text-[28px]">Noah / Motion 02</h3>
+              </div>
+            </article>
+
+            <article class="video-card reveal group relative min-h-[250px] overflow-hidden bg-white/10 lg:min-h-[312px]">
+              <video
+                class="motion-preview absolute inset-0 h-full w-full object-cover"
+                muted loop playsinline preload="metadata"
+                poster="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1100&q=90">
+                <source src="assets/videos/camille-motion.mp4" type="video/mp4">
+              </video>
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+
+              <button
+                (click)="openVideo('assets/videos/camille-motion.mp4','Camille / Backstage','Behind the Scenes · London · 00:34','https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1300&q=90')"
+                class="play-ring absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/65 bg-black/10 backdrop-blur">
+                <span class="ml-1">▶</span>
+              </button>
+
+              <div class="absolute bottom-0 left-0 p-5">
+                <p class="text-[8px] tracking-[.2em] text-white/55">03 · BEHIND THE SCENES</p>
+                <h3 class="mt-1 font-serif text-[28px]">Camille / Motion 03</h3>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <p class="mt-5 text-[9px] leading-5 tracking-[.12em] text-white/35">
+          TIP: Add your MP4 files inside <span class="text-white/60">assets/videos/</span>. The poster images remain visible until your real footage is ready.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         FEATURED CAMPAIGN CHAPTER
+    ========================================================== -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+
+          <div class="order-2 lg:order-1">
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">FEATURED CHAPTER · 004</p>
+
+            <h2 class="mt-4 max-w-[560px] font-serif text-[55px] leading-[.92] sm:text-[68px]">
+              Not just a gallery.
+              <span class="italic font-normal">A visual record.</span>
+            </h2>
+
+            <p class="mt-6 max-w-[470px] text-[13px] font-light leading-7 text-muted">
+              Each project becomes part of the agency archive — connecting talent profiles with the campaigns, editorials, and films that define their body of work.
+            </p>
+
+            <div class="mt-8 flex items-center gap-8">
+              <div>
+                <p class="font-serif text-[34px]">42</p>
+                <p class="text-[8px] tracking-[.18em] text-muted">CAMPAIGNS</p>
+              </div>
+              <div>
+                <p class="font-serif text-[34px]">18</p>
+                <p class="text-[8px] tracking-[.18em] text-muted">EDITORIALS</p>
+              </div>
+              <div>
+                <p class="font-serif text-[34px]">27</p>
+                <p class="text-[8px] tracking-[.18em] text-muted">MOTION FILMS</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 grid grid-cols-[1.18fr_.82fr] gap-3 lg:order-2">
+            <img
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90"
+              class="h-[520px] w-full object-cover sm:h-[650px]"
+              alt="Featured campaign" loading="lazy" decoding="async">
+            <div class="grid gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=700&q=90"
+                class="h-full min-h-0 w-full object-cover"
+                alt="Campaign detail" loading="lazy" decoding="async">
+              <div class="bg-ivory p-5">
+                <p class="text-[8px] tracking-[.2em] text-champagne">M / 004</p>
+                <p class="mt-2 font-serif text-[28px] leading-[1.02]">A Study in Movement</p>
+                <p class="mt-3 text-[10px] leading-5 text-muted">New York · 2026</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- =========================================================
+         ON SET — BEHIND THE SCENES
+    ========================================================== -->
+    <section class="overflow-hidden bg-[#F7F5F1]">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">ON SET · BEHIND THE IMAGE</p>
+            <h2 class="mt-3 max-w-[680px] font-serif text-[54px] leading-[.92] sm:text-[68px]">
+              The moments before the frame.
+            </h2>
+          </div>
+
+          <p class="max-w-[410px] text-[12px] font-light leading-6 text-muted">
+            Fittings, call sheets, test frames, makeup chairs, and the in-between moments that rarely make the final campaign.
+          </p>
+        </div>
+
+        <div class="mt-11 grid gap-3 sm:grid-cols-2 lg:grid-cols-12">
+
+          <article class="reveal relative min-h-[520px] overflow-hidden bg-white lg:col-span-5 lg:min-h-[650px]">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=90"
+              alt="Backstage portrait"
+              class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async">
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6 text-white">
+              <p class="text-[8px] tracking-[.2em] text-white/60">CALL TIME 06:40 · PARIS</p>
+              <h3 class="mt-1 font-serif text-[31px]">Before Hair & Makeup</h3>
+            </div>
+          </article>
+
+          <div class="grid gap-3 sm:grid-cols-2 lg:col-span-7">
+            <article class="reveal relative min-h-[300px] overflow-hidden bg-white">
+              <img
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=90"
+                alt="Runway backstage"
+                class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async">
+              <div class="absolute left-4 top-4 bg-white/90 px-3 py-2 text-[8px] tracking-[.18em] backdrop-blur">
+                FITTING / 01
+              </div>
+            </article>
+
+            <article class="reveal min-h-[300px] bg-ink p-7 text-white sm:p-8">
+              <p class="text-[9px] tracking-[.22em] text-champagne">CALL SHEET</p>
+              <p class="mt-8 font-serif text-[38px] leading-[.98]">New York<br>Campaign 08</p>
+
+              <div class="mt-12 grid gap-4 text-[9px] tracking-[.13em] text-white/55">
+                <div class="flex justify-between gap-5">
+                  <span>MODEL</span><span class="text-white">LUNA M.</span>
+                </div>
+                <div class="flex justify-between gap-5">
+                  <span>CALL</span><span class="text-white">07:15</span>
+                </div>
+                <div class="flex justify-between gap-5">
+                  <span>LOCATION</span><span class="text-white">SOHO</span>
+                </div>
+                <div class="flex justify-between gap-5">
+                  <span>LOOKS</span><span class="text-white">06</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="reveal relative min-h-[335px] overflow-hidden bg-white sm:col-span-2">
+              <img
+                src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1400&q=90"
+                alt="Fashion styling rack"
+                class="absolute inset-0 h-full w-full object-cover" loading="lazy" decoding="async">
+              <div class="absolute inset-y-0 left-0 flex w-[46%] items-end bg-gradient-to-r from-black/70 to-transparent p-6 text-white">
+                <div>
+                  <p class="text-[8px] tracking-[.2em] text-white/60">WARDROBE · LOOK 04</p>
+                  <h3 class="mt-2 font-serif text-[29px] leading-none">Details make the image.</h3>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         DIRECTOR'S CUT — SECOND MOTION STORY
+    ========================================================== -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal grid gap-8 lg:grid-cols-[1.35fr_.65fr] lg:items-stretch">
+
+          <div class="video-card group relative min-h-[560px] overflow-hidden bg-ink lg:min-h-[720px]">
+            <video
+              class="motion-preview absolute inset-0 h-full w-full object-cover"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1500&q=90">
+              <source src="assets/videos/directors-cut.mp4" type="video/mp4">
+            </video>
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/20"></div>
+
+            <div class="absolute left-6 top-6 flex items-center gap-3 text-white">
+              <span class="grid h-8 w-8 place-items-center border border-white/40 text-[8px]">04</span>
+              <span class="text-[8px] tracking-[.2em] text-white/60">DIRECTOR'S CUT</span>
+            </div>
+
+            <button
+              (click)="openVideo('assets/videos/directors-cut.mp4','Director’s Cut / Runway Study','Fashion Film · London · 01:28','https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1500&q=90')"
+              class="play-ring absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/65 bg-black/10 text-white backdrop-blur">
+              <span class="ml-1">▶</span>
+            </button>
+
+            <div class="absolute bottom-0 left-0 max-w-[620px] p-6 text-white sm:p-9">
+              <p class="text-[8px] tracking-[.22em] text-white/55">FASHION FILM · LONDON · 2026</p>
+              <h3 class="mt-2 font-serif text-[43px] leading-[.92] sm:text-[54px]">Runway Study / After Hours</h3>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-between bg-[#F7F5F1] p-7 sm:p-9 lg:p-10">
+            <div>
+              <p class="text-[9px] tracking-[.24em] text-champagne">FILM NOTES</p>
+              <p class="mt-6 font-serif text-[39px] leading-[1.02]">
+                “Movement reveals what a still frame can only suggest.”
+              </p>
+
+              <p class="mt-6 text-[12px] font-light leading-6 text-muted">
+                A monochrome runway study focused on pace, silhouette, and body language — designed as a motion reference for casting teams and creative directors.
+              </p>
+            </div>
+
+            <div class="mt-12">
+              <div class="grid grid-cols-2 gap-x-5 gap-y-7">
+                <div>
+                  <p class="text-[8px] tracking-[.18em] text-muted">MODEL</p>
+                  <p class="mt-1 font-serif text-[22px]">Noah Valentino</p>
+                </div>
+                <div>
+                  <p class="text-[8px] tracking-[.18em] text-muted">MARKET</p>
+                  <p class="mt-1 font-serif text-[22px]">London</p>
+                </div>
+                <div>
+                  <p class="text-[8px] tracking-[.18em] text-muted">FORMAT</p>
+                  <p class="mt-1 font-serif text-[22px]">Fashion Film</p>
+                </div>
+                <div>
+                  <p class="text-[8px] tracking-[.18em] text-muted">DURATION</p>
+                  <p class="mt-1 font-serif text-[22px]">01:28</p>
+                </div>
+              </div>
+
+              <a href="model-profile.html?model=noah-valentino"
+                 class="mt-10 inline-flex border border-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">
+                VIEW MODEL PROFILE
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         TALENT IN FRAME
+    ========================================================== -->
+    <section class="bg-[#F7F5F1]">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">TALENT IN FRAME</p>
+            <h2 class="mt-3 font-serif text-[50px] leading-none sm:text-[62px]">Featured in the archive.</h2>
+          </div>
+
+          <a href="models.html" class="text-[9px] font-medium tracking-[.18em]">
+            VIEW ALL MODELS →
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-x-3 gap-y-9 md:grid-cols-4">
+
+          <a href="model-profile.html?model=luna-martinez" class="reveal group">
+            <div class="aspect-[3/4] overflow-hidden bg-white">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=90"
+                alt="Luna Martinez"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" loading="lazy" decoding="async">
+            </div>
+            <div class="mt-3 flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[24px] leading-none">Luna Martinez</h3>
+                <p class="mt-2 text-[8px] tracking-[.18em] text-muted">NEW YORK · WOMEN</p>
+              </div>
+              <span class="text-[13px]">↗</span>
+            </div>
+          </a>
+
+          <a href="model-profile.html?model=noah-valentino" class="reveal group">
+            <div class="aspect-[3/4] overflow-hidden bg-white">
+              <img
+                src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=800&q=90"
+                alt="Noah Valentino"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" loading="lazy" decoding="async">
+            </div>
+            <div class="mt-3 flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[24px] leading-none">Noah Valentino</h3>
+                <p class="mt-2 text-[8px] tracking-[.18em] text-muted">MILAN · MEN</p>
+              </div>
+              <span class="text-[13px]">↗</span>
+            </div>
+          </a>
+
+          <a href="model-profile.html?model=camille-duval" class="reveal group">
+            <div class="aspect-[3/4] overflow-hidden bg-white">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=90"
+                alt="Camille Duval"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" loading="lazy" decoding="async">
+            </div>
+            <div class="mt-3 flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[24px] leading-none">Camille Duval</h3>
+                <p class="mt-2 text-[8px] tracking-[.18em] text-muted">PARIS · CREATOR</p>
+              </div>
+              <span class="text-[13px]">↗</span>
+            </div>
+          </a>
+
+          <a href="model-profile.html?model=elena-voss" class="reveal group">
+            <div class="aspect-[3/4] overflow-hidden bg-white">
+              <img
+                src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=90"
+                alt="Elena Voss"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" loading="lazy" decoding="async">
+            </div>
+            <div class="mt-3 flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-[24px] leading-none">Elena Voss</h3>
+                <p class="mt-2 text-[8px] tracking-[.18em] text-muted">LONDON · WOMEN</p>
+              </div>
+              <span class="text-[13px]">↗</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SOCIAL / LIVE FEED
+    ========================================================== -->
+    <section class="feed-section bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+          <div class="lg:sticky lg:top-[120px]">
+            <p class="text-[10px] font-medium tracking-[.26em] text-champagne">FROM THE FEED</p>
+            <h2 class="mt-3 max-w-[480px] font-serif text-[52px] leading-[.93] sm:text-[64px]">
+              The archive continues off-site.
+            </h2>
+
+            <p class="mt-6 max-w-[420px] text-[12px] font-light leading-6 text-muted">
+              New faces, castings, backstage clips, campaign releases, and day-to-day agency moments across M Incorporated social channels.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#" class="border border-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">
+                INSTAGRAM ↗
+              </a>
+              <a href="#" class="border border-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">
+                TIKTOK ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+            <a href="#" class="feed-post group relative aspect-square overflow-hidden bg-ivory">
+              <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=700&q=88"
+                   class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" alt="Social post" loading="lazy" decoding="async">
+              <span class="absolute bottom-3 left-3 text-[8px] tracking-[.18em] text-white">CASTING / SEOUL</span>
+            </a>
+
+            <a href="#" class="feed-post group relative aspect-square overflow-hidden bg-ivory">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=88"
+                   class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" alt="Social post" loading="lazy" decoding="async">
+              <span class="absolute bottom-3 left-3 text-[8px] tracking-[.18em] text-white">BACKSTAGE / MILAN</span>
+            </a>
+
+            <a href="#" class="feed-post group relative aspect-square overflow-hidden bg-ivory">
+              <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&w=700&q=88"
+                   class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" alt="Social post" loading="lazy" decoding="async">
+              <span class="absolute bottom-3 left-3 text-[8px] tracking-[.18em] text-white">CAMPAIGN / BCN</span>
+            </a>
+
+            <a href="#" class="feed-post group relative aspect-square overflow-hidden bg-ivory">
+              <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=88"
+                   class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" alt="Social post" loading="lazy" decoding="async">
+              <span class="absolute bottom-3 left-3 text-[8px] tracking-[.18em] text-white">TEST / NEW YORK</span>
+            </a>
+
+            <a href="#" class="feed-post group relative aspect-square overflow-hidden bg-ivory">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=700&q=88"
+                   class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" alt="Social post" loading="lazy" decoding="async">
+              <span class="absolute bottom-3 left-3 text-[8px] tracking-[.18em] text-white">BEAUTY / PARIS</span>
+            </a>
+
+            <div class="flex aspect-square flex-col justify-between bg-ink p-5 text-white sm:p-6">
+              <span class="text-[8px] tracking-[.2em] text-white/45">&#64;MINCORPORATED</span>
+              <p class="font-serif text-[30px] leading-[1] sm:text-[35px]">
+                Follow the work as it happens.
+              </p>
+              <span class="text-[18px]">↗</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         ARCHIVE CREDITS / CLIENT INDEX
+    ========================================================== -->
+    <section class="bg-white px-5 py-10 sm:px-8 lg:px-14 lg:py-12 xl:px-16">
+      <div class="credits-panel mx-auto max-w-[1440px] overflow-hidden rounded-[20px] border border-line px-6 py-9 sm:px-9 sm:py-11 lg:px-12 lg:py-14 xl:px-14">
+
+        <div class="reveal grid gap-8 lg:grid-cols-[.7fr_1.3fr]">
+          <div class="credits-intro">
+            <p class="text-[10px] tracking-[.25em] text-champagne">SELECTED CREDITS</p>
+            <h2 class="mt-3 max-w-[420px] font-serif text-[42px] leading-[.95] sm:text-[50px]">
+              Seen with creative teams worldwide.
+            </h2>
+            <p class="mt-5 max-w-[360px] text-[11px] leading-[1.8] text-muted">A selection of editorial, campaign and moving-image collaborators from the M archive.</p>
+          </div>
+
+          <div class="credit-brand-grid grid grid-cols-2 text-[11px] font-medium tracking-[.12em] sm:grid-cols-3 lg:pt-2">
+            <span>VOGUE</span>
+            <span>DIOR</span>
+            <span>NIKE</span>
+            <span>CHANEL</span>
+            <span>ZARA</span>
+            <span>L'ORÉAL</span>
+            <span>ELLE</span>
+            <span>NUMÉRO</span>
+            <span>GQ</span>
+            <span>COS</span>
+            <span>ADIDAS</span>
+            <span>H&M</span>
+          </div>
+        </div>
+
+        <div class="credits-stats reveal mt-10 grid grid-cols-2 sm:grid-cols-4">
+          <div>
+            <p class="font-serif text-[46px]">86</p>
+            <p class="mt-1 text-[8px] tracking-[.2em] text-muted">ARCHIVED STORIES</p>
+          </div>
+          <div>
+            <p class="font-serif text-[46px]">27</p>
+            <p class="mt-1 text-[8px] tracking-[.2em] text-muted">MOTION FILMS</p>
+          </div>
+          <div>
+            <p class="font-serif text-[46px]">14</p>
+            <p class="mt-1 text-[8px] tracking-[.2em] text-muted">MARKETS</p>
+          </div>
+          <div>
+            <p class="font-serif text-[46px]">2026</p>
+            <p class="mt-1 text-[8px] tracking-[.2em] text-muted">CURRENT ARCHIVE</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+    <section class="bg-ivory">
+      <div class="mx-auto grid max-w-[1440px] gap-8 px-5 py-20 sm:px-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end lg:px-14 lg:py-24 xl:px-16">
+
+        <div class="reveal">
+          <p class="text-[10px] tracking-[.25em] text-champagne">CREATE WITH M</p>
+          <h2 class="mt-4 max-w-[800px] font-serif text-[54px] leading-[.95] sm:text-[70px]">
+            Find the face for your next frame.
+          </h2>
+        </div>
+
+        <div class="reveal lg:justify-self-end">
+          <p class="max-w-[370px] text-[13px] font-light leading-6 text-muted">
+            Explore represented talent or send your brief and let our team curate the right model for the project.
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="models.html"
+               class="border border-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">
+              EXPLORE MODELS
+            </a>
+
+            <a href="booking.html"
+               class="bg-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] text-white transition hover:bg-champagne">
+              START AN INQUIRY
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="gallery-footer border-t-2 border-ink bg-[#f4f3f0]">
+    <div class="mx-auto flex max-w-[1440px] items-center gap-3 px-5 pt-6 text-[8px] font-medium tracking-[.24em] text-muted sm:px-8 lg:px-14 xl:px-16">
+      <span class="h-px w-9 bg-ink"></span>
+      <span>M / END OF ARCHIVE</span>
+    </div>
+
+    <div class="mx-auto max-w-[1440px] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 lg:px-14 xl:px-16">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_.8fr_.8fr_.8fr]">
+
+        <div>
+          <a href="index.html" class="inline-flex flex-col items-start">
+            <span class="font-serif text-[58px] leading-none">M</span>
+            <span class="mt-1 text-[8px] tracking-[.32em] text-muted">INCORPORATED</span>
+          </a>
+
+          <p class="mt-5 max-w-[320px] text-[12px] font-light leading-6 text-muted">
+            Model management, representation, and creative partnerships across fashion, commercial, and digital markets.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-[9px] font-medium tracking-[.2em] text-champagne">EXPLORE</p>
+          <div class="mt-4 grid gap-3 text-[11px]">
+            <a href="models.html">Models</a>
+            <a href="services.html">Services</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="journal.html">Journal</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-[9px] font-medium tracking-[.2em] text-champagne">AGENCY</p>
+          <div class="mt-4 grid gap-3 text-[11px]">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="booking.html">Book a Model</a>
+            <a href="#">Become a Model</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-[9px] font-medium tracking-[.2em] text-champagne">FOLLOW</p>
+          <div class="mt-4 grid gap-3 text-[11px]">
+            <a href="#">Instagram ↗</a>
+            <a href="#">TikTok ↗</a>
+            <a href="#">LinkedIn ↗</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col gap-3 text-[9px] tracking-[.14em] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 M INCORPORATED. ALL RIGHTS RESERVED.</p>
+        <p>PRIVACY · TERMS</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================
+       IMAGE LIGHTBOX
+  ========================================================== -->
+  <div id="imageModal" class="modal fixed inset-0 z-[100] bg-black/95 p-4 sm:p-8">
+    <button id="closeImageModal"
+            class="absolute right-5 top-5 z-10 grid h-11 w-11 place-items-center border border-white/30 text-xl text-white sm:right-8 sm:top-8">
+      ×
+    </button>
+
+    <div class="mx-auto flex h-full max-w-[1300px] flex-col items-center justify-center">
+      <img id="imageModalImg" src="" alt="" class="max-h-[78vh] max-w-full object-contain" loading="lazy" decoding="async">
+
+      <div class="mt-5 text-center text-white">
+        <h3 id="imageModalTitle" class="font-serif text-[34px]"></h3>
+        <p id="imageModalSubtitle" class="mt-1 text-[9px] tracking-[.2em] text-white/55"></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+       VIDEO LIGHTBOX
+  ========================================================== -->
+  <div id="videoModal" class="modal fixed inset-0 z-[110] bg-black/95 p-4 sm:p-8">
+    <button id="closeVideoModal"
+            class="absolute right-5 top-5 z-10 grid h-11 w-11 place-items-center border border-white/30 text-xl text-white sm:right-8 sm:top-8">
+      ×
+    </button>
+
+    <div class="mx-auto flex h-full max-w-[1250px] flex-col items-center justify-center">
+
+      <video id="modalVideo"
+             class="max-h-[75vh] w-full bg-black object-contain"
+             controls
+             playsinline
+             preload="metadata">
+      </video>
+
+      <div class="mt-5 w-full text-left text-white">
+        <h3 id="videoModalTitle" class="font-serif text-[34px]"></h3>
+        <p id="videoModalSubtitle" class="mt-1 text-[9px] tracking-[.2em] text-white/55"></p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--
+    // ---------------------------------------------------------
+    // ROBUST MEDIA FALLBACKS
+    // ---------------------------------------------------------
+    // If an external photo URL fails, swap to another image provider.
+    // If that also fails, show an inline editorial placeholder instead of
+    // leaving an empty/broken image box.
+    const mediaFallbacks = [
+      'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1200'
+    ];
+
+    const fallbackSvg = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+        <rect width="1200" height="1500" fill="#F1EEE8"/>
+        <line x1="0" y1="0" x2="1200" y2="1500" stroke="#DEDAD2" stroke-width="2"/>
+        <line x1="1200" y1="0" x2="0" y2="1500" stroke="#DEDAD2" stroke-width="2"/>
+        <text x="600" y="720" text-anchor="middle" fill="#111111"
+              font-family="Georgia, serif" font-size="92">M</text>
+        <text x="600" y="785" text-anchor="middle" fill="#6F6B63"
+              font-family="Arial, sans-serif" font-size="20" letter-spacing="7">MEDIA ARCHIVE</text>
+      </svg>
+    `)}`;
+
+    function installImageFallback(img, index) {
+      img.classList.add('media-loading');
+
+      const finishLoading = () => {
+        img.classList.remove('media-loading');
+      };
+
+      img.addEventListener('load', finishLoading);
+
+      const fail = () => {
+        const stage = Number(img.dataset.fallbackStage || 0);
+
+        if (stage === 0) {
+          img.dataset.fallbackStage = '1';
+          img.src = mediaFallbacks[index % mediaFallbacks.length];
+          return;
+        }
+
+        if (stage === 1) {
+          img.dataset.fallbackStage = '2';
+          img.src = fallbackSvg;
+          return;
+        }
+
+        finishLoading();
+      };
+
+      img.addEventListener('error', fail);
+
+      // Handles an image that failed before this script was attached.
+      if (img.complete) {
+        if (img.naturalWidth > 0) {
+          finishLoading();
+        } else {
+          fail();
+        }
+      }
+    }
+
+    document.querySelectorAll('img').forEach((img, index) => {
+      installImageFallback(img, index);
+    });
+
+    // Give every video its poster as a CSS background too.
+    // This keeps the frame visually filled even when the local MP4
+    // has not been added to assets/videos yet.
+    document.querySelectorAll('video').forEach((video) => {
+      const poster = video.getAttribute('poster');
+
+      if (poster) {
+        video.style.backgroundImage = `url("${poster}")`;
+      }
+
+      video.addEventListener('loadeddata', () => {
+        video.style.backgroundImage = 'none';
+      });
+    });
+
+
+    // ---------------------------------------------------------
+    // MOBILE MENU
+    // ---------------------------------------------------------
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+
+    // ---------------------------------------------------------
+    // REVEAL ON SCROLL
+    // ---------------------------------------------------------
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+
+    // ---------------------------------------------------------
+    // HERO VIDEO SOUND
+    // ---------------------------------------------------------
+    const heroVideo = document.getElementById('heroVideo');
+    const heroSoundBtn = document.getElementById('heroSoundBtn');
+    const soundIcon = document.getElementById('soundIcon');
+
+    heroSoundBtn.addEventListener('click', () => {
+      heroVideo.muted = !heroVideo.muted;
+
+      if (heroVideo.muted) {
+        heroSoundBtn.childNodes[2].textContent = ' SOUND OFF';
+        soundIcon.textContent = '○';
+      } else {
+        heroSoundBtn.childNodes[2].textContent = ' SOUND ON';
+        soundIcon.textContent = '●';
+      }
+    });
+
+
+    // ---------------------------------------------------------
+    // IMAGE FILTERS
+    // ---------------------------------------------------------
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        galleryItems.forEach((item) => {
+          const show = filter === 'all' || item.dataset.category === filter;
+          item.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+
+    // ---------------------------------------------------------
+    // CONTACT SHEET VIEW TOGGLE
+    // ---------------------------------------------------------
+    const galleryGrid = document.getElementById('galleryGrid');
+    const viewModeBtn = document.getElementById('viewModeBtn');
+    let contactMode = false;
+
+    viewModeBtn.addEventListener('click', () => {
+      contactMode = !contactMode;
+
+      galleryGrid.classList.toggle('contact-mode', contactMode);
+      viewModeBtn.textContent = contactMode ? 'EDITORIAL VIEW' : 'CONTACT SHEET';
+    });
+
+
+    // ---------------------------------------------------------
+    // IMAGE LIGHTBOX
+    // ---------------------------------------------------------
+    const imageModal = document.getElementById('imageModal');
+    const imageModalImg = document.getElementById('imageModalImg');
+    const imageModalTitle = document.getElementById('imageModalTitle');
+    const imageModalSubtitle = document.getElementById('imageModalSubtitle');
+    const closeImageModal = document.getElementById('closeImageModal');
+
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        imageModalImg.src = item.dataset.img;
+        imageModalImg.alt = item.dataset.title;
+        imageModalTitle.textContent = item.dataset.title;
+        imageModalSubtitle.textContent = item.dataset.subtitle;
+
+        imageModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeImage() {
+      imageModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeImageModal.addEventListener('click', closeImage);
+
+    imageModal.addEventListener('click', (event) => {
+      if (event.target === imageModal) closeImage();
+    });
+
+
+    // ---------------------------------------------------------
+    // VIDEO HOVER PREVIEW
+    // ---------------------------------------------------------
+    document.querySelectorAll('.video-card').forEach((card) => {
+      const video = card.querySelector('.motion-preview');
+
+      card.addEventListener('mouseenter', () => {
+        if (video) {
+          video.play().catch(() => {});
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (video) {
+          video.pause();
+          try { video.currentTime = 0; } catch (e) {}
+        }
+      });
+    });
+
+
+    // ---------------------------------------------------------
+    // VIDEO LIGHTBOX
+    // ---------------------------------------------------------
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const videoModalTitle = document.getElementById('videoModalTitle');
+    const videoModalSubtitle = document.getElementById('videoModalSubtitle');
+    const closeVideoModal = document.getElementById('closeVideoModal');
+
+    function openVideo(src, title, subtitle, poster) {
+      modalVideo.pause();
+      modalVideo.src = src;
+      modalVideo.poster = poster;
+      videoModalTitle.textContent = title;
+      videoModalSubtitle.textContent = subtitle;
+
+      videoModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      modalVideo.load();
+      modalVideo.play().catch(() => {});
+    }
+
+    function closeVideo() {
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+
+      videoModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeVideoModal.addEventListener('click', closeVideo);
+
+    videoModal.addEventListener('click', (event) => {
+      if (event.target === videoModal) closeVideo();
+    });
+
+
+    // ---------------------------------------------------------
+    // ESCAPE KEY
+    // ---------------------------------------------------------
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeImage();
+        closeVideo();
+      }
+    });
+  -->
+</div>

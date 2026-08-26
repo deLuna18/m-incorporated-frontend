@@ -1,0 +1,156 @@
+<div id="contact-us-widget" class="w-full min-h-screen bg-gray-100 flex items-center justify-center py-8" style="padding-left: 5%; padding-right: 5%">
+    <style>
+        @media (min-width: 640px) {
+            #contact-us-widget {
+                padding-left: 12% !important;
+                padding-right: 12% !important;
+            }
+        }
+    </style>
+    <div class="contact-container fade-in w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left Panel -->
+        <div class="left-panel fade-in rounded-2xl">
+            <!-- Brand Section -->
+            <div class="brand-section pb-8 border-b border-gray-200 mb-8">
+                <img [src]="logo" alt="Viciro Logo" class="w-52 h-14 mb-4" />
+                <p class="text-lg text-gray-600 font-medium mb-3 leading-relaxed">Integrating Technology and Engineering Excellence</p>
+                <p class="text-sm italic text-gray-400">"Excellence Delivered in Every Initiative"</p>
+            </div>
+
+            <!-- Content Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Links Column -->
+                <div class="links-column">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Links</h3>
+                    <nav class="nav-links flex flex-col gap-2">
+                        <a
+                            *ngFor="let link of navLinks"
+                            (click)="scrollToSection(link.fragment)"
+                            class="nav-link text-base text-gray-600 no-underline py-1 pl-2 transition-all cursor-pointer relative border-l-2 border-transparent hover:text-blue-800 hover:pl-4 hover:font-semibold hover:border-blue-800"
+                        >
+                            {{ link.label }}
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Get in Touch Column -->
+                <div class="info-section">
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Get in touch</h3>
+                    <p class="text-base text-gray-600 leading-relaxed mb-6">Got a question? We'd love to hear from you. Send us a message and we will respond as soon as possible.</p>
+
+                    <div class="contact-details mb-6">
+                        <div class="detail-item mb-5 p-3 rounded-lg transition-all hover:bg-gray-50 hover:translate-x-1">
+                            <h4 class="text-base font-semibold text-gray-900 mb-1">Address</h4>
+                            <p class="text-base text-gray-600 leading-relaxed">Banilad Road, Gov. M. Cuenco Ave.,<br />Cebu City 6000</p>
+                        </div>
+
+                        <div class="detail-item mb-5 p-3 rounded-lg transition-all hover:bg-gray-50 hover:translate-x-1">
+                            <h4 class="text-base font-semibold text-gray-900 mb-1">Email Add</h4>
+                            <p class="text-base text-gray-600">
+                                <a href="mailto:info.vicirotechnologies&#64;gmail.com" class="text-blue-800 no-underline hover:text-blue-900 break-words"> info.vicirotechnologies&#64;gmail.com </a>
+                            </p>
+                        </div>
+
+                        <div class="detail-item p-3 rounded-lg transition-all hover:bg-gray-50 hover:translate-x-1">
+                            <h4 class="text-base font-semibold text-gray-900 mb-1">Contact No</h4>
+                            <p class="text-base text-gray-600">0917 719 5384 / 0917 305 8444</p>
+                        </div>
+                    </div>
+
+                    <button
+                        pButton
+                        pRipple
+                        type="button"
+                        label="0916 244 4991"
+                        icon="pi pi-phone"
+                        class="phone-button !bg-blue-800 border-none rounded-lg py-3 px-5 text-base font-semibold flex items-center justify-center gap-2 transition-all hover:!bg-blue-900 hover:-translate-y-1 mb-6"
+                    ></button>
+
+                    <div class="social-links flex gap-3">
+                        <a
+                            *ngFor="let social of socialLinks"
+                            [href]="social.url"
+                            [attr.aria-label]="social.label"
+                            class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-gray-600 no-underline transition-all hover:text-white hover:-translate-y-1 hover:rotate-1 social-btn"
+                        >
+                            <i [class]="'pi ' + social.icon + ' text-lg'"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Contact Form -->
+        <div class="right-panel fade-in bg-white rounded-2xl p-10 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1">
+            <h2 class="form-title text-3xl font-bold text-gray-900 mb-8 pb-4 relative">Contact Us</h2>
+
+            <form (ngSubmit)="onSubmit()" #contactFormRef="ngForm" class="contact-form">
+                <div class="input-group mb-6">
+                    <label for="name" class="block text-base font-semibold text-gray-700 mb-2">Your Name</label>
+                    <input
+                        pInputText
+                        id="name"
+                        type="text"
+                        [(ngModel)]="contactForm.name"
+                        name="name"
+                        placeholder="Your Name"
+                        required
+                        class="w-full py-3 px-4 border border-gray-300 rounded-lg text-base text-gray-900 transition-all hover:border-gray-400 focus:border-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800/10"
+                    />
+                </div>
+
+                <div class="input-group mb-6">
+                    <label for="email" class="block text-base font-semibold text-gray-700 mb-2">Email Add</label>
+                    <input
+                        pInputText
+                        id="email"
+                        type="email"
+                        [(ngModel)]="contactForm.email"
+                        name="email"
+                        placeholder="Email Add"
+                        required
+                        class="w-full py-3 px-4 border border-gray-300 rounded-lg text-base text-gray-900 transition-all hover:border-gray-400 focus:border-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800/10"
+                    />
+                </div>
+
+                <div class="input-group mb-6">
+                    <label for="subject" class="block text-base font-semibold text-gray-700 mb-2">Subject</label>
+                    <input
+                        pInputText
+                        id="subject"
+                        type="text"
+                        [(ngModel)]="contactForm.subject"
+                        name="subject"
+                        placeholder="Subject"
+                        required
+                        class="w-full py-3 px-4 border border-gray-300 rounded-lg text-base text-gray-900 transition-all hover:border-gray-400 focus:border-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800/10"
+                    />
+                </div>
+
+                <div class="input-group mb-6">
+                    <label for="message" class="block text-base font-semibold text-gray-700 mb-2">Message (Optional)</label>
+                    <textarea
+                        pInputTextarea
+                        id="message"
+                        [(ngModel)]="contactForm.message"
+                        name="message"
+                        placeholder="Message (Optional)"
+                        rows="5"
+                        class="w-full py-3 px-4 border border-gray-300 rounded-lg text-base text-gray-900 resize-y min-h-32 transition-all hover:border-gray-400 focus:border-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-800/10"
+                    >
+                    </textarea>
+                </div>
+
+                <button
+                    pButton
+                    pRipple
+                    type="submit"
+                    [label]="isSubmitting ? 'SENDING...' : 'SEND'"
+                    [icon]="isSubmitting ? 'pi pi-spin pi-spinner' : ''"
+                    class="submit-btn w-full !bg-blue-800 border-none rounded-lg py-4 px-6 text-base font-bold tracking-wide mt-2 transition-all hover:!bg-blue-900 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                    [disabled]="!contactFormRef.form.valid || isSubmitting"
+                ></button>
+            </form>
+        </div>
+    </div>
+</div>

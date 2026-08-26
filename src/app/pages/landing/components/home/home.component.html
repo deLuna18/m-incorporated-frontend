@@ -1,0 +1,67 @@
+<section id="hero-widget" class="agency-hero">
+    <hr class="hero-divider" />
+    <div class="hero-search" aria-label="Find a model">
+        <p>FIND A MODEL</p>
+        <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" placeholder="Search by model name" aria-label="Search by model name" />
+        </label>
+        <select aria-label="All categories">
+            <option>ALL CATEGORIES</option>
+            <option>WOMEN</option>
+            <option>MEN</option>
+            <option>NEW FACES</option>
+        </select>
+        <select aria-label="All locations">
+            <option>ALL LOCATIONS</option>
+            <option>NEW YORK</option>
+            <option>PARIS</option>
+            <option>MILAN</option>
+        </select>
+        <button type="button" class="search-button" (click)="navigateToModels()">SEARCH MODELS <span>→</span></button>
+    </div>
+
+    <div class="hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">WORLDWIDE MODEL &amp; TALENT AGENCY</p>
+            <h1>Exceptional<br />Talent.<br />Endless<br />Possibilities.</h1>
+            <p class="description">Connecting visionaries with extraordinary talent for editorial, commercial and creative projects around the globe.</p>
+            <div class="hero-actions">
+                <button type="button" class="button button-dark" (click)="navigateToModels()">EXPLORE MODELS <span>→</span></button>
+                <button type="button" class="button button-light" (click)="navigateToBooking()">BOOK A MODEL <span>→</span></button>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=1200&amp;q=90" aria-label="Model reel">
+                <source src="assets/videos/m-reel.mp4" type="video/mp4" />
+            </video>
+            <aside class="story-card">
+                <div class="story-image">
+                    <span>M</span>
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=500&amp;q=90" alt="Portrait" />
+                </div>
+                <div class="story-content">
+                    <h2>Global reach.<br />Personal touch.</h2>
+                    <a href="/gallery">DISCOVER OUR STORY <span>→</span></a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <section class="featured-models" aria-labelledby="featured-models-title">
+        <div class="featured-heading">
+            <div>
+                <p class="eyebrow">FEATURED MODELS</p>
+                <h2 id="featured-models-title">Curated. Exceptional. Global.</h2>
+            </div>
+            <a href="/models">VIEW ALL MODELS <span>→</span></a>
+        </div>
+        <div class="model-preview-grid">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Featured model" />
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Featured model" />
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Featured model" />
+            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Featured model" />
+        </div>
+    </section>
+</section>

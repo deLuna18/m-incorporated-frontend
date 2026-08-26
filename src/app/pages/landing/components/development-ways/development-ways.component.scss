@@ -1,0 +1,190 @@
+// development-ways.component.scss
+
+// Animation keyframes
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulseSlow {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+// Component styles
+#development-ways-widget {
+    position: relative;
+
+    // Header animations
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in-delay-1 {
+        animation: fadeIn 0.6s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-delay-2 {
+        animation: fadeIn 0.6s ease-out 0.4s forwards;
+        opacity: 0;
+    }
+
+    // Timeline items
+    .timeline-item {
+        opacity: 0;
+        transform: translateY(20%);
+        transition:
+            opacity 0.6s ease-out,
+            transform 0.6s ease-out;
+
+        &.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        // Stagger animation for each item
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}).visible {
+                transition-delay: #{$i * 0.1}s;
+            }
+        }
+    }
+
+    // Timeline card hover effect
+    .timeline-card {
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+        }
+    }
+
+    // Pulse animation for timeline dots
+    .pulse-animation {
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulseSlow 3s ease-in-out infinite;
+    }
+
+    // Glowing text effect
+    .glowing-text {
+        position: relative;
+        text-shadow:
+            0 0 10px rgba(249, 115, 22, 0.5),
+            0 0 20px rgba(249, 115, 22, 0.3),
+            0 0 30px rgba(249, 115, 22, 0.2);
+        animation: glow 2s ease-in-out infinite;
+
+        &:hover {
+            text-shadow:
+                0 0 15px rgba(249, 115, 22, 0.7),
+                0 0 30px rgba(249, 115, 22, 0.5),
+                0 0 45px rgba(249, 115, 22, 0.3);
+        }
+    }
+
+    @keyframes glow {
+        0%,
+        100% {
+            text-shadow:
+                0 0 10px rgba(249, 115, 22, 0.5),
+                0 0 20px rgba(249, 115, 22, 0.3),
+                0 0 30px rgba(249, 115, 22, 0.2);
+        }
+        50% {
+            text-shadow:
+                0 0 15px rgba(249, 115, 22, 0.7),
+                0 0 30px rgba(249, 115, 22, 0.5),
+                0 0 45px rgba(249, 115, 22, 0.3);
+        }
+    }
+
+    // Custom button styles (if needed beyond PrimeNG)
+    button.p-button {
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 20px 25px -5px rgba(249, 115, 22, 0.3),
+                0 10px 10px -5px rgba(249, 115, 22, 0.2);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 768px) {
+        .timeline-item {
+            transform: translateY(15%);
+        }
+    }
+
+    // Smooth scrolling for better animation experience
+    scroll-behavior: smooth;
+}
+
+// Global styles for the component
+:host {
+    display: block;
+    width: 100%;
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+    #development-ways-widget {
+        .timeline-item,
+        .animate-fade-in,
+        .animate-fade-in-delay-1,
+        .animate-fade-in-delay-2 {
+            animation: none;
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+
+        .pulse-animation,
+        .animate-pulse-slow {
+            animation: none;
+        }
+    }
+}

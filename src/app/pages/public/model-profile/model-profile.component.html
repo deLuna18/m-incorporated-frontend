@@ -1,0 +1,421 @@
+<div class="min-h-screen bg-white font-sans text-ink antialiased selection:bg-gold/20" (click)="onClick($event)">
+
+  <!-- HEADER -->
+  <header class="relative z-50 bg-white">
+    <div class="mx-auto flex h-[88px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+      <a href="/" aria-label="M Incorporated home" class="flex w-[142px] shrink-0 flex-col items-center leading-none">
+        <span class="mb-[-2px] text-[15px] leading-none text-gold">♛</span>
+        <span class="font-serif text-[48px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+        <span class="mt-2 text-[7px] font-semibold tracking-[.28em]">INCORPORATED</span>
+        <span class="mt-1 text-[6px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+      </a>
+
+      <nav class="hidden items-center gap-8 xl:flex" aria-label="Primary navigation">
+        <a href="/" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">HOME</a>
+        <a href="/models" class="text-[11px] font-semibold tracking-[.16em] text-gold">MODELS</a>
+        <a href="/services" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">SERVICES</a>
+        <a href="/#about" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">ABOUT</a>
+        <a href="/gallery" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">GALLERY</a>
+        <a href="/#journal" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">JOURNAL</a>
+        <a href="/#contact" class="text-[11px] font-semibold tracking-[.16em] hover:text-gold">CONTACT</a>
+      </nav>
+
+      <a id="headerBooking" data-booking href="/#booking" class="hidden min-w-[148px] items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-semibold tracking-[.13em] text-white transition hover:bg-black md:flex">
+        BOOK A MODEL <span class="text-base leading-none">→</span>
+      </a>
+
+      <button id="menuBtn" class="flex h-10 items-center gap-2 border border-ink px-4 text-[10px] font-semibold tracking-[.16em] md:hidden" aria-expanded="false" aria-controls="mobileNav">
+        MENU
+      </button>
+    </div>
+
+    <div id="mobileNav" class="hidden bg-white px-5 py-5 md:hidden">
+      <div class="grid gap-4 text-[11px] font-semibold tracking-[.15em]">
+        <a href="/">HOME</a>
+        <a href="/models" class="text-gold">MODELS</a>
+        <a href="/services">SERVICES</a>
+        <a href="m-incorporated.html#about">ABOUT</a>
+        <a href="/gallery">GALLERY</a>
+        <a href="m-incorporated.html#journal">JOURNAL</a>
+        <a href="m-incorporated.html#contact">CONTACT</a>
+        <a id="mobileBooking" data-booking href="/#booking" class="mt-2 inline-flex w-fit items-center gap-3 bg-ink px-5 py-3 text-white">BOOK A MODEL <span>→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROFILE HERO -->
+    <section class="bg-white">
+      <div class="mx-auto max-w-[1440px] px-5 pb-8 pt-4 sm:px-8 lg:px-14 lg:pb-12 xl:px-16">
+        <div class="mb-5 flex items-center justify-between">
+          <a href="/models" class="inline-flex items-center gap-3 text-[8px] font-semibold tracking-[.15em] text-muted transition hover:text-gold">
+            <span class="text-sm">←</span> ALL MODELS
+          </a>
+          <p id="profileCode" class="hidden text-[7px] font-semibold tracking-[.18em] text-muted sm:block">M INCORPORATED / MODEL PROFILE</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1.08fr_.92fr] lg:gap-12 xl:gap-16">
+          <!-- Main Portrait -->
+          <div class="relative overflow-hidden bg-neutral-200 lg:h-[690px]">
+            <img id="heroImage" src="" alt="Model portrait" class="h-[560px] w-full object-cover object-center sm:h-[660px] lg:h-full" />
+            <div class="absolute left-5 top-5 bg-white px-3 py-2 text-[7px] font-semibold tracking-[.15em]">M INCORPORATED</div>
+          </div>
+
+          <!-- Model Information -->
+          <div class="flex flex-col justify-center lg:py-8">
+            <div>
+              <p id="eyebrow" class="mb-4 text-[9px] font-semibold tracking-[.18em] text-gold">MODEL PROFILE</p>
+              <h1 id="modelName" class="max-w-[620px] font-serif text-[56px] font-medium leading-[.86] tracking-[-.05em] sm:text-[68px] lg:text-[72px] xl:text-[80px]">Luna Martinez</h1>
+              <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[8px] font-semibold tracking-[.15em] text-muted">
+                <span id="modelLocation">NEW YORK</span>
+                <span class="h-1 w-1 rounded-full bg-gold"></span>
+                <span id="modelCategory">WOMEN · COMMERCIAL</span>
+              </div>
+            </div>
+
+            <p id="modelBio" class="mt-7 max-w-[520px] text-[11px] leading-[1.9] text-charcoal sm:text-[12px]">
+              Represented by M Incorporated, Luna brings a refined editorial presence and versatile commercial range to fashion, beauty and lifestyle projects worldwide.
+            </p>
+
+            <!-- Measurements -->
+            <div class="mt-8">
+              <p class="mb-4 text-[8px] font-semibold tracking-[.17em] text-gold">PROFILE DETAILS</p>
+              <div id="measurements" class="grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-3"></div>
+            </div>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a id="bookModelButton" data-booking href="/#booking" class="inline-flex h-[46px] items-center gap-7 bg-ink px-6 text-[9px] font-semibold tracking-[.13em] text-white transition hover:bg-black">
+                BOOK THIS MODEL <span class="text-base">→</span>
+              </a>
+              <a href="#portfolio" class="inline-flex h-[46px] items-center gap-7 border border-ink px-6 text-[9px] font-semibold tracking-[.13em] transition hover:bg-[#f7f5f1]">
+                VIEW PORTFOLIO <span class="text-base">↓</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE STRIP -->
+    <section class="border-t border-b border-line bg-white">
+      <div class="mx-auto grid max-w-[1440px] grid-cols-2 sm:grid-cols-4">
+        <div class="px-5 py-5 text-center sm:border-r sm:border-line">
+          <p class="text-[7px] font-semibold tracking-[.15em] text-muted">REPRESENTATION</p>
+          <p class="mt-2 font-serif text-[21px]">Worldwide</p>
+        </div>
+        <div class="px-5 py-5 text-center sm:border-r sm:border-line">
+          <p class="text-[7px] font-semibold tracking-[.15em] text-muted">DIVISION</p>
+          <p id="divisionStrip" class="mt-2 font-serif text-[21px]">Women</p>
+        </div>
+        <div class="px-5 py-5 text-center sm:border-r sm:border-line">
+          <p class="text-[7px] font-semibold tracking-[.15em] text-muted">BASE</p>
+          <p id="baseStrip" class="mt-2 font-serif text-[21px]">New York</p>
+        </div>
+        <div class="px-5 py-5 text-center">
+          <p class="text-[7px] font-semibold tracking-[.15em] text-muted">BOOKINGS</p>
+          <p class="mt-2 font-serif text-[21px]">Available</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="py-12 lg:py-16">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.17em] text-gold">PORTFOLIO</p>
+            <h2 class="font-serif text-[40px] font-medium leading-none tracking-[-.04em] sm:text-[48px]">Selected images.</h2>
+          </div>
+          <p class="max-w-[330px] text-[9px] leading-[1.75] text-muted sm:text-right">Editorial, beauty, commercial and campaign work selected from the model's current portfolio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[210px]">
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 sm:col-span-2 lg:col-span-5 lg:row-span-3">
+            <img id="portfolioHero" src="" alt="Portfolio image" class="portfolio-image h-full min-h-[520px] w-full object-cover object-center lg:min-h-0" />
+          </figure>
+
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 lg:col-span-4 lg:row-span-2">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90" alt="Editorial fashion portfolio" class="portfolio-image h-[400px] w-full object-cover object-center lg:h-full" />
+          </figure>
+
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 lg:col-span-3 lg:row-span-2">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=90" alt="Fashion campaign portfolio" class="portfolio-image h-[400px] w-full object-cover object-center lg:h-full" />
+          </figure>
+
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 lg:col-span-3 lg:row-span-2">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90" alt="Beauty editorial portfolio" class="portfolio-image h-[400px] w-full object-cover object-[50%_24%] lg:h-full" />
+          </figure>
+
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 lg:col-span-4 lg:row-span-2">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=90" alt="Commercial model portfolio" class="portfolio-image h-[400px] w-full object-cover object-center lg:h-full" />
+          </figure>
+
+          <figure class="portfolio-item overflow-hidden bg-neutral-200 sm:col-span-2 lg:col-span-5 lg:row-span-1">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=90" alt="Luxury editorial portfolio" class="portfolio-image h-[300px] w-full object-cover object-[50%_24%] lg:h-full" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO PORTFOLIO -->
+    <section class="bg-[#f7f5f1] py-11 lg:py-14">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-[.72fr_1.28fr] lg:gap-14">
+          <div class="lg:pt-3">
+            <p class="mb-3 text-[9px] font-semibold tracking-[.17em] text-gold">VIDEO PORTFOLIO</p>
+            <h2 class="max-w-[390px] font-serif text-[40px] font-medium leading-[.94] tracking-[-.04em] sm:text-[46px]">Presence,<br>in motion.</h2>
+            <p class="mt-5 max-w-[350px] text-[10px] leading-[1.8] text-charcoal">Motion references for casting teams, directors and clients evaluating movement, expression and on-camera presence.</p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group block bg-white">
+              <div class="relative aspect-[16/10] overflow-hidden bg-neutral-300">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1100&q=90" alt="Editorial motion reel" class="h-full w-full object-cover object-[50%_24%] transition duration-700 group-hover:scale-[1.02]" />
+                <span class="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[13px] text-ink shadow-editorial">▶</span>
+              </div>
+              <div class="px-5 py-5">
+                <p class="text-[7px] font-semibold tracking-[.15em] text-gold">MOTION REEL · 01</p>
+                <h3 class="mt-2 font-serif text-[25px] leading-none">Editorial Movement</h3>
+                <p class="mt-3 text-[8px] font-semibold tracking-[.13em] text-muted">WATCH REEL ↗</p>
+              </div>
+            </a>
+
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group block bg-white">
+              <div class="relative aspect-[16/10] overflow-hidden bg-neutral-300">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=90" alt="Commercial motion reel" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.02]" />
+                <span class="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[13px] text-ink shadow-editorial">▶</span>
+              </div>
+              <div class="px-5 py-5">
+                <p class="text-[7px] font-semibold tracking-[.15em] text-gold">MOTION REEL · 02</p>
+                <h3 class="mt-2 font-serif text-[25px] leading-none">Commercial Casting Reel</h3>
+                <p class="mt-3 text-[8px] font-semibold tracking-[.13em] text-muted">WATCH REEL ↗</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED MODELS -->
+    <section class="py-12 lg:py-14">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-16">
+        <div class="mb-6 flex items-end justify-between gap-5">
+          <div>
+            <p class="mb-2 text-[9px] font-semibold tracking-[.17em] text-gold">DISCOVER MORE</p>
+            <h2 class="font-serif text-[36px] font-medium leading-none tracking-[-.035em] sm:text-[42px]">More from the roster.</h2>
+          </div>
+          <a href="models.html" class="hidden items-center gap-4 text-[8px] font-semibold tracking-[.14em] md:inline-flex">VIEW ALL MODELS <span class="text-sm">→</span></a>
+        </div>
+
+        <div id="relatedModels" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"></div>
+      </div>
+    </section>
+
+    <!-- BOOKING CTA -->
+    <section class="bg-ink text-white">
+      <div class="mx-auto flex max-w-[1440px] flex-col gap-6 px-5 py-10 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-14 lg:py-11 xl:px-16">
+        <div>
+          <p class="mb-2 text-[8px] font-semibold tracking-[.18em] text-gold">BOOKING INQUIRY</p>
+          <h2 id="bookingHeading" class="font-serif text-[36px] font-medium leading-[.95] tracking-[-.035em] sm:text-[42px]">Interested in working with Luna Martinez?</h2>
+        </div>
+        <a id="bottomBooking" data-booking href="/#booking" class="inline-flex h-[46px] shrink-0 items-center gap-8 bg-white px-6 text-[9px] font-semibold tracking-[.14em] text-ink">
+          BOOK THIS MODEL <span class="text-base">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-white">
+    <div class="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 py-8 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.35fr_.8fr_.8fr_.8fr_1.3fr] lg:gap-10 lg:px-14 xl:px-16">
+      <div class="flex flex-col items-start lg:items-center">
+        <div class="flex w-[130px] flex-col items-center leading-none">
+          <span class="mb-[-2px] text-[12px] leading-none text-gold">♛</span>
+          <span class="font-serif text-[37px] font-medium leading-[.67] tracking-[-.05em]">M</span>
+          <span class="mt-2 text-[6px] font-semibold tracking-[.28em]">INCORPORATED</span>
+          <span class="mt-1 text-[5px] font-medium tracking-[.16em] text-muted">MODEL MANAGEMENT</span>
+        </div>
+        <p class="mt-4 text-[7px] text-muted">© 2026 M Incorporated. All rights reserved.</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">AGENCY</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="m-incorporated.html#about" class="hover:text-gold">About Us</a></li>
+          <li><a href="#" class="hover:text-gold">Our Team</a></li>
+          <li><a href="#" class="hover:text-gold">Careers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">MODELS</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="m-incorporated.html#become-model" class="hover:text-gold">Become a Model</a></li>
+          <li><a href="models.html" class="hover:text-gold">Model Directory</a></li>
+          <li><a href="m-incorporated.html#talent" class="hover:text-gold">Scouting</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">RESOURCES</h3>
+        <ul class="space-y-2 text-[8px] text-charcoal">
+          <li><a href="m-incorporated.html#journal" class="hover:text-gold">Journal</a></li>
+          <li><a href="m-incorporated.html#gallery" class="hover:text-gold">Media Gallery</a></li>
+          <li><a href="#" class="hover:text-gold">Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-[7px] font-semibold tracking-[.14em]">CONTACT</h3>
+        <div class="space-y-1.5 text-[8px] leading-[1.7] text-charcoal">
+          <p>hello&#64;m-incorporated.com</p>
+          <p>+1 (212) 555 0988</p>
+          <p>New York, NY</p>
+        </div>
+        <div class="mt-4 flex items-center gap-4">
+          <a href="#" aria-label="Instagram" class="text-[13px] hover:text-gold">◎</a>
+          <a href="#" aria-label="Facebook" class="text-[12px] font-semibold hover:text-gold">f</a>
+          <a href="#" aria-label="TikTok" class="text-[12px] font-semibold hover:text-gold">♪</a>
+          <a href="#" aria-label="Pinterest" class="text-[12px] font-semibold hover:text-gold">p</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Legacy standalone-page script replaced by ModelProfileComponent. -->
+  <!--
+    const models = [{"slug":"luna-martinez","name":"Luna Martinez","location":"NEW YORK","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90"},{"slug":"noah-valentino","name":"Noah Valentino","location":"MILAN","category":"MEN","image":"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1600&q=90"},{"slug":"ella-roberts","name":"Ella Roberts","location":"PARIS","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=90"},{"slug":"jordan-reid","name":"Jordan Reid","location":"LONDON","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1600&q=90"},{"slug":"mia-laurent","name":"Mia Laurent","location":"PARIS","category":"WOMEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90"},{"slug":"elias-ward","name":"Elias Ward","location":"LONDON","category":"MEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&q=90"},{"slug":"sora-kim","name":"Sora Kim","location":"SEOUL","category":"WOMEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90"},{"slug":"theo-rossi","name":"Theo Rossi","location":"MILAN","category":"MEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1600&q=90"},{"slug":"amara-okafor","name":"Amara Okafor","location":"LONDON","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90"},{"slug":"mateo-cruz","name":"Mateo Cruz","location":"NEW YORK","category":"MEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1600&q=90"},{"slug":"clara-moreau","name":"Clara Moreau","location":"PARIS","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1600&q=90"},{"slug":"jin-park","name":"Jin Park","location":"SEOUL","category":"MEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=90"},{"slug":"ava-sinclair","name":"Ava Sinclair","location":"NEW YORK","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=90"},{"slug":"leo-moretti","name":"Leo Moretti","location":"MILAN","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=1600&q=90"},{"slug":"camille-duval","name":"Camille Duval","location":"PARIS","category":"WOMEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=90"},{"slug":"adrian-cole","name":"Adrian Cole","location":"LONDON","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=1600&q=90"},{"slug":"yuna-choi","name":"Yuna Choi","location":"SEOUL","category":"WOMEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=1600&q=90"},{"slug":"nico-bellini","name":"Nico Bellini","location":"MILAN","category":"MEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=1600&q=90"},{"slug":"elena-voss","name":"Elena Voss","location":"LONDON","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1600&q=90"},{"slug":"kai-nakamura","name":"Kai Nakamura","location":"SEOUL","category":"MEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1600&q=90"},{"slug":"sofia-marin","name":"Sofia Marin","location":"NEW YORK","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1517365830460-955ce3ccd263?auto=format&fit=crop&w=1600&q=90"},{"slug":"julien-marchand","name":"Julien Marchand","location":"PARIS","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=90"},{"slug":"aria-bennett","name":"Aria Bennett","location":"LONDON","category":"WOMEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=1600&q=90"},{"slug":"marco-leone","name":"Marco Leone","location":"MILAN","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=1600&q=90"},{"slug":"isla-hart","name":"Isla Hart","location":"NEW YORK","category":"WOMEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=90"},{"slug":"daniel-seo","name":"Daniel Seo","location":"SEOUL","category":"MEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1600&q=90"},{"slug":"louise-garnier","name":"Louise Garnier","location":"PARIS","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=90"},{"slug":"hugo-laurent","name":"Hugo Laurent","location":"PARIS","category":"MEN \u00b7 CREATOR","image":"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1600&q=90"},{"slug":"maya-collins","name":"Maya Collins","location":"NEW YORK","category":"WOMEN \u00b7 NEW FACE","image":"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=90"},{"slug":"lorenzo-ricci","name":"Lorenzo Ricci","location":"MILAN","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1600&q=90"},{"slug":"nina-foster","name":"Nina Foster","location":"LONDON","category":"WOMEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1600&q=90"},{"slug":"ethan-blake","name":"Ethan Blake","location":"NEW YORK","category":"MEN \u00b7 COMMERCIAL","image":"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&q=90"}];
+
+    const portfolioSets = {
+      women: [
+        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=90'
+      ],
+      men: [
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=90',
+        'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=1200&q=90'
+      ]
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedSlug = params.get('model') || 'luna-martinez';
+    let currentIndex = models.findIndex(model => model.slug === requestedSlug);
+    if (currentIndex < 0) currentIndex = 0;
+    const model = models[currentIndex];
+
+    function titleCase(value) {
+      return value.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function hashString(value) {
+      return [...value].reduce((total, char) => total + char.charCodeAt(0), 0);
+    }
+
+    function profileMeasurements(model) {
+      const seed = hashString(model.slug);
+      const isMen = model.category.includes('MEN');
+      const hair = ['Brown', 'Black', 'Dark Brown', 'Auburn'][seed % 4];
+      const eyes = ['Brown', 'Hazel', 'Green', 'Blue'][seed % 4];
+
+      if (isMen) {
+        return [
+          ['HEIGHT', `${184 + (seed % 7)} CM`],
+          ['CHEST', `${92 + (seed % 7)} CM`],
+          ['WAIST', `${76 + (seed % 7)} CM`],
+          ['SUIT', `${46 + (seed % 4) * 2}`],
+          ['SHOES', `${42 + (seed % 3)}`],
+          ['HAIR / EYES', `${hair} / ${eyes}`],
+        ];
+      }
+
+      return [
+        ['HEIGHT', `${174 + (seed % 7)} CM`],
+        ['BUST', `${80 + (seed % 7)} CM`],
+        ['WAIST', `${58 + (seed % 7)} CM`],
+        ['HIPS', `${86 + (seed % 7)} CM`],
+        ['SHOES', `${37 + (seed % 4)}`],
+        ['HAIR / EYES', `${hair} / ${eyes}`],
+      ];
+    }
+
+    function renderProfile() {
+      document.title = `${model.name} — M Incorporated`;
+      document.getElementById('modelName').textContent = model.name;
+      document.getElementById('modelLocation').textContent = model.location;
+      document.getElementById('modelCategory').textContent = model.category;
+      document.getElementById('heroImage').src = model.image;
+      document.getElementById('heroImage').alt = `${model.name} model portrait`;
+      document.getElementById('portfolioHero').src = model.image;
+      document.getElementById('portfolioHero').alt = `${model.name} portfolio portrait`;
+      document.getElementById('baseStrip').textContent = titleCase(model.location);
+      document.getElementById('divisionStrip').textContent = model.category.includes('MEN') ? 'Men' : 'Women';
+      document.getElementById('bookingHeading').textContent = `Interested in working with ${model.name}?`;
+
+      const specialties = model.category.toLowerCase().replaceAll(' · ', ', ');
+      document.getElementById('modelBio').textContent = `${model.name} is represented by M Incorporated and based in ${titleCase(model.location)}. With a distinctive presence across ${specialties}, ${model.category.includes('MEN') ? 'he' : 'she'} brings a considered, contemporary point of view to editorial, commercial and creative projects worldwide.`;
+
+      const bookingHref = `m-incorporated.html#booking`;
+      ['headerBooking','mobileBooking','bookModelButton','bottomBooking'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = bookingHref;
+      });
+
+      const measurementGrid = document.getElementById('measurements');
+      measurementGrid.innerHTML = profileMeasurements(model).map(([label, value]) => `
+        <div>
+          <p class="text-[7px] font-semibold tracking-[.15em] text-muted">${label}</p>
+          <p class="mt-1 font-serif text-[22px] leading-none">${value}</p>
+        </div>
+      `).join('');
+
+      const isMen = model.category.includes('MEN');
+      const set = isMen ? portfolioSets.men : portfolioSets.women;
+      const portfolioImages = document.querySelectorAll('#portfolio figure img:not(#portfolioHero)');
+      portfolioImages.forEach((img, index) => {
+        if (set[index]) img.src = set[index];
+      });
+
+      renderRelated();
+    }
+
+    function renderRelated() {
+      const related = [];
+      for (let step = 1; related.length < 3 && step < models.length; step++) {
+        const candidate = models[(currentIndex + step) % models.length];
+        if (candidate.slug !== model.slug) related.push(candidate);
+      }
+
+      document.getElementById('relatedModels').innerHTML = related.map(item => `
+        <a href="model-profile.html?model=${item.slug}" class="group block">
+          <div class="aspect-[.8/1] overflow-hidden bg-neutral-200">
+            <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover object-center transition duration-700 group-hover:scale-[1.02]" />
+          </div>
+          <div class="pt-3">
+            <h3 class="font-serif text-[26px] leading-none tracking-[-.025em]">${item.name}</h3>
+            <div class="mt-2 flex items-center justify-between gap-4 text-[7px] font-semibold tracking-[.13em] text-muted">
+              <span>${item.location}</span>
+              <span>${item.category}</span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileNav.classList.toggle('hidden');
+      menuBtn.textContent = isOpen ? 'MENU' : 'CLOSE';
+    });
+
+    renderProfile();
+  -->
+</div>

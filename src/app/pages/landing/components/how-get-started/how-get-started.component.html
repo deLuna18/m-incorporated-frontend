@@ -1,0 +1,24 @@
+<div id="how-get-started-widget" class="how-get-started-container">
+    <div class="section-header animate-on-scroll">
+        <h2 class="section-title">How We Get Started</h2>
+        <p class="section-subtitle">Our proven process ensures clarity, quality, and collaborations from day one.</p>
+    </div>
+
+    <div class="process-timeline animate-on-scroll">
+        <div class="timeline-connector"></div>
+
+        <div class="step-item" *ngFor="let step of steps; let i = index" [style.transition-delay]="i * 0.15 + 's'">
+            <div class="step-number-wrapper">
+                <div class="step-number">{{ step.number }}</div>
+            </div>
+            <div class="step-content">
+                <h3 class="step-title">{{ step.title }}</h3>
+                <p class="step-description">{{ step.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section animate-on-scroll">
+        <button pButton pRipple label="Schedule a Consultation" class="p-button-primary consultation-btn" (click)="scheduleConsultation()"></button>
+    </div>
+</div>

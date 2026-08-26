@@ -1,0 +1,23 @@
+::ng-deep [role='dialog'].p-popover {
+    left: 65% !important;
+    width: 34%;
+    height: 50%;
+}
+
+/* Popover container */
+.message-popover {
+    width: 300px; /* Set a fixed width for the popover */
+    max-height: 44vh; /* Adjust the max-height as needed */
+    overflow: hidden; /* Hide the overflow of the whole container */
+}
+
+/* Popover body (scrollable content area) */
+.popover-body {
+    max-height: 44vh; /* Adjust this as needed */
+    overflow-y: auto; /* Enable scrolling for the body content */
+    padding: 10px; /* Optional: Add padding */
+}
+
+.popover-body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}

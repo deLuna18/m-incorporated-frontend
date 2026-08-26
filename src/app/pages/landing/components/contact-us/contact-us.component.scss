@@ -1,0 +1,278 @@
+// Animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+// Animation classes
+.fade-in {
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+.left-panel.fade-in {
+    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+.right-panel.fade-in {
+    animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+// Brand section hover effects
+.brand-section {
+    .brand-subtitle:hover {
+        color: #374151;
+    }
+
+    .brand-tagline:hover {
+        color: #1e40af;
+        transform: translateX(5px);
+    }
+}
+
+// Nav links hover effect
+.nav-link {
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #1e40af;
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    &:hover::before {
+        transform: scaleY(1);
+    }
+}
+
+// Contact details hover effect
+.detail-item {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1e40af08 0%, #1e40af15 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+
+        h4 {
+            color: #1e40af;
+        }
+    }
+
+    h4,
+    p,
+    a {
+        position: relative;
+        z-index: 1;
+    }
+
+    a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: #1e40af;
+        transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+        width: 100%;
+    }
+}
+
+// Phone button hover effect
+.phone-button {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition:
+            width 0.6s ease,
+            height 0.6s ease;
+    }
+
+    &:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    &:hover i {
+        animation: pulse 1s infinite;
+    }
+
+    i,
+    span {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+// Social buttons hover effect
+.social-btn {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: #1e40af;
+        transform: translate(-50%, -50%);
+        transition:
+            width 0.4s ease,
+            height 0.4s ease;
+    }
+
+    &:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    &:nth-child(2):hover {
+        transform: translateY(-4px) rotate(-5deg) !important;
+    }
+
+    i {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover i {
+        transform: scale(1.2);
+    }
+}
+
+// Form title underline effect
+.form-title {
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+        border-radius: 2px;
+        transition: width 0.4s ease;
+    }
+}
+
+.right-panel:hover .form-title::after {
+    width: 120px;
+}
+
+// Submit button hover effect
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+    }
+
+    &:hover:not(:disabled)::before {
+        left: 100%;
+    }
+}
+
+// PrimeNG overrides
+::ng-deep {
+    .p-button {
+        font-family: inherit;
+    }
+
+    .p-inputtext,
+    .p-inputtextarea {
+        font-family: inherit;
+
+        &:enabled:focus {
+            border-color: #1e40af !important;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1) !important;
+        }
+    }
+
+    .p-ripple {
+        overflow: hidden;
+    }
+}

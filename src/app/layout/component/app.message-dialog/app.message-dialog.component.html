@@ -1,0 +1,22 @@
+<p-popover #op1 appendTo="body" class="message-popover">
+    <div class="popover-container">
+        <div class="popover-header">
+            <span class="font-medium text-surface-900 dark:text-surface-0 block mb-2">Messages</span>
+        </div>
+        <div class="popover-body">
+            <ul class="list-none p-0 m-0 flex flex-col gap-4">
+                <!-- Loop through messages array -->
+                <li *ngFor="let message of messages" class="flex items-start gap-2">
+                    <img [src]="message.avatar" style="width: 32px; height: 32px; border-radius: 50%" />
+                    <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg w-full">
+                        <div class="flex justify-between">
+                            <span class="font-medium">{{ message.sender }}</span>
+                            <span class="text-sm text-muted-color">{{ message.time }}</span>
+                        </div>
+                        <p class="text-sm mt-1">{{ message.text }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</p-popover>

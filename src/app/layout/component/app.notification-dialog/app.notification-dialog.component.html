@@ -1,0 +1,21 @@
+<p-popover appendTo="body" class="notification-popover">
+    <div class="popover-container">
+        <div class="popover-header">
+            <span class="font-medium text-surface-900 dark:text-surface-0 block mb-2">Notifications</span>
+        </div>
+        <div class="popover-body">
+            <ul class="list-none p-0 m-0 flex flex-col gap-4">
+                <!-- Loop through notifications array -->
+                <li *ngFor="let notification of notifications" class="flex items-start gap-2">
+                    <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg w-full">
+                        <div class="flex justify-between">
+                            <span class="font-medium">{{ notification.title }}</span>
+                            <span class="text-sm text-muted-color">{{ notification.time }}</span>
+                        </div>
+                        <p class="text-sm mt-1">{{ notification.description }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</p-popover>

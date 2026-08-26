@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@use './assets/layout/layout.scss';
+@use 'primeicons/primeicons.css';
+@use './assets/demo/demo.scss';
+@use './tailwind.css';
+
+/* Keep the page UI monochrome; images retain their original colours. */
+.landing-wrapper,
+.landing-wrapper .bg-surface-0 {
+    color: #000;
+    background-color: #fff;
+}
+
+app-home .text-gold,
+app-models .text-gold,
+app-model-profile .text-gold,
+app-gallery .text-gold,
+app-booking .text-gold {
+    color: #000 !important;
+}
+
+.landing-wrapper [class*='text-orange'],
+.landing-wrapper [class*='text-blue'],
+.landing-wrapper [class*='text-sky'],
+.landing-wrapper [class*='text-indigo'],
+.landing-wrapper [class*='text-gold'],
+.landing-wrapper [class*='text-slate'] {
+    color: #000 !important;
+}
+
+.landing-wrapper [class*='border-orange'],
+.landing-wrapper [class*='border-blue'],
+.landing-wrapper [class*='border-sky'],
+.landing-wrapper [class*='border-indigo'] {
+    border-color: #000 !important;
+}
+
+.landing-wrapper [class*='bg-orange'],
+.landing-wrapper [class*='bg-blue'],
+.landing-wrapper [class*='bg-sky'],
+.landing-wrapper [class*='bg-indigo'] {
+    background-color: #000 !important;
+}
+
+.landing-wrapper [class*='bg-gradient'] {
+    background-image: none !important;
+}
+
+/* Public-facing pages use a consistent, readable scale for utility-based copy. */
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[7px]'] {
+    font-size: .5rem !important;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[8px]'] {
+    font-size: .5625rem !important;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[9px]'] {
+    font-size: .625rem !important;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[10px]'] {
+    font-size: .6875rem !important;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[11px]'] {
+    font-size: .75rem !important;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[12px]'] {
+    font-size: .8125rem !important;
+}

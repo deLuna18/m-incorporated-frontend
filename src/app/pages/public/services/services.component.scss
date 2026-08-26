@@ -1,0 +1,117 @@
+:host {
+  display: block;
+  background: #fff;
+  color: #000;
+}
+
+.services-page {
+  overflow: hidden;
+}
+
+.services-page .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1);
+}
+
+.services-page .reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-hero-media {
+  border-radius: 96px 18px 18px 18px;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, .08);
+}
+
+.services-page .service-card {
+  min-height: 330px;
+  border-color: #d3d1cb;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .035);
+  transition: transform .28s ease, background-color .28s ease, color .28s ease, box-shadow .28s ease;
+}
+
+.services-page .service-card:hover {
+  box-shadow: 0 17px 36px rgba(0, 0, 0, .12);
+  transform: translateY(-5px);
+}
+
+.services-page section.bg-black {
+  position: relative;
+  color: #fff;
+}
+
+// Tailwind's opacity utilities can be overridden by the app's shared styles.
+// Keep every level of copy legible against the Services page's black panels.
+.services-page section.bg-black h2,
+.services-page section.bg-black h3,
+.services-page section.bg-black p:not(.text-black),
+.services-page section.bg-black span:not(.text-black),
+.services-page section.bg-black a:not(.text-black) {
+  color: #fff;
+}
+
+.services-page section.bg-black [class*='text-white/'] {
+  color: rgba(255, 255, 255, .72) !important;
+}
+
+.services-page section.bg-black .text-black {
+  color: #000 !important;
+}
+
+.services-page .service-card {
+  color: #000;
+}
+
+.services-page .service-card .muted,
+.services-page .text-black\/55,
+.services-page .text-black\/60 {
+  color: rgba(0, 0, 0, .62);
+}
+
+.services-page .service-card:hover {
+  background: #000;
+  color: #fff;
+}
+
+.services-page .service-card:hover .muted {
+  color: rgba(255, 255, 255, .72);
+}
+
+.services-page .process-number {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, .22);
+}
+
+.services-page section.bg-black:first-of-type {
+  margin-top: 1rem;
+}
+
+.services-footer a {
+  transition: color .2s ease, opacity .2s ease;
+}
+
+.services-footer a:hover {
+  color: #555;
+  opacity: .8;
+}
+
+@media (max-width: 640px) {
+  .service-hero-media {
+    border-radius: 52px 14px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-page .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .services-page .service-card,
+  .services-footer a {
+    transition: none;
+  }
+}

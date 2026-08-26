@@ -1,0 +1,36 @@
+:host { display: block; }
+.field { transition: border-color 160ms ease, box-shadow 160ms ease; }
+.field:focus { border-color: #000; box-shadow: 0 0 0 1px #000; }
+
+.contact-page-content {
+  max-width: 1440px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: clamp(3.5rem, 8vw, 6.5rem);
+  align-items: start;
+}
+
+.contact-details {
+  padding-top: .55rem;
+}
+
+@media (max-width: 575px) {
+  .contact-page-content {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .contact-details {
+    padding-top: 0;
+  }
+}

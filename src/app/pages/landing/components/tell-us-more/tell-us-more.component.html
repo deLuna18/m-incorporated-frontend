@@ -1,0 +1,89 @@
+<div id="tell-us-more-widget" class="tell-us-more-container">
+    <div class="content-wrapper">
+        <!-- Left Side - Form -->
+        <div class="form-section animate-on-scroll">
+            <div class="form-header">
+                <h2 class="form-title">Tell Us About Your Project</h2>
+                <p class="form-subtitle">Fill out the form below, and our team will <strong>contact you</strong> within one business day.</p>
+            </div>
+
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="project-form">
+                <!-- Full Name / Company Name -->
+                <div class="form-field">
+                    <input pInputText id="fullName" formControlName="fullName" placeholder="Full Name / Company Name" [class.p-invalid]="projectForm.get('fullName')?.invalid && projectForm.get('fullName')?.touched" />
+                    <small class="p-error" *ngIf="projectForm.get('fullName')?.invalid && projectForm.get('fullName')?.touched"> Full name is required </small>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-field">
+                    <input pInputText id="email" type="email" formControlName="email" placeholder="Email Address" [class.p-invalid]="projectForm.get('email')?.invalid && projectForm.get('email')?.touched" />
+                    <small class="p-error" *ngIf="projectForm.get('email')?.invalid && projectForm.get('email')?.touched"> Valid email is required </small>
+                </div>
+
+                <!-- Contact Number -->
+                <div class="form-field">
+                    <input pInputText id="contactNumber" formControlName="contactNumber" placeholder="Contact Number" [class.p-invalid]="projectForm.get('contactNumber')?.invalid && projectForm.get('contactNumber')?.touched" />
+                    <small class="p-error" *ngIf="projectForm.get('contactNumber')?.invalid && projectForm.get('contactNumber')?.touched"> Contact number is required </small>
+                </div>
+
+                <!-- Project Category -->
+                <div class="form-field">
+                    <p-dropdown
+                        [options]="projectCategories"
+                        formControlName="projectCategory"
+                        placeholder="Project Category"
+                        styleClass="w-full"
+                        [class.p-invalid]="projectForm.get('projectCategory')?.invalid && projectForm.get('projectCategory')?.touched"
+                    ></p-dropdown>
+                    <small class="p-error" *ngIf="projectForm.get('projectCategory')?.invalid && projectForm.get('projectCategory')?.touched"> Project category is required </small>
+                </div>
+
+                <!-- Project Description -->
+                <div class="form-field">
+                    <textarea
+                        pInputTextarea
+                        id="projectDescription"
+                        formControlName="projectDescription"
+                        placeholder="Project Description / Requirements"
+                        rows="4"
+                        [class.p-invalid]="projectForm.get('projectDescription')?.invalid && projectForm.get('projectDescription')?.touched"
+                    ></textarea>
+                    <small class="p-error" *ngIf="projectForm.get('projectDescription')?.invalid && projectForm.get('projectDescription')?.touched"> Project description is required </small>
+                </div>
+
+                <!-- Timeline -->
+                <div class="form-field">
+                    <input pInputText id="timeline" formControlName="timeline" placeholder="Estimated Timeline or Deadline" />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button pButton pRipple type="submit" [label]="isSubmitting ? 'Sending...' : 'Submit Project Inquiry'" class="p-button-primary submit-btn" [disabled]="projectForm.invalid || isSubmitting" [loading]="isSubmitting"></button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right Side - Image & Info -->
+        <div class="info-section animate-on-scroll">
+            <div class="info-card">
+                <div class="illustration-wrapper">
+                    <img [src]="imageSource" alt="Team Collaboration" class="illustration-image" />
+                </div>
+
+                <div class="thank-you-message">
+                    <p><strong>Thank you:</strong> Our team will contact you soon.</p>
+                </div>
+
+                <button
+                    pButton
+                    pRipple
+                    [label]="isSubmitting ? 'Sending...' : 'Submit Project Inquiry'"
+                    class="p-button-primary mobile-submit-btn"
+                    (click)="onSubmit()"
+                    [disabled]="projectForm.invalid || isSubmitting"
+                    [loading]="isSubmitting"
+                ></button>
+            </div>
+        </div>
+    </div>
+</div>

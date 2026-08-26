@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  color: #000;
+}
+
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6,
+:host a,
+:host button {
+  color: #000;
+}
+
+:host .text-charcoal { color: #222; }
+:host .text-muted { color: #6f6b63; }
+:host .text-gold { color: #000; }
+:host .text-white { color: #fff; }
+
+:host .bg-ink h1,
+:host .bg-ink h2,
+:host .bg-ink h3,
+:host .bg-ink h4,
+:host .bg-ink h5,
+:host .bg-ink h6 {
+  color: #fff;
+}
+
+.portfolio-image { transition: transform .65s ease; }
+.portfolio-item:hover .portfolio-image { transform: scale(1.018); }
