@@ -1,9 +1,10 @@
 import { Component, ElementRef } from '@angular/core';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

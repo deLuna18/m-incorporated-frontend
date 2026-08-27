@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  color: #111;
+  background: #fff;
+}
+
+// The original static page used an inline observer to add `.show`. Angular
+// does not execute that template script, so keep the page content visible.
+:host .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+// The About template is a legacy standalone page. These overrides bring its
+// public content into the same 1552px visible-width system as Home: a 1680px
+// wrapper retains the existing 64px desktop gutters.
+:host main > section > .mx-auto.max-w-\[1440px\] {
+  max-width: 1680px !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+:host main > section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+:host main > section .mt-10,
+:host main > section .mt-11,
+:host main > section .mt-12 {
+  margin-top: 1.5rem !important;
+}
+
+@media (min-width: 992px) {
+  :host main > section > .mx-auto.max-w-\[1440px\] {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+:host main .text-muted {
+  color: #403b35 !important;
+}
+
+:host main .text-champagne {
+  color: #74522d !important;
+}
+
+:host main .bg-champagne {
+  background-color: #80603b !important;
+}
+
+:host main .bg-ink .text-champagne {
+  color: #e8d5ae !important;
+}
+
+:host main .bg-ink [class*='text-white/'] {
+  color: rgba(255, 255, 255, .88) !important;
+}
+
+:host main .bg-ink h1,
+:host main .bg-ink h2,
+:host main .bg-ink h3,
+:host main .bg-ink p,
+:host main .bg-ink span {
+  color: #fff;
+}
+
+:host .global-reach-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 992px) {
+  :host .global-reach-layout {
+    grid-template-columns: .8fr 1.2fr;
+    align-items: start;
+  }
+}
+
+:host .global-reach-section .market-row {
+  min-height: 0;
+  padding: .75rem 1.25rem !important;
+  border-bottom: 1px solid #d4d4d4;
+  background: rgba(255, 255, 255, .62);
+}
+
+:host .global-reach-section .market-row:first-child {
+  border-top: 1px solid #d4d4d4;
+}
+
+:host .global-reach-section .market-row:hover {
+  padding-left: 1.5rem !important;
+  background: #fff;
+}
+
+:host .global-reach-section .market-row .font-serif {
+  font-size: 1.75rem;
+}
+
+@media (max-width: 575px) {
+  :host main > section > .mx-auto.max-w-\[1440px\] {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}

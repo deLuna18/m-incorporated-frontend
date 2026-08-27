@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 type DropdownName = 'category' | 'location';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

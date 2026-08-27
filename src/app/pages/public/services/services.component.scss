@@ -8,6 +8,35 @@
   overflow: hidden;
 }
 
+// Match the Home page: 1680px layout wrappers with 64px desktop gutters
+// create a consistent 1552px visible content width. Compact the editorial
+// spacing so the page reads as an agency service overview rather than a stack
+// of oversized landing-page panels.
+.services-page main > section > div {
+  padding-top: 2.75rem !important;
+  padding-bottom: 2.75rem !important;
+}
+
+.services-page .service-hero-media {
+  min-height: 420px !important;
+}
+
+.services-page .service-card {
+  min-height: 255px !important;
+}
+
+.services-page main > section.bg-black {
+  padding: .75rem 0;
+  background: #fff;
+}
+
+.services-page main > section.bg-black > div {
+  max-width: 1552px !important;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #000;
+}
+
 .services-page .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -25,7 +54,7 @@
 }
 
 .services-page .service-card {
-  min-height: 330px;
+  min-height: 255px;
   border-color: #d3d1cb;
   border-radius: 16px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, .035);
@@ -79,14 +108,55 @@
   color: rgba(255, 255, 255, .72);
 }
 
+// A signature Services-page treatment: the agency desk is a staggered,
+// numbered service index rather than a conventional uniform card grid.
+.agency-service-index {
+  align-items: start;
+}
+
+.agency-service-index .service-card {
+  position: relative;
+  min-height: 255px !important;
+  border: 0;
+  border-top: 2px solid #000;
+  border-radius: 0;
+  background: #f5f4f1;
+  box-shadow: none;
+}
+
+.agency-service-index .service-card::after {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.1rem;
+  content: 'M / INC';
+  color: rgba(0, 0, 0, .35);
+  font-size: .48rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+}
+
+@media (min-width: 1200px) {
+  .agency-service-index .service-card:nth-child(even) {
+    margin-top: 2rem;
+  }
+}
+
+.agency-service-index .service-card:hover {
+  background: #000;
+  box-shadow: none;
+  transform: translateY(-4px);
+}
+
+.agency-service-index .service-card:hover::after {
+  color: rgba(255, 255, 255, .5);
+}
+
 .services-page .process-number {
   color: transparent;
   -webkit-text-stroke: 1px rgba(0, 0, 0, .22);
 }
 
-.services-page section.bg-black:first-of-type {
-  margin-top: 1rem;
-}
+.services-page section.bg-black:first-of-type { margin-top: 0; }
 
 .services-footer a {
   transition: color .2s ease, opacity .2s ease;
@@ -100,6 +170,15 @@
 @media (max-width: 640px) {
   .service-hero-media {
     border-radius: 52px 14px 14px;
+  }
+
+  .services-page main > section > div {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .services-page .service-hero-media {
+    min-height: 320px !important;
   }
 }
 

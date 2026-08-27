@@ -144,8 +144,21 @@
 
 @media (min-width: 992px) {
   :host main > section:not(:first-child) > .mx-auto {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+// The archive has many consecutive editorial chapters.  A restrained rhythm
+// prevents the page from feeling like a collection of disconnected posters.
+:host .gallery-page > main > section:not(:first-child) > .mx-auto {
+  row-gap: 2rem;
+}
+
+@media (max-width: 575px) {
+  :host main > section:not(:first-child) > .mx-auto {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 

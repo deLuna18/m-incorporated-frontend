@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss'
 })

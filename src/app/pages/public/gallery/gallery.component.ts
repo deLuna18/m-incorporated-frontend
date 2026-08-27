@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

@@ -46,3 +46,26 @@
   justify-content: flex-start;
   gap: 2.25rem;
 }
+
+// Align the directory's pacing with the compact Home sections.
+:host main > section:first-child > .mx-auto {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+:host main > section:nth-child(3) {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+:host #emptyState {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+@media (max-width: 575px) {
+  :host main > section:first-child > .mx-auto {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}

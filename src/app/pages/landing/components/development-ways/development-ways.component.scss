@@ -152,15 +152,17 @@
         }
     }
 
+    // Smooth scrolling for better animation experience
+    & {
+        scroll-behavior: smooth;
+    }
+
     // Responsive adjustments
     @media (max-width: 768px) {
         .timeline-item {
             transform: translateY(15%);
         }
     }
-
-    // Smooth scrolling for better animation experience
-    scroll-behavior: smooth;
 }
 
 // Global styles for the component

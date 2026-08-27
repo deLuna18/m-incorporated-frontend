@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-models',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './models.component.html',
   styleUrl: './models.component.scss'
 })

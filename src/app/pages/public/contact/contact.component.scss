@@ -3,13 +3,13 @@
 .field:focus { border-color: #000; box-shadow: 0 0 0 1px #000; }
 
 .contact-page-content {
-  max-width: 1440px;
+  max-width: 1680px;
 }
 
 .contact-layout {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
-  gap: clamp(3.5rem, 8vw, 6.5rem);
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: start;
 }
 

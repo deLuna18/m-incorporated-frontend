@@ -47,26 +47,49 @@ app-booking .text-gold {
 }
 
 /* Public-facing pages use a consistent, readable scale for utility-based copy. */
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[7px]'] {
+/* Shared public-page foundation.  Home establishes the visual language; these
+   rules keep the route-specific templates on the same type, colour, and
+   gutter system without coupling them to dashboard styles. */
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) {
+    display: block;
+    min-width: 0;
+    color: #000;
+    background: #fff;
+    font-family: Inter, sans-serif;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) header > .mx-auto,
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) footer > .mx-auto.max-w-\[1440px\] {
+    max-width: 1680px !important;
+}
+
+/* Public routes now render the shared topbar. Hide legacy in-template headers
+   while their page-specific markup is retired, preventing duplicate navigation. */
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) > header,
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) > div > header {
+    display: none;
+}
+
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[7px]'] {
     font-size: .5rem !important;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[8px]'] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[8px]'] {
     font-size: .5625rem !important;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[9px]'] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[9px]'] {
     font-size: .625rem !important;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[10px]'] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[10px]'] {
     font-size: .6875rem !important;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[11px]'] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[11px]'] {
     font-size: .75rem !important;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact) [class~='text-[12px]'] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[12px]'] {
     font-size: .8125rem !important;
 }

@@ -15,6 +15,7 @@ import { BookingComponent } from './app/pages/public/booking/booking.component';
 import { GalleryComponent } from './app/pages/public/gallery/gallery.component';
 import { ContactComponent } from './app/pages/public/contact/contact.component';
 import { ServicesComponent } from './app/pages/public/services/services.component';
+import { AboutComponent } from './app/pages/public/about/about.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ export const appRoutes: Routes = [
     { path: 'gallery', component: GalleryComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'services', component: ServicesComponent },
+    { path: 'about', component: AboutComponent },
     { path: 'landing', component: Landing },
     { path: 'get-started-widget', component: GetStartedWidget },
     { path: 'login', component: Login, canActivate: [loginGuard] },

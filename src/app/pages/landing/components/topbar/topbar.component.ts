@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { StyleClassModule } from 'primeng/styleclass';
 import { Router, RouterModule } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
@@ -14,28 +14,18 @@ import { CommonModule } from '@angular/common';
 })
 export class TopbarWidget {
     navLinks = [
-        { label: 'HOME', fragment: 'hero-widget' },
-        { label: 'MODELS', fragment: 'models' },
-        { label: 'SERVICES', fragment: 'services-widget' },
-        { label: 'ABOUT', fragment: 'about-widget' },
-        { label: 'GALLERY', fragment: 'gallery' },
-        { label: 'JOURNAL', fragment: 'projects-widget' },
-        { label: 'CONTACT', fragment: 'contact-us-widget' }
+        { label: 'HOME', path: '/' },
+        { label: 'MODELS', path: '/models' },
+        { label: 'SERVICES', path: '/services' },
+        { label: 'ABOUT', path: '/about' },
+        { label: 'GALLERY', path: '/gallery' },
+        { label: 'JOURNAL', path: '/#journal' },
+        { label: 'CONTACT', path: '/contact' }
     ];
 
-    activeFragment: string = 'hero-widget';
     isMobileMenuOpen: boolean = false;
 
     constructor(public router: Router) {}
-
-    @HostListener('window:scroll', ['$event'])
-    onScroll() {
-        this.updateActiveFragment();
-    }
-
-    ngOnInit() {
-        this.updateActiveFragment();
-    }
 
     toggleMobileMenu() {
         this.isMobileMenuOpen = !this.isMobileMenuOpen;
@@ -47,47 +37,17 @@ export class TopbarWidget {
         }
     }
 
-    updateActiveFragment() {
-        const scrollPosition = window.scrollY + 150;
-
-        for (const link of this.navLinks) {
-            const element = document.getElementById(link.fragment);
-            if (element) {
-                const offsetTop = element.offsetTop;
-                const offsetBottom = offsetTop + element.offsetHeight;
-
-                if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-                    this.activeFragment = link.fragment;
-                    break;
-                }
-            }
-        }
-    }
-
-    scrollToSection(fragment: string): void {
-        if (fragment === 'models' || fragment === 'gallery') {
-            this.router.navigate([`/${fragment}`]);
-            return;
-        }
-        const element = document.getElementById(fragment);
-        if (element) {
-            const topbarHeight = 100;
-            const targetPosition = element.offsetTop - topbarHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-
-            this.activeFragment = fragment;
-        }
+    navigate(path: string): void {
+        this.router.navigateByUrl(path);
+        this.isMobileMenuOpen = false;
+        document.body.style.overflow = '';
     }
 
     bookAModel(): void {
         this.router.navigate(['/booking']);
     }
 
-    isActive(fragment: string): boolean {
-        return this.activeFragment === fragment;
+    isActive(path: string): boolean {
+        return path === '/' ? this.router.url === '/' : this.router.url.startsWith(path);
     }
 }

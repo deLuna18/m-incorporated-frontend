@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 interface Model {
   slug: string;
@@ -12,7 +13,7 @@ interface Model {
 @Component({
   selector: 'app-model-profile',
   standalone: true,
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './model-profile.component.html',
   styleUrl: './model-profile.component.scss'
 })

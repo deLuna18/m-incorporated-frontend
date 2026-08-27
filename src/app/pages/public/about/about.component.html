@@ -1,1 +1,525 @@
-<p>about works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About M Incorporated</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif']
+          },
+          colors: {
+            ink: '#000000',
+            muted: '#000000',
+            champagne: '#000000',
+            line: '#000000',
+            ivory: '#FFFFFF'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background:#fff; color:#111; }
+    img { display:block; width:100%; max-width:100%; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .75s ease, transform .75s ease; }
+    .reveal.show { opacity:1; transform:translateY(0); }
+    .portrait img { transition:transform .75s cubic-bezier(.2,.7,.2,1); }
+    .portrait:hover img { transform:scale(1.035); }
+    .market-row { transition:background-color .25s ease, padding-left .25s ease; }
+    .market-row:hover { background:#F7F5F1; padding-left:14px; }
+    .number-outline { color:transparent; -webkit-text-stroke:1px rgba(0,0,0,.25); }
+
+    /* Monochrome theme: black and white only */
+    .bg-ink .text-champagne,
+    .bg-ink .text-muted {
+      color: #FFFFFF !important;
+    }
+
+    .bg-ink .number-outline {
+      -webkit-text-stroke-color: rgba(255,255,255,.35);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur">
+  <div class="mx-auto flex h-[88px] max-w-[1680px] items-center justify-between px-5 sm:px-8 lg:px-14 xl:px-16">
+    <a href="/" class="flex shrink-0 flex-col items-center leading-none">
+      <span class="mb-[-2px] text-[14px] text-champagne">♛</span>
+      <span class="font-serif text-[46px] font-medium leading-[.68] tracking-[-.05em]">M</span>
+      <span class="mt-2 text-[8px] font-medium tracking-[.34em] text-muted">INCORPORATED</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 text-[11px] font-semibold tracking-[.16em] xl:flex">
+      <a href="/" class="transition hover:text-champagne">HOME</a>
+      <a href="/models" class="transition hover:text-champagne">MODELS</a>
+      <a href="/services" class="transition hover:text-champagne">SERVICES</a>
+      <a href="/about" class="text-champagne">ABOUT</a>
+      <a href="/gallery" class="transition hover:text-champagne">GALLERY</a>
+      <a href="/#journal" class="transition hover:text-champagne">JOURNAL</a>
+      <a href="/contact" class="transition hover:text-champagne">CONTACT</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="/booking" class="hidden rounded-full bg-ink px-6 py-3.5 text-[9px] font-medium tracking-[.18em] text-white transition hover:bg-champagne sm:inline-flex">
+        BOOK A MODEL <span class="ml-5">→</span>
+      </a>
+      <button type="button" class="grid h-10 w-10 place-items-center xl:hidden" aria-label="Toggle navigation" [attr.aria-expanded]="menuOpen" aria-controls="mobileMenu" (click)="toggleMenu()">
+        <span class="relative block h-3 w-5">
+          <span class="absolute left-0 top-0 h-px w-5 bg-ink"></span>
+          <span class="absolute bottom-0 left-0 h-px w-5 bg-ink"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="bg-white px-5 pb-7 pt-2 sm:px-8 xl:hidden" [class.hidden]="!menuOpen">
+    <div class="grid gap-4 text-[12px] font-medium tracking-[.16em]">
+      <a href="/">HOME</a>
+      <a href="/models">MODELS</a>
+      <a href="/services">SERVICES</a>
+      <a href="/about" class="text-champagne">ABOUT</a>
+      <a href="/gallery">GALLERY</a>
+      <a href="/#journal">JOURNAL</a>
+      <a href="/contact">CONTACT</a>
+      <a href="/booking" class="mt-2 w-max bg-ink px-5 py-3 text-white">BOOK A MODEL</a>
+    </div>
+  </div>
+</header>
+
+<topbar-widget></topbar-widget>
+<main>
+
+<section class="mx-auto max-w-[1440px] px-5 pb-10 pt-6 sm:px-8 lg:px-14 lg:pb-14 lg:pt-9 xl:px-16">
+  <div class="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-center">
+    <div class="reveal max-w-[590px]">
+      <p class="text-[10px] font-medium tracking-[.27em] text-champagne">ABOUT M INCORPORATED</p>
+      <h1 class="mt-5 font-serif text-[65px] font-medium leading-[.88] tracking-[-.05em] sm:text-[82px] lg:text-[94px]">
+        More than<br>representation.
+      </h1>
+      <p class="mt-6 max-w-[490px] text-[14px] font-light leading-7 text-muted">
+        We represent distinctive talent with clarity, care, and long-term vision — connecting people, brands, and creative teams across fashion, commercial, and digital work.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#story" class="bg-ink px-6 py-4 text-[9px] font-medium tracking-[.18em] text-white transition hover:bg-champagne">OUR STORY →</a>
+        <a href="models.html" class="border border-ink px-6 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">EXPLORE MODELS →</a>
+      </div>
+    </div>
+
+    <div class="reveal grid min-h-[520px] grid-cols-[1.18fr_.82fr] gap-3 lg:min-h-[545px]">
+      <div class="portrait overflow-hidden bg-ivory">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1100&q=90" alt="M Incorporated represented model" class="h-full w-full object-cover">
+      </div>
+      <div class="grid grid-rows-[1fr_auto] gap-3">
+        <div class="portrait overflow-hidden bg-ivory">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=850&q=90" alt="M Incorporated male model" class="h-full w-full object-cover">
+        </div>
+        <div class="bg-ink p-6 text-white sm:p-7">
+          <p class="text-[8px] tracking-[.22em] text-champagne">OUR POINT OF VIEW</p>
+          <p class="mt-4 font-serif text-[30px] leading-[1.02] sm:text-[35px]">Individual voices.<br>Intentional careers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="bg-ivory">
+  <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-14 lg:py-20 xl:px-16">
+
+    <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-[10px] font-medium tracking-[.27em] text-champagne">OUR STORY</p>
+        <h2 class="mt-4 max-w-[700px] font-serif text-[50px] leading-[.94] sm:text-[62px]">
+          Built around people,<br>
+          not simply portfolios.
+        </h2>
+      </div>
+
+      <p class="max-w-[430px] text-[12px] font-light leading-6 text-muted">
+        M Incorporated was created to make representation feel more personal, considered, and connected — for both talent and clients.
+      </p>
+    </div>
+
+    <div class="mt-11 grid gap-4 md:grid-cols-3">
+
+      <!-- CARD 1 -->
+      <article class="reveal group relative min-h-[360px] overflow-hidden bg-white p-7 shadow-[0_14px_40px_rgba(17,17,17,.04)] transition duration-300 hover:-translate-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[9px] font-medium tracking-[.2em] text-champagne">01 · TALENT</span>
+          <span class="font-serif text-[28px] text-black/20">M</span>
+        </div>
+
+        <div class="mt-20">
+          <h3 class="font-serif text-[33px] leading-[1.02]">
+            Individual careers,<br>
+            not one formula.
+          </h3>
+
+          <p class="mt-5 max-w-[330px] text-[11px] font-light leading-6 text-muted">
+            Development and representation are shaped around each model's identity, ambitions, strengths, and long-term market potential.
+          </p>
+        </div>
+
+        <div class="absolute bottom-0 left-0 h-[3px] w-0 bg-champagne transition-all duration-500 group-hover:w-full"></div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="reveal group relative min-h-[360px] overflow-hidden bg-ink p-7 text-white shadow-[0_14px_40px_rgba(17,17,17,.08)] transition duration-300 hover:-translate-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[9px] font-medium tracking-[.2em] text-champagne">02 · CLIENTS</span>
+          <span class="font-serif text-[28px] text-white/20">M</span>
+        </div>
+
+        <div class="mt-20">
+          <h3 class="font-serif text-[33px] leading-[1.02]">
+            Casting with<br>
+            purpose.
+          </h3>
+
+          <p class="mt-5 max-w-[330px] text-[11px] font-light leading-6 text-white/55">
+            A curated roster and experienced team help match the right talent to the right brief, market, and creative direction.
+          </p>
+        </div>
+
+        <div class="absolute bottom-0 left-0 h-[3px] w-0 bg-champagne transition-all duration-500 group-hover:w-full"></div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="reveal group relative min-h-[360px] overflow-hidden bg-white p-7 shadow-[0_14px_40px_rgba(17,17,17,.04)] transition duration-300 hover:-translate-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[9px] font-medium tracking-[.2em] text-champagne">03 · PARTNERSHIP</span>
+          <span class="font-serif text-[28px] text-black/20">M</span>
+        </div>
+
+        <div class="mt-20">
+          <h3 class="font-serif text-[33px] leading-[1.02]">
+            Relationships<br>
+            built to last.
+          </h3>
+
+          <p class="mt-5 max-w-[330px] text-[11px] font-light leading-6 text-muted">
+            Clear communication, honest guidance, and long-term collaboration across every stage of representation and booking.
+          </p>
+        </div>
+
+        <div class="absolute bottom-0 left-0 h-[3px] w-0 bg-champagne transition-all duration-500 group-hover:w-full"></div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="philosophy" class="bg-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+    <div class="reveal grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+      <div class="relative min-h-[560px] overflow-hidden bg-ivory lg:min-h-[680px]">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1300&q=90" alt="Editorial fashion portrait" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute bottom-5 left-5 bg-white/95 px-5 py-4 backdrop-blur">
+          <p class="text-[8px] tracking-[.2em] text-champagne">M / PHILOSOPHY</p>
+          <p class="mt-1 font-serif text-[27px]">Presence over sameness.</p>
+        </div>
+      </div>
+
+      <div class="lg:pl-8">
+        <p class="text-[10px] font-medium tracking-[.26em] text-champagne">OUR PHILOSOPHY</p>
+        <h2 class="mt-4 max-w-[600px] font-serif text-[54px] leading-[.92] sm:text-[68px]">We look for presence, not a template.</h2>
+        <p class="mt-6 max-w-[530px] text-[13px] font-light leading-7 text-muted">
+          Great talent is not defined by one look. We value individuality, professionalism, adaptability, and the ability to communicate something memorable in front of a camera, on a runway, or through digital media.
+        </p>
+
+        <div class="mt-10 grid gap-7 sm:grid-cols-2">
+          <div>
+            <span class="number-outline font-serif text-[48px]">01</span>
+            <h3 class="mt-2 font-serif text-[27px]">Intentional Development</h3>
+            <p class="mt-2 text-[11px] leading-6 text-muted">Portfolio direction, positioning, and opportunities tailored to each model.</p>
+          </div>
+          <div>
+            <span class="number-outline font-serif text-[48px]">02</span>
+            <h3 class="mt-2 font-serif text-[27px]">Thoughtful Casting</h3>
+            <p class="mt-2 text-[11px] leading-6 text-muted">Talent recommendations shaped around the project rather than generic availability.</p>
+          </div>
+          <div>
+            <span class="number-outline font-serif text-[48px]">03</span>
+            <h3 class="mt-2 font-serif text-[27px]">Clear Representation</h3>
+            <p class="mt-2 text-[11px] leading-6 text-muted">Reliable communication, transparent coordination, and professional management.</p>
+          </div>
+          <div>
+            <span class="number-outline font-serif text-[48px]">04</span>
+            <h3 class="mt-2 font-serif text-[27px]">Long-Term Vision</h3>
+            <p class="mt-2 text-[11px] leading-6 text-muted">We build careers through consistency, direction, and sustainable opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-ink text-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-14 xl:px-16">
+    <div class="reveal grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
+      <div><p class="font-serif text-[55px] leading-none sm:text-[67px]">25+</p><p class="mt-3 text-[8px] tracking-[.22em] text-white/50">YEARS OF EXPERIENCE</p></div>
+      <div><p class="font-serif text-[55px] leading-none sm:text-[67px]">500+</p><p class="mt-3 text-[8px] tracking-[.22em] text-white/50">TALENT REPRESENTED</p></div>
+      <div><p class="font-serif text-[55px] leading-none sm:text-[67px]">30+</p><p class="mt-3 text-[8px] tracking-[.22em] text-white/50">ACTIVE MARKETS</p></div>
+      <div><p class="font-serif text-[55px] leading-none sm:text-[67px]">1K+</p><p class="mt-3 text-[8px] tracking-[.22em] text-white/50">BOOKINGS & PROJECTS</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+    <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-[10px] font-medium tracking-[.26em] text-champagne">WHAT WE DO</p>
+        <h2 class="mt-3 max-w-[680px] font-serif text-[53px] leading-[.94] sm:text-[67px]">Representation from first look to final booking.</h2>
+      </div>
+      <a href="services.html" class="w-max text-[9px] font-medium tracking-[.18em]">EXPLORE SERVICES →</a>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <article class="reveal group relative flex min-h-[320px] flex-col justify-between border border-black bg-white p-7 transition duration-300 hover:bg-black hover:text-white">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-medium tracking-[.2em]">01</span>
+            <span class="text-[15px] transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </div>
+          <h3 class="mt-12 font-serif text-[31px] leading-[1.03]">Scouting &<br>Development</h3>
+          <p class="mt-5 text-[11px] font-light leading-6 opacity-65">
+            Discovering talent and shaping portfolios, positioning, and market readiness.
+          </p>
+        </div>
+        <div class="mt-8 h-px w-full bg-current opacity-20"></div>
+      </article>
+
+      <article class="reveal group relative flex min-h-[320px] flex-col justify-between border border-black bg-white p-7 transition duration-300 hover:bg-black hover:text-white">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-medium tracking-[.2em]">02</span>
+            <span class="text-[15px] transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </div>
+          <h3 class="mt-12 font-serif text-[31px] leading-[1.03]">Management &<br>Representation</h3>
+          <p class="mt-5 text-[11px] font-light leading-6 opacity-65">
+            Strategic career guidance, negotiation, coordination, and long-term representation.
+          </p>
+        </div>
+        <div class="mt-8 h-px w-full bg-current opacity-20"></div>
+      </article>
+
+      <article class="reveal group relative flex min-h-[320px] flex-col justify-between border border-black bg-white p-7 transition duration-300 hover:bg-black hover:text-white">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-medium tracking-[.2em]">03</span>
+            <span class="text-[15px] transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </div>
+          <h3 class="mt-12 font-serif text-[31px] leading-[1.03]">Bookings &<br>Placements</h3>
+          <p class="mt-5 text-[11px] font-light leading-6 opacity-65">
+            Editorial, commercial, campaign, runway, e-commerce, and digital talent bookings.
+          </p>
+        </div>
+        <div class="mt-8 h-px w-full bg-current opacity-20"></div>
+      </article>
+
+      <article class="reveal group relative flex min-h-[320px] flex-col justify-between border border-black bg-white p-7 transition duration-300 hover:bg-black hover:text-white">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-medium tracking-[.2em]">04</span>
+            <span class="text-[15px] transition-transform duration-300 group-hover:translate-x-1">↗</span>
+          </div>
+          <h3 class="mt-12 font-serif text-[31px] leading-[1.03]">Travel &<br>Logistics</h3>
+          <p class="mt-5 text-[11px] font-light leading-6 opacity-65">
+            International scheduling, travel support, accommodation, and production coordination.
+          </p>
+        </div>
+        <div class="mt-8 h-px w-full bg-current opacity-20"></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="global-reach-section bg-ivory">
+  <div class="global-reach-layout mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+      <div class="reveal lg:sticky lg:top-[120px] lg:self-start">
+        <p class="text-[10px] font-medium tracking-[.26em] text-champagne">GLOBAL REACH</p>
+        <h2 class="mt-3 max-w-[520px] font-serif text-[54px] leading-[.93] sm:text-[68px]">International reach. Personal management.</h2>
+        <div class="mt-6 max-w-[470px] space-y-5 text-[12px] font-light leading-6 text-muted">
+          <p>
+            M Incorporated works across established fashion capitals and growing creative markets, connecting talent with agencies, brands, photographers, producers, and casting teams around the world.
+          </p>
+
+          <p>
+            Our booking and development teams work closely with trusted partners in each market, creating a clear path from introduction to placement.
+          </p>
+
+          <p>
+            We balance international opportunity with personal guidance, so every placement supports the model's long-term direction.
+          </p>
+
+          <p>
+            Wherever a project takes place, our role is to make the process considered, responsive and professionally managed.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">01</span><span class="font-serif text-[32px]">New York</span></div><span class="text-[9px] tracking-[.16em] text-muted">USA</span></div>
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">02</span><span class="font-serif text-[32px]">London</span></div><span class="text-[9px] tracking-[.16em] text-muted">UNITED KINGDOM</span></div>
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">03</span><span class="font-serif text-[32px]">Paris</span></div><span class="text-[9px] tracking-[.16em] text-muted">FRANCE</span></div>
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">04</span><span class="font-serif text-[32px]">Milan</span></div><span class="text-[9px] tracking-[.16em] text-muted">ITALY</span></div>
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">05</span><span class="font-serif text-[32px]">Seoul</span></div><span class="text-[9px] tracking-[.16em] text-muted">SOUTH KOREA</span></div>
+        <div class="market-row flex items-center justify-between py-5"><div class="flex items-center gap-5"><span class="text-[9px] tracking-[.16em] text-champagne">06</span><span class="font-serif text-[32px]">Tokyo</span></div><span class="text-[9px] tracking-[.16em] text-muted">JAPAN</span></div>
+      </div>
+    </div>
+</section>
+
+<section class="bg-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24 xl:px-16">
+    <div class="reveal grid gap-8 lg:grid-cols-[.72fr_1.28fr]">
+      <div>
+        <p class="text-[10px] font-medium tracking-[.26em] text-champagne">THE PEOPLE BEHIND M</p>
+        <h2 class="mt-3 max-w-[430px] font-serif text-[52px] leading-[.93] sm:text-[64px]">Experienced eyes. Human relationships.</h2>
+      </div>
+      <p class="max-w-[650px] text-[13px] font-light leading-7 text-muted lg:pt-8">
+        Our team brings together experience across talent management, casting, development, production, and client services. The structure is intentionally collaborative — giving both talent and clients direct access to people who understand the work.
+      </p>
+    </div>
+
+    <div class="mt-11 grid gap-x-3 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="reveal group">
+        <div class="portrait aspect-[3/4] overflow-hidden bg-ivory"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=850&q=90" alt="Agency director" class="h-full w-full object-cover"></div>
+        <h3 class="mt-4 font-serif text-[26px] leading-none">Alexander Moreau</h3><p class="mt-2 text-[8px] tracking-[.18em] text-muted">MANAGING DIRECTOR</p>
+      </article>
+      <article class="reveal group">
+        <div class="portrait aspect-[3/4] overflow-hidden bg-ivory"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=850&q=90" alt="Head of talent" class="h-full w-full object-cover"></div>
+        <h3 class="mt-4 font-serif text-[26px] leading-none">Isabelle Laurent</h3><p class="mt-2 text-[8px] tracking-[.18em] text-muted">HEAD OF TALENT</p>
+      </article>
+      <article class="reveal group">
+        <div class="portrait aspect-[3/4] overflow-hidden bg-ivory"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=850&q=90" alt="Booking director" class="h-full w-full object-cover"></div>
+        <h3 class="mt-4 font-serif text-[26px] leading-none">Daniel Hart</h3><p class="mt-2 text-[8px] tracking-[.18em] text-muted">BOOKING DIRECTOR</p>
+      </article>
+      <article class="reveal group">
+        <div class="portrait aspect-[3/4] overflow-hidden bg-ivory"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=850&q=90" alt="Creative partnerships lead" class="h-full w-full object-cover"></div>
+        <h3 class="mt-4 font-serif text-[26px] leading-none">Camille Rossi</h3><p class="mt-2 text-[8px] tracking-[.18em] text-muted">CREATIVE PARTNERSHIPS</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bg-ink text-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-20 xl:px-16">
+    <div class="reveal grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
+      <div>
+        <p class="text-[10px] tracking-[.25em] text-champagne">SELECTED CLIENTS</p>
+        <h2 class="mt-3 max-w-[470px] font-serif text-[48px] leading-[.96] sm:text-[58px]">Trusted by creative teams across the industry.</h2>
+      </div>
+      <div class="grid grid-cols-2 gap-y-8 text-[13px] tracking-[.14em] text-white/65 sm:grid-cols-3 lg:pt-4">
+        <span>VOGUE</span><span>DIOR</span><span>CHANEL</span><span>NIKE</span><span>ZARA</span><span>L'ORÉAL</span><span>ELLE</span><span>GQ</span><span>ADIDAS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-14 lg:py-28 xl:px-16">
+    <div class="reveal grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+      <div>
+        <p class="text-[10px] font-medium tracking-[.26em] text-champagne">WORK WITH M</p>
+        <h2 class="mt-4 max-w-[800px] font-serif text-[56px] leading-[.93] sm:text-[72px]">The right partnership starts with the right conversation.</h2>
+      </div>
+      <div class="lg:justify-self-end">
+        <p class="max-w-[360px] text-[12px] font-light leading-6 text-muted">
+          Looking for talent, representation, or a creative partnership? Explore our roster or send us your project brief.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="models.html" class="border border-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] transition hover:bg-ink hover:text-white">EXPLORE MODELS</a>
+          <a href="booking.html" class="bg-ink px-5 py-4 text-[9px] font-medium tracking-[.18em] text-white transition hover:bg-champagne">START AN INQUIRY</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-ivory">
+  <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-14 xl:px-16">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_.8fr_.8fr_.8fr]">
+      <div>
+        <a href="index.html" class="inline-flex flex-col items-start">
+          <span class="font-serif text-[58px] leading-none">M</span>
+          <span class="mt-1 text-[8px] tracking-[.32em] text-muted">INCORPORATED</span>
+        </a>
+        <p class="mt-5 max-w-[320px] text-[12px] font-light leading-6 text-muted">
+          Model management, representation, and creative partnerships across fashion, commercial, and digital markets.
+        </p>
+      </div>
+      <div>
+        <p class="text-[9px] font-medium tracking-[.2em] text-champagne">EXPLORE</p>
+        <div class="mt-4 grid gap-3 text-[11px]">
+          <a href="models.html">Models</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="journal.html">Journal</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-[9px] font-medium tracking-[.2em] text-champagne">AGENCY</p>
+        <div class="mt-4 grid gap-3 text-[11px]">
+          <a href="about.html">About</a><a href="contact.html">Contact</a><a href="booking.html">Book a Model</a><a href="#">Become a Model</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-[9px] font-medium tracking-[.2em] text-champagne">FOLLOW</p>
+        <div class="mt-4 grid gap-3 text-[11px]">
+          <a href="#">Instagram ↗</a><a href="#">TikTok ↗</a><a href="#">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 text-[9px] tracking-[.14em] text-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 M INCORPORATED. ALL RIGHTS RESERVED.</p>
+      <p>PRIVACY · TERMS</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+  const fallbackImages = [
+    'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  ];
+
+  document.querySelectorAll('img').forEach((img, index) => {
+    img.addEventListener('error', () => {
+      if (!img.dataset.fallbackUsed) {
+        img.dataset.fallbackUsed = '1';
+        img.src = fallbackImages[index % fallbackImages.length];
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,13 +1,14 @@
-<div class="topbar">
+<header class="topbar">
+    <div class="topbar-content">
     <!-- Logo -->
-    <a class="brand-mark" (click)="scrollToSection('hero-widget')" aria-label="M Incorporated home">
+    <a class="brand-mark" (click)="navigate('/')" aria-label="M Incorporated home">
         <span class="crown">♛</span><span class="brand-letter">M</span><span>INCORPORATED</span><small>MODEL MANAGEMENT</small>
     </a>
 
     <nav class="menu-container" aria-label="Primary navigation">
         <ul class="nav-list">
             <li *ngFor="let link of navLinks">
-                <button (click)="scrollToSection(link.fragment)" [class.active]="isActive(link.fragment)">
+                <button (click)="navigate(link.path)" [class.active]="isActive(link.path)">
                     {{ link.label }}
                 </button>
             </li>
@@ -19,7 +20,8 @@
         </button>
         <button type="button" class="book-button" (click)="bookAModel()">BOOK A MODEL <span>→</span></button>
     </div>
-</div>
+    </div>
+</header>
 
 <!-- Mobile Menu (Overlay) -->
 <div class="mobile-menu" [class.show]="isMobileMenuOpen">
@@ -34,11 +36,11 @@
         <ul class="mobile-nav-list">
             <li *ngFor="let link of navLinks">
                 <button
-                    (click)="scrollToSection(link.fragment); toggleMobileMenu()"
+                    (click)="navigate(link.path)"
                     class="w-full text-left px-6 py-4 text-lg font-medium transition-all duration-300"
                     [ngClass]="{
-                        'text-[#F2CE00] font-semibold bg-gray-100': isActive(link.fragment),
-                        'text-[#585858]': !isActive(link.fragment)
+                        'text-[#111] font-semibold bg-gray-100': isActive(link.path),
+                        'text-[#585858]': !isActive(link.path)
                     }"
                 >
                     <span>{{ link.label }}</span>

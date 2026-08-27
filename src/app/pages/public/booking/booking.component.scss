@@ -8,3 +8,28 @@ input[type='date']::-webkit-calendar-picker-indicator { cursor: pointer; opacity
 .field:focus { border-color: #111; }
 .model-image { transition: opacity .25s ease, transform .6s ease; }
 .selected-model:hover .model-image { transform: scale(1.015); }
+
+// Keep the long form deliberately calm, while matching Home's tighter rhythm.
+:host main > section:first-child > .mx-auto {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+:host main > section:nth-child(2) {
+  padding-bottom: 3.5rem !important;
+}
+
+:host #bookingForm {
+  gap: 2.25rem !important;
+}
+
+@media (max-width: 575px) {
+  :host main > section:first-child > .mx-auto {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  :host main > section:nth-child(2) {
+    padding-bottom: 2.5rem !important;
+  }
+}

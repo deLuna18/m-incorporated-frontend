@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-services',
-  imports: [],
+  imports: [TopbarWidget],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
