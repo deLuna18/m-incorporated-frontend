@@ -17,6 +17,37 @@ h6 {
   text-shadow: 0 1px 5px rgba(0, 0, 0, .65);
 }
 
+.featured-model-card {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.featured-model-card:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, .18);
+  transform: translateY(-3px);
+}
+
+.clients-section,
+.clients-section h2 {
+  color: #fff;
+}
+
+.clients-grid {
+  position: relative;
+  overflow: hidden;
+}
+
+.clients-grid::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 28%;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .12), transparent);
+  transform: translateX(-150%);
+  animation: client-sheen 6s ease-in-out infinite;
+}
+
 .services-dark h2,
 .services-dark h3 {
   color: #000;
@@ -226,6 +257,10 @@ h6 {
   animation: client-reveal 560ms cubic-bezier(.22, 1, .36, 1) forwards;
 }
 
+.clients-section.is-visible .clients-grid > div {
+  animation: client-reveal 560ms cubic-bezier(.22, 1, .36, 1) forwards, client-logo-pulse 3.6s ease-in-out 800ms infinite;
+}
+
 .clients-section.is-visible .clients-grid > div:nth-child(1) { animation-delay: 100ms; }
 .clients-section.is-visible .clients-grid > div:nth-child(2) { animation-delay: 160ms; }
 .clients-section.is-visible .clients-grid > div:nth-child(3) { animation-delay: 220ms; }
@@ -240,6 +275,16 @@ h6 {
   }
 }
 
+@keyframes client-sheen {
+  0%, 55% { transform: translateX(-150%); }
+  75%, 100% { transform: translateX(460%); }
+}
+
+@keyframes client-logo-pulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .clients-heading,
   .clients-grid > div {
@@ -249,6 +294,10 @@ h6 {
 
   .clients-section.is-visible .clients-heading,
   .clients-section.is-visible .clients-grid > div {
+    animation: none;
+  }
+
+  .clients-grid::after {
     animation: none;
   }
 }

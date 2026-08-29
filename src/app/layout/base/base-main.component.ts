@@ -19,11 +19,11 @@ export abstract class BaseMainComponent {
     userPayload: IUserPayload = <IUserPayload>{};
 
     constructor() {
-        let _payload = this.jwtHelper.decodeToken(localStorage.getItem('access_token') || '');
-        if (_payload) {
-            this.userPayload.name = _payload.name || '';
-            (this.userPayload.role = _payload.role || ''), (this.userPayload.sub = _payload.sub || '');
-            this.userPayload.username = _payload.username || '';
-        }
+        const payload = this.jwtHelper.decodeToken(localStorage.getItem('access_token') || '');
+        const storedUser = JSON.parse(localStorage.getItem('logged_user') || '{}');
+        this.userPayload.name = payload?.name || storedUser.name || 'Moderator';
+        this.userPayload.role = payload?.role || storedUser.role || 0;
+        this.userPayload.sub = payload?.sub || storedUser.id || '';
+        this.userPayload.username = payload?.username || storedUser.username || '';
     }
 }

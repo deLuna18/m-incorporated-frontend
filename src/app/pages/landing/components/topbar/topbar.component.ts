@@ -19,7 +19,7 @@ export class TopbarWidget {
         { label: 'SERVICES', path: '/services' },
         { label: 'ABOUT', path: '/about' },
         { label: 'GALLERY', path: '/gallery' },
-        { label: 'JOURNAL', path: '/#journal' },
+        { label: 'BLOG', path: '/blog' },
         { label: 'CONTACT', path: '/contact' }
     ];
 

@@ -27,36 +27,40 @@ export class AppMenu extends BaseMainComponent implements OnInit {
         }
         this.model = [
             {
-                label: 'Home',
-                items: [
-                    {
-                        label: 'Dashboard',
-                        icon: 'pi pi-fw pi-home',
-                        routerLink: ['/dashboard'],
-                        visible: this.fnValidRouteValidator('Dashboard')
-                    }
-                ]
+                label: 'Dashboard',
+                icon: 'pi pi-fw pi-home',
+                routerLink: ['/admin/dashboard'],
+                visible: this.fnValidRouteValidator('Dashboard')
             },
             {
-                label: 'General Settings',
-                items: [
-                    { label: 'Sample', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/sample'], visible: this.fnValidRouteValidator('Sample') },
-                    { label: 'Type of Procurement', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/type-of-procurement'], visible: this.fnValidRouteValidator('Type of Procurement') },
-                    { label: 'Type of Supplies', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/type-of-supplies'], visible: this.fnValidRouteValidator('Type of Supplies') },
-                    { label: 'Source of Fund', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/source-of-fund'], visible: this.fnValidRouteValidator('Source of Fund') },
-                    { label: 'Mode of Procurement', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/mode-of-procurement'], visible: this.fnValidRouteValidator('Mode of Procurement') },
-                    { label: 'Physical Count Management', icon: 'pi pi-fw pi-home', routerLink: ['/general-settings/physical-count-management'], visible: this.fnValidRouteValidator('Physical Count Management') }
-                ].filter((item) => item.visible)
+                label: 'Model Management',
+                icon: 'pi pi-fw pi-users',
+                routerLink: ['/admin/models'],
+                visible: this.fnValidRouteValidator('Model Management')
+            },
+            {
+                label: 'Gallery Management',
+                icon: 'pi pi-fw pi-images',
+                routerLink: ['/admin/gallery'],
+                visible: this.fnValidRouteValidator('Gallery Management')
+            },
+            {
+                label: 'Customer Enquiries',
+                icon: 'pi pi-fw pi-envelope',
+                routerLink: ['/admin/enquiries'],
+                visible: this.fnValidRouteValidator('Customer Enquiries')
+            },
+            {
+                label: 'User Management',
+                icon: 'pi pi-fw pi-user',
+                routerLink: ['/admin/users'],
+                visible: this.fnValidRouteValidator('User Management')
             }
         ];
 
         this.model = this.model
-            .map((menu) => ({
-                ...menu,
-                command: () => menu.items?.map((item) => (item.state = { label: item.label, payload: this.loginApiService.getPayload() })),
-                items: menu.items?.filter((item) => item.visible) ?? []
-            }))
-            .filter((menu) => menu.items.length > 0);
+            .filter((item) => item.visible)
+            .map((item) => ({ ...item, command: () => (item.state = { label: item.label, payload: this.loginApiService.getPayload() }) }));
     }
 
     constructor(

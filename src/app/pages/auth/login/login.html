@@ -21,8 +21,8 @@
                             />
                         </g>
                     </svg>
-                    <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Welcome to PrimeLand!</div>
-                    <span class="text-muted-color font-medium">Sign in to continue</span>
+                    <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Moderator Portal</div>
+                    <span class="text-muted-color font-medium">Sign in to manage M-Incorporated</span>
                 </div>
 
                 <div>
@@ -40,7 +40,9 @@
                         <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
                     </div> -->
                     <div class="flex items-center justify-between mt-2 mb-8 gap-8"></div>
-                    <p-button label="Sign In" styleClass="w-full" (click)="onLogin()"></p-button>
+                    <p-button label="Sign in to Admin" styleClass="w-full" (click)="onLogin()"></p-button>
+                    <p class="text-red-500 text-sm mt-4 mb-0" *ngIf="loginError">{{ loginError }}</p>
+                    <p class="mb-0 mt-4 text-center text-sm text-muted-color">Demo access: <strong>demo</strong> / <strong>demo</strong></p>
                 </div>
                 <hr />
                 <div *ngIf="logging">

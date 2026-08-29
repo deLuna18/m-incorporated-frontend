@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ApiMainEndpointService } from '../main.api.service';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { UserTypes } from '../../enums/user-types';
 
 @Injectable({
     providedIn: 'root'
@@ -73,10 +74,31 @@ export class LoginApiService {
         });
     }
 
+    loginWithDemoAccount() {
+        const demoUser: User = {
+            id: 'demo-moderator',
+            name: 'Demo Moderator',
+            type: UserTypes.Administrator,
+            role: UserTypes.Administrator,
+            level: 1,
+            username: 'demo'
+        };
+        const payload = {
+            sub: demoUser.id,
+            role: String(UserTypes.Administrator),
+            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24
+        };
+        const accessToken = `demo.${btoa(JSON.stringify(payload))}.session`;
+
+        this.loggedinUser = demoUser;
+        localStorage.setItem('logged_user', JSON.stringify(demoUser));
+        localStorage.setItem('access_token', accessToken);
+    }
+
     onLogout() {
         localStorage.removeItem('access_token');
         this.loggedinUser = <User>{};
-        this.router.navigate(['login']);
+        this.router.navigate(['admin/login']);
     }
 
     getPayload() {

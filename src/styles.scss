@@ -50,7 +50,7 @@ app-booking .text-gold {
 /* Shared public-page foundation.  Home establishes the visual language; these
    rules keep the route-specific templates on the same type, colour, and
    gutter system without coupling them to dashboard styles. */
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) {
     display: block;
     min-width: 0;
     color: #000;
@@ -58,16 +58,29 @@ app-booking .text-gold {
     font-family: Inter, sans-serif;
 }
 
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) header > .mx-auto,
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) footer > .mx-auto.max-w-\[1440px\] {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) header > .mx-auto,
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) footer > .mx-auto.max-w-\[1440px\] {
     max-width: 1680px !important;
 }
 
 /* Public routes now render the shared topbar. Hide legacy in-template headers
    while their page-specific markup is retired, preventing duplicate navigation. */
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) > header,
-:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) > div > header {
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) > header,
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) > div > header {
     display: none;
+}
+
+/* Keep the Blog opening content aligned with the Home hero baseline. */
+app-blog > main > section:first-child > div,
+app-blog-article > main > section:first-child {
+    padding-top: 1.5rem !important;
+}
+
+@media (min-width: 1024px) {
+    app-blog > main > section:first-child > div,
+    app-blog-article > main > section:first-child {
+        padding-top: 2rem !important;
+    }
 }
 
 :is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[7px]'] {

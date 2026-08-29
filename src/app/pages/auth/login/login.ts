@@ -12,6 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CommonModule } from '@angular/common';
+import { UserTypes } from '../../../enums/user-types';
 
 @Component({
     selector: 'app-login',
@@ -28,6 +29,8 @@ export class Login implements OnInit {
     form: FormGroup = <FormGroup>{};
 
     logging: boolean = false;
+
+    loginError = '';
 
     username1: string = localStorage.getItem('username') || '';
 
@@ -82,20 +85,38 @@ export class Login implements OnInit {
 
     async onLogin() {
         this.logging = true;
+        this.loginError = '';
 
         const _payload = {
             username: this.username.value,
             password: this.password.value
         };
 
+        if (this.username.value === 'demo' && this.password.value === 'demo') {
+            this.loginApiService.loginWithDemoAccount();
+            this.router.navigate(['/admin/dashboard']);
+            this.logging = false;
+            return;
+        }
+
         setTimeout(() => {
             this.loginApiService.onLogin(_payload).then(
                 (res) => {
-                    this.router.navigate(['']);
+                    const loggedUser = JSON.parse(localStorage.getItem('logged_user') || '{}');
+                    if (Number(loggedUser.type) !== UserTypes.Administrator) {
+                        localStorage.removeItem('access_token');
+                        localStorage.removeItem('logged_user');
+                        this.loginError = 'This portal is available to moderator accounts only.';
+                        this.logging = false;
+                        return;
+                    }
+
+                    this.router.navigate(['/admin/dashboard']);
                     this.logging = false;
                 },
                 (rej) => {
                     // this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong!' });
+                    this.loginError = 'Your username or password is incorrect.';
                     this.logging = false;
                 }
             );

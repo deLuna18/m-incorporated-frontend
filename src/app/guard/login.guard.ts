@@ -7,6 +7,6 @@ export const loginGuard: CanActivateFn = (route, state) => {
 
     const loggedIn = loginApiService.isLoggedIn();
 
-    if (loggedIn) return createUrlTreeFromSnapshot(route, ['']);
+    if (loggedIn) return createUrlTreeFromSnapshot(route, ['/admin/dashboard']);
     return true;
 };
