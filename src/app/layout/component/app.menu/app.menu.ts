@@ -51,10 +51,34 @@ export class AppMenu extends BaseMainComponent implements OnInit {
                 visible: this.fnValidRouteValidator('Customer Enquiries')
             },
             {
-                label: 'User Management',
-                icon: 'pi pi-fw pi-user',
-                routerLink: ['/admin/users'],
-                visible: this.fnValidRouteValidator('User Management')
+                label: 'Blog & News Management',
+                icon: 'pi pi-fw pi-book',
+                visible: true,
+                routerLink: ['/admin/blog']
+            },
+            {
+                label: 'Booking Inquiry Management',
+                icon: 'pi pi-fw pi-calendar',
+                visible: true,
+                routerLink: ['/admin/booking-inquiries']
+            },
+            {
+                label: 'Model Portfolio & Video',
+                icon: 'pi pi-fw pi-images',
+                visible: true,
+                routerLink: ['/admin/model-portfolios']
+            },
+            {
+                label: 'Media Library',
+                icon: 'pi pi-fw pi-folder-open',
+                visible: true,
+                routerLink: ['/admin/media-library']
+            },
+            {
+                label: 'General Settings',
+                icon: 'pi pi-fw pi-cog',
+                visible: true,
+                routerLink: ['/admin/settings']
             }
         ];
 

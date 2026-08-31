@@ -23,6 +23,12 @@ import { EnquiriesComponent } from './app/pages/enquiries/enquiries.component';
 import { UserManagementComponent } from './app/pages/user-management/user-management.component';
 import { BlogComponent } from './app/pages/public/blog/blog.component';
 import { BlogArticleComponent } from './app/pages/public/blog/blog-article.component';
+import { BlogManagementComponent } from './app/pages/blog-management/blog-management.component';
+import { PageManagementComponent } from './app/pages/page-management/page-management.component';
+import { BookingInquiryManagementComponent } from './app/pages/booking-inquiry-management/booking-inquiry-management.component';
+import { ModelPortfolioManagementComponent } from './app/pages/model-portfolio-management/model-portfolio-management.component';
+import { MediaLibraryComponent } from './app/pages/media-library/media-library.component';
+import { GeneralSettingsComponent } from './app/pages/general-settings/general-settings.component';
 import { PublicLayoutComponent } from './app/shared-component/public-layout/public-layout.component';
 
 export const appRoutes: Routes = [
@@ -56,6 +62,12 @@ export const appRoutes: Routes = [
             { path: 'gallery', component: GalleryManagementComponent },
             { path: 'enquiries', component: EnquiriesComponent },
             { path: 'users', component: UserManagementComponent },
+            { path: 'blog', component: BlogManagementComponent },
+            { path: 'pages', component: PageManagementComponent },
+            { path: 'booking-inquiries', component: BookingInquiryManagementComponent },
+            { path: 'model-portfolios', component: ModelPortfolioManagementComponent },
+            { path: 'media-library', component: MediaLibraryComponent },
+            { path: 'settings', component: GeneralSettingsComponent },
             { path: 'uikit', loadChildren: () => import('./app/pages/uikit/uikit.routes').then((m) => m.default) },
             { path: 'documentation', component: Documentation },
             { path: 'general-settings', loadChildren: () => import('./app/pages/pages.routes').then((m) => m.default) }
