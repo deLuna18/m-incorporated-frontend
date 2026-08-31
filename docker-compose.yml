@@ -1,0 +1,23 @@
+# Deployment compose file for the M Incorporated frontend.
+services:
+  m-incorporated-frontend:
+    image: "jmgboptimalengineering/m-incorporated-frontend:main"
+    container_name: m-incorporated-frontend
+    ports:
+      - "4189:80"
+    restart: unless-stopped
+    # Nginx serving a static Angular build needs little memory.
+    mem_limit: 128m
+    mem_reservation: 64m
+    cpus: "0.5"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    networks:
+      - general_network
+
+networks:
+  general_network:
+    external: true

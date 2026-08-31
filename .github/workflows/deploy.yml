@@ -1,0 +1,88 @@
+name: M Incorporated Frontend CI/CD
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: m-incorporated-frontend-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "20"
+  DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/m-incorporated-frontend
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  docker:
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      image-tag: ${{ steps.vars.outputs.short-sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: vars
+        run: echo "short-sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.DOCKER_IMAGE }}:${{ steps.vars.outputs.short-sha }}
+            ${{ env.DOCKER_IMAGE }}:main
+          build-args: BUILD_CONFIG=production
+          cache-from: type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache
+          cache-to: type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache,mode=max
+          platforms: linux/amd64
+
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: ${{ vars.DEPLOY_ENV || 'production' }}
+    steps:
+      - uses: appleboy/ssh-action@v1.2.0
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DEPLOY_DIR: ${{ vars.MINCORPORATED_FRONTEND_DEPLOY_DIR || 'deployment-scripts/m-incorporated/m-incorporated-frontend' }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ vars.SSH_PORT || '22' }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN,DEPLOY_DIR
+          script: |
+            set -euo pipefail
+            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            cd "$DEPLOY_DIR"
+            docker compose pull m-incorporated-frontend
+            docker compose up -d --no-deps --force-recreate m-incorporated-frontend
+            for i in $(seq 1 12); do
+              STATUS=$(docker inspect --format='{{.State.Health.Status}}' m-incorporated-frontend 2>/dev/null || echo unknown)
+              [ "$STATUS" = healthy ] && exit 0
+              sleep 5
+            done
+            docker compose logs --tail 50 m-incorporated-frontend
+            exit 1
