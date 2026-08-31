@@ -1,5 +1,28 @@
+# Docker
 Dockerfile
+docker-compose*.yml
 .dockerignore
+
+# Dependencies and build cache
 node_modules
-npm-debug.log
+.angular
 dist
+
+# Version control
+.git
+.gitignore
+.github
+
+# IDE and editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment and secrets
+.env
+.env.*
+
+# Documentation and misc
+*.md
+LICENSE
