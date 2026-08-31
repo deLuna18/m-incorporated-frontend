@@ -1,205 +1,112 @@
 :host {
   display: block;
   background: #fff;
-  color: #000;
+  color: var(--public-heading);
 }
 
-.services-page {
-  overflow: hidden;
-}
+.services-page { overflow: hidden; }
 
-// Match the Home page: 1680px layout wrappers with 64px desktop gutters
-// create a consistent 1552px visible content width. Compact the editorial
-// spacing so the page reads as an agency service overview rather than a stack
-// of oversized landing-page panels.
-.services-page main > section > div {
-  padding-top: 2.75rem !important;
-  padding-bottom: 2.75rem !important;
+// The whitespace lives at the end of each editorial chapter, avoiding doubled
+// gaps where white sections meet while retaining clear section separation.
+.services-page main > section:first-child > div {
+  padding-top: 3.75rem !important;
+  padding-bottom: 5.25rem !important;
+}
+.services-page main > section:nth-child(2) > div {
+  padding-top: 0 !important;
+  padding-bottom: 5.25rem !important;
+}
+.services-page main > section:nth-child(4) > div {
+  padding-top: 4.75rem !important;
+  padding-bottom: 5.25rem !important;
+}
+.services-page main > section:nth-child(5) > div {
+  padding-top: 0 !important;
+  padding-bottom: 5.25rem !important;
 }
 
 .services-page .service-hero-media {
-  min-height: 420px !important;
+  min-height: 400px !important;
+  border-radius: 8px;
 }
 
-.services-page .service-card {
-  min-height: 255px !important;
-}
-
-.services-page main > section.bg-black {
-  padding: .75rem 0;
-  background: #f5f4f1;
-}
-
-.services-page main > section.bg-black > div {
-  max-width: 1680px !important;
-  width: calc(100% - 2.5rem);
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #000;
-}
+.services-page main > section.bg-black { padding: 0; background: #000; }
+.services-page main > section.bg-black > div { max-width: 1680px !important; border-radius: 0; background: #000; }
 
 .services-page .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1);
+  transform: translateY(14px);
+  transition: opacity .45s cubic-bezier(.22, 1, .36, 1), transform .45s cubic-bezier(.22, 1, .36, 1);
 }
+.services-page .reveal.show { opacity: 1; transform: translateY(0); }
 
-.services-page .reveal.show {
-  opacity: 1;
-  transform: translateY(0);
+.agency-service-index .service-card {
+  display: flex;
+  min-height: 242px;
+  flex-direction: column;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--public-heading);
 }
-
-.service-hero-media {
-  border-radius: 96px 18px 18px 18px;
-  box-shadow: 0 20px 44px rgba(0, 0, 0, .08);
+.agency-service-index .service-rule {
+  display: block;
+  width: 100%;
+  margin: 1.05rem 0 auto;
+  border-top: 1px solid var(--public-heading);
 }
-
-.services-page .service-card {
-  min-height: 255px;
-  border-color: #d3d1cb;
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, .035);
-  transition: transform .28s ease, background-color .28s ease, color .28s ease, box-shadow .28s ease;
-}
-
-.services-page .service-card:hover {
-  box-shadow: 0 17px 36px rgba(0, 0, 0, .12);
-  transform: translateY(-5px);
-}
-
-.services-page section.bg-black {
-  position: relative;
-  color: #fff;
-}
-
-// Tailwind's opacity utilities can be overridden by the app's shared styles.
-// Keep every level of copy legible against the Services page's black panels.
-.services-page section.bg-black h2,
-.services-page section.bg-black h3,
-.services-page section.bg-black p:not(.text-black),
-.services-page section.bg-black span:not(.text-black),
-.services-page section.bg-black a:not(.text-black) {
-  color: #fff;
-}
-
-.services-page section.bg-black [class*='text-white/'] {
-  color: rgba(255, 255, 255, .72) !important;
-}
-
-.services-page section.bg-black .text-black {
-  color: #000 !important;
-}
-
-.services-page .service-card {
-  color: #000;
-}
+.agency-service-index .service-card > div { width: 100%; max-width: 270px; padding-top: 2rem; }
+.agency-service-index .service-card h3 { min-height: 3.15rem; }
 
 .services-page .service-card .muted,
 .services-page .text-black\/55,
-.services-page .text-black\/60 {
-  color: rgba(0, 0, 0, .62);
-}
+.services-page .text-black\/60 { color: var(--public-muted); }
 
-.services-page .service-card:hover {
-  background: #000;
-  color: #fff;
-}
+.services-page section.bg-black h2,
+.services-page section.bg-black h3 { color: var(--public-on-dark); }
+.services-page section.bg-black p:not(.text-black),
+.services-page section.bg-black span:not(.text-black),
+.services-page section.bg-black a:not(.text-black),
+.services-page section.bg-black [class*='text-white/'] { color: var(--public-on-dark-body) !important; }
+.services-page section.bg-black .text-black { color: var(--public-heading) !important; }
 
-.services-page .service-card:hover .muted {
-  color: rgba(255, 255, 255, .72);
-}
+.services-page .process-number { color: var(--public-subtle); -webkit-text-stroke: 0; }
 
-// A signature Services-page treatment: the agency desk is a staggered,
-// numbered service index rather than a conventional uniform card grid.
-.agency-service-index {
-  align-items: start;
-}
-
-.agency-service-index .service-card {
-  position: relative;
-  min-height: 255px !important;
-  border: 0;
-  border-top: 2px solid #000;
-  border-radius: 0;
-  background: #fff;
-  box-shadow: none;
-}
-
-.agency-service-index .service-card::after {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1.1rem;
-  content: 'M / INC';
-  color: rgba(0, 0, 0, .35);
-  font-size: .48rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-}
-
-@media (min-width: 1200px) {
-  .agency-service-index .service-card:nth-child(even) {
-    margin-top: 2rem;
-  }
-}
+.service-hero-media img,
+.services-page section img { transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+.service-hero-media:hover img,
+.services-page section img:hover { transform: scale(1.02); }
+.services-page a { transition: opacity .3s ease; }
+.services-page a:hover { opacity: .72; }
 
 @media (min-width: 1024px) {
   .services-page main > section.bg-black > div {
     width: calc(100% - 7rem);
+    margin: .75rem auto;
+    border-radius: 8px;
+    padding-top: 3.75rem !important;
+    padding-bottom: 3.75rem !important;
   }
 }
 
-.agency-service-index .service-card:hover {
-  background: #000;
-  box-shadow: none;
-  transform: translateY(-4px);
-}
-
-.agency-service-index .service-card:hover::after {
-  color: rgba(255, 255, 255, .5);
-}
-
-.services-page .process-number {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, .22);
-}
-
-.services-page section.bg-black:first-of-type { margin-top: 0; }
-
-.services-footer a {
-  transition: color .2s ease, opacity .2s ease;
-}
-
-.services-footer a:hover {
-  color: #555;
-  opacity: .8;
+@media (max-width: 1023px) {
+  .services-page main > section:first-child > div { padding-top: 3.25rem !important; padding-bottom: 4rem !important; }
+  .services-page main > section:nth-child(2) > div { padding-top: 0 !important; padding-bottom: 4rem !important; }
+  .services-page main > section:nth-child(4) > div { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  .services-page main > section:nth-child(5) > div { padding-top: 0 !important; padding-bottom: 4rem !important; }
 }
 
 @media (max-width: 640px) {
-  .service-hero-media {
-    border-radius: 52px 14px 14px;
-  }
-
-  .services-page main > section > div {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-  }
-
-  .services-page .service-hero-media {
-    min-height: 320px !important;
-  }
+  .services-page main > section:first-child > div { padding-top: 2.5rem !important; padding-bottom: 3.75rem !important; }
+  .services-page main > section:nth-child(2) > div { padding-top: 0 !important; padding-bottom: 3.75rem !important; }
+  .services-page main > section:nth-child(4) > div { padding-top: 3.75rem !important; padding-bottom: 3.75rem !important; }
+  .services-page main > section:nth-child(5) > div { padding-top: 0 !important; padding-bottom: 3.75rem !important; }
+  .services-page .service-hero-media { min-height: 320px !important; }
+  .agency-service-index .service-card { min-height: 208px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .services-page .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .services-page .service-card,
-  .services-footer a {
-    transition: none;
-  }
+  .services-page .reveal { opacity: 1; transform: none; transition: none; }
+  .service-hero-media img, .services-page section img, .services-page a { transition: none; }
 }

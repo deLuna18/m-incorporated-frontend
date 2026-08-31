@@ -1,6 +1,6 @@
 :host {
   display: block;
-  color: #000;
+  color: var(--public-heading);
 }
 
 :host h1,
@@ -11,13 +11,13 @@
 :host h6,
 :host a,
 :host button {
-  color: #000;
+  color: var(--public-heading);
 }
 
-:host .text-charcoal { color: #222; }
-:host .text-muted { color: #6f6b63; }
-:host .text-gold { color: #000; }
-:host .text-white { color: #fff; }
+:host .text-charcoal { color: var(--public-body); }
+:host .text-muted { color: var(--public-muted); }
+:host .text-gold { color: var(--public-muted); }
+:host .text-white { color: var(--public-on-dark); }
 
 :host .bg-ink h1,
 :host .bg-ink h2,
@@ -25,14 +25,14 @@
 :host .bg-ink h4,
 :host .bg-ink h5,
 :host .bg-ink h6 {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 .portfolio-image { transition: transform .65s ease; }
 .portfolio-item:hover .portfolio-image { transform: scale(1.018); }
 
 /* Keep profile photography and data presentation quiet and editorial. */
-:host #measurements { gap: 1.75rem 2.5rem; }
+:host #measurements { gap: 1.25rem 2.5rem; }
 :host #measurements p:first-child { font-size: .625rem !important; }
 :host #measurements p:last-child { font-family: Inter, sans-serif; }
 :host [data-profile-image] { object-fit: cover; }
@@ -42,37 +42,53 @@
 :host #relatedModels h3 { font-size: 1rem !important; font-weight: 500; }
 :host #relatedModels [class~='text-[7px]'] { font-size: .625rem !important; }
 
-:host main > section#portfolio,
-:host main > section:nth-of-type(4),
-:host main > section:nth-of-type(5) {
-  padding-top: 2.75rem !important;
-  padding-bottom: 2.75rem !important;
+// Major whitespace is assigned once at the start of each chapter so adjacent
+// sections do not double their padding and interrupt the editorial rhythm.
+:host main > section#portfolio {
+  padding-top: 5.75rem !important;
+  padding-bottom: 0 !important;
 }
 
-@media (min-width: 1024px) {
+:host main > section#portfolio + section {
+  padding-top: 5.75rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host main > section#portfolio + section + section {
+  padding-top: 5.75rem !important;
+  padding-bottom: 5.25rem !important;
+}
+
+:host main > section.bg-ink > .mx-auto {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+@media (max-width: 1023px) {
   :host main > section#portfolio,
-  :host main > section#portfolio + section,
-  :host main > section#portfolio + section + section {
-    padding-top: 5.5rem !important;
-    padding-bottom: 5.5rem !important;
+  :host main > section#portfolio + section {
+    padding-top: 4.75rem !important;
   }
 
-  :host main > section.bg-ink > .mx-auto {
-    padding-top: 4.5rem !important;
+  :host main > section#portfolio + section + section {
+    padding-top: 4.75rem !important;
     padding-bottom: 4.5rem !important;
   }
 }
 
-:host main > section.bg-ink > .mx-auto {
-  padding-top: 2.75rem !important;
-  padding-bottom: 2.75rem !important;
-}
-
 @media (max-width: 575px) {
   :host main > section#portfolio,
-  :host main > section:nth-of-type(4),
-  :host main > section:nth-of-type(5) {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+  :host main > section#portfolio + section {
+    padding-top: 3.75rem !important;
+  }
+
+  :host main > section#portfolio + section + section {
+    padding-top: 3.75rem !important;
+    padding-bottom: 3.75rem !important;
+  }
+
+  :host main > section.bg-ink > .mx-auto {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
   }
 }

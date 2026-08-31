@@ -1,11 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
-import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
-import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

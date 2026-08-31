@@ -23,19 +23,24 @@ import { EnquiriesComponent } from './app/pages/enquiries/enquiries.component';
 import { UserManagementComponent } from './app/pages/user-management/user-management.component';
 import { BlogComponent } from './app/pages/public/blog/blog.component';
 import { BlogArticleComponent } from './app/pages/public/blog/blog-article.component';
+import { PublicLayoutComponent } from './app/shared-component/public-layout/public-layout.component';
 
 export const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'home', redirectTo: '', pathMatch: 'full' },
-    { path: 'models', component: ModelsComponent },
-    { path: 'model-profile', component: ModelProfileComponent },
-    { path: 'booking', component: BookingComponent },
-    { path: 'gallery', component: GalleryComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: 'services', component: ServicesComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'blog', component: BlogComponent },
-    { path: 'blog/:slug', component: BlogArticleComponent },
+    {
+        path: '', component: PublicLayoutComponent, children: [
+            { path: '', component: HomeComponent },
+            { path: 'home', redirectTo: '', pathMatch: 'full' },
+            { path: 'models', component: ModelsComponent },
+            { path: 'model-profile', component: ModelProfileComponent },
+            { path: 'booking', component: BookingComponent },
+            { path: 'gallery', component: GalleryComponent },
+            { path: 'contact', component: ContactComponent },
+            { path: 'services', component: ServicesComponent },
+            { path: 'about', component: AboutComponent },
+            { path: 'blog', component: BlogComponent },
+            { path: 'blog/:slug', component: BlogArticleComponent }
+        ]
+    },
     { path: 'landing', component: Landing },
     { path: 'get-started-widget', component: GetStartedWidget },
     { path: 'login', redirectTo: 'admin/login', pathMatch: 'full' },

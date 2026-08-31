@@ -1,13 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
-import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 type DropdownName = 'category' | 'location';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

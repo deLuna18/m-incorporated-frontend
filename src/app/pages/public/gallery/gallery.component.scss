@@ -1,6 +1,6 @@
 :host {
   display: block;
-  color: #000;
+  color: var(--public-heading);
   background: #fff;
   min-height: 100vh;
 }
@@ -15,17 +15,17 @@
 :host h6,
 :host a,
 :host button {
-  color: #000;
+  color: var(--public-heading);
 }
 
 // Preserve the page's intentional contrast treatment over dark media.
-:host .text-white { color: #fff; }
+:host .text-white { color: var(--public-on-dark); }
 :host .text-muted,
 :host .text-champagne,
-:host .text-gold { color: #000; }
+:host .text-gold { color: var(--public-muted); }
 :host .bg-ivory,
 :host [class*="bg-[#F7F5F1]"] { background-color: #fff; }
-:host .border-line { border-color: #000; }
+:host .border-line { border-color: var(--public-border); }
 
 // Dark editorial blocks need their labels and supporting copy to remain legible.
 :host .bg-ink .text-muted,
@@ -34,12 +34,12 @@
 :host [class~='bg-[#111]'] .text-muted,
 :host [class~='bg-[#111]'] .text-champagne,
 :host [class~='bg-[#111]'] [class*='text-white/'] {
-  color: rgba(255, 255, 255, .72) !important;
+  color: var(--public-on-dark-body) !important;
 }
 
 :host .bg-ink .text-white,
 :host [class~='bg-[#111]'] .text-white {
-  color: #fff !important;
+  color: var(--public-on-dark) !important;
 }
 
 :host .gallery-page .reveal.show {
@@ -48,7 +48,7 @@
 
 :host .gallery-page img,
 :host .gallery-page video {
-  color: #111;
+  color: var(--public-heading);
 }
 
 .credits-panel {
@@ -57,12 +57,12 @@
 }
 
 .credits-panel h2 {
-  color: #000;
+  color: var(--public-heading);
 }
 
 .credit-brand-grid {
-  border-top: 1px solid #d4d4d4;
-  border-left: 1px solid #d4d4d4;
+  border-top: 1px solid var(--public-border);
+  border-left: 1px solid var(--public-border);
 }
 
 .credit-brand-grid span {
@@ -70,19 +70,19 @@
   min-height: 62px;
   align-items: center;
   padding: .75rem 1rem;
-  border-right: 1px solid #d4d4d4;
-  border-bottom: 1px solid #d4d4d4;
-  color: #222;
+  border-right: 1px solid var(--public-border);
+  border-bottom: 1px solid var(--public-border);
+  color: var(--public-body);
   transition: color .2s ease, background-color .2s ease;
 }
 
 .credit-brand-grid span:hover {
-  color: #fff;
+  color: var(--public-on-dark);
   background: #000;
 }
 
 .credits-stats {
-  border-top: 1px solid #d4d4d4;
+  border-top: 1px solid var(--public-border);
 }
 
 .credits-stats > div {
@@ -98,7 +98,7 @@
 }
 
 .gallery-footer a:hover {
-  color: #555;
+  color: var(--public-body);
   opacity: .78;
 }
 
@@ -121,14 +121,14 @@
 
 .feed-post > span {
   z-index: 1;
-  color: #fff;
+  color: var(--public-on-dark);
   font-weight: 600;
   text-shadow: 0 1px 4px rgba(0, 0, 0, .52);
 }
 
 @media (min-width: 576px) {
   .credits-stats > div:not(:first-child) {
-    border-left: 1px solid #d4d4d4;
+    border-left: 1px solid var(--public-border);
   }
 }
 
@@ -155,11 +155,78 @@
   row-gap: 2rem;
 }
 
+// The archive is edited down to a small number of deliberate chapters. These
+// rules assign each transition once, avoiding the doubled vertical padding of
+// the legacy long-form layout.
+:host .gallery-page #archive > .mx-auto {
+  padding-top: 3.5rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .archive-grid-section > .mx-auto {
+  padding-top: 1.75rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .editorial-feature > .mx-auto {
+  padding-top: 5.75rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .behind-archive > .mx-auto,
+:host .gallery-page .featured-archive > .mx-auto {
+  padding-top: 5.25rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .offsite-archive > .mx-auto {
+  padding-top: 5rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .archive-redundant { display: none; }
+:host .gallery-page .archive-story-metrics { display: none; }
+
+:host .gallery-page .archive-metrics {
+  padding-top: 4.5rem !important;
+  padding-bottom: 0 !important;
+}
+
+:host .gallery-page .archive-metrics .credits-panel {
+  padding: 2rem !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+:host .gallery-page .archive-metrics .credits-panel > .reveal:first-child { display: none; }
+:host .gallery-page .archive-metrics .credits-stats { margin-top: 0 !important; }
+
+:host .gallery-page .gallery-final-cta > .mx-auto {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+:host .gallery-page .editorial-feature .mt-8,
+:host .gallery-page .featured-archive .mt-10 { margin-top: 1.5rem !important; }
+
 @media (max-width: 575px) {
   :host main > section:not(:first-child) > .mx-auto {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
+
+  :host .gallery-page #archive > .mx-auto,
+  :host .gallery-page .editorial-feature > .mx-auto,
+  :host .gallery-page .behind-archive > .mx-auto,
+  :host .gallery-page .featured-archive > .mx-auto,
+  :host .gallery-page .offsite-archive > .mx-auto {
+    padding-top: 3.75rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  :host .gallery-page .archive-grid-section > .mx-auto { padding-top: 1.5rem !important; }
+  :host .gallery-page .archive-metrics { padding-top: 3.75rem !important; }
+  :host .gallery-page .gallery-final-cta > .mx-auto { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,10 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
-import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
-import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 @Component({
   selector: 'app-services',
-  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })

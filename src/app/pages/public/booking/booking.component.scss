@@ -1,11 +1,11 @@
-:host { display: block; color: #000; }
-:host h1, :host h2, :host h3, :host h4, :host h5, :host h6, :host a, :host button, :host input, :host select, :host textarea { color: #000; }
-:host .text-charcoal { color: #222; }
-:host .text-muted { color: #6f6b63; }
-:host .text-gold { color: #000; }
-:host .text-white, :host .bg-ink h1, :host .bg-ink h2, :host .bg-ink h3 { color: #fff; }
+:host { display: block; color: var(--public-heading); }
+:host h1, :host h2, :host h3, :host h4, :host h5, :host h6, :host a, :host button, :host input, :host select, :host textarea { color: var(--public-heading); }
+:host .text-charcoal { color: var(--public-body); }
+:host .text-muted { color: var(--public-muted); }
+:host .text-gold { color: var(--public-muted); }
+:host .text-white, :host .bg-ink h1, :host .bg-ink h2, :host .bg-ink h3 { color: var(--public-on-dark); }
 input[type='date']::-webkit-calendar-picker-indicator { cursor: pointer; opacity: .55; }
-.field:focus { border-color: #111; }
+.field:focus { border-color: var(--public-heading); }
 .model-image { transition: opacity .25s ease, transform .6s ease; }
 .selected-model:hover .model-image { transform: scale(1.015); }
 

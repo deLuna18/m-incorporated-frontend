@@ -1,6 +1,6 @@
 :host {
   display: block;
-  color: #111;
+  color: var(--public-heading);
   background: #fff;
 }
 
@@ -23,7 +23,7 @@
 :host main > section .mt-10,
 :host main > section .mt-11,
 :host main > section .mt-12 {
-  margin-top: 1.5rem !important;
+  margin-top: 2rem !important;
 }
 
 @media (min-width: 992px) {
@@ -34,11 +34,11 @@
 }
 
 :host main .text-muted {
-  color: #403b35 !important;
+  color: var(--public-muted) !important;
 }
 
 :host main .text-champagne {
-  color: #74522d !important;
+  color: var(--public-muted) !important;
 }
 
 :host main .bg-champagne {
@@ -46,20 +46,18 @@
 }
 
 :host main .bg-ink .text-champagne {
-  color: #e8d5ae !important;
+  color: var(--public-on-dark-muted) !important;
 }
 
 :host main .bg-ink [class*='text-white/'] {
-  color: rgba(255, 255, 255, .88) !important;
+  color: var(--public-on-dark-body) !important;
 }
 
 :host main .bg-ink h1,
 :host main .bg-ink h2,
-:host main .bg-ink h3,
+:host main .bg-ink h3 { color: var(--public-on-dark); }
 :host main .bg-ink p,
-:host main .bg-ink span {
-  color: #fff;
-}
+:host main .bg-ink span { color: var(--public-on-dark-body); }
 
 :host .global-reach-layout {
   display: grid;
@@ -74,28 +72,105 @@
 }
 
 :host .global-reach-section .market-row {
-  min-height: 0;
-  padding: .75rem 1.25rem !important;
-  border-bottom: 1px solid #d4d4d4;
-  background: rgba(255, 255, 255, .62);
+  min-height: 3.25rem;
+  padding: .5rem 1.25rem !important;
+  border-bottom: 1px solid var(--public-border);
+  background: transparent;
 }
 
 :host .global-reach-section .market-row:first-child {
-  border-top: 1px solid #d4d4d4;
+  border-top: 1px solid var(--public-border);
 }
 
 :host .global-reach-section .market-row:hover {
-  padding-left: 1.5rem !important;
-  background: #fff;
+  padding-left: 1.25rem !important;
+  background: transparent;
 }
 
 :host .global-reach-section .market-row .font-serif {
   font-size: 1.75rem;
 }
 
+:host #story article {
+  min-height: 19rem !important;
+  padding: 2.25rem !important;
+  box-shadow: none !important;
+}
+
+:host #story article .mt-20 { margin-top: 2rem !important; }
+:host #story article:hover { transform: none !important; }
+
+// Give the hero collage and Our Story a single explicit boundary. This avoids
+// stacked utilities creating a visual collision at the section hand-off.
+:host main > section:first-child {
+  position: relative;
+  z-index: 0;
+  margin-bottom: 5.75rem;
+  padding-bottom: 0 !important;
+}
+
+:host main > section#story {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+}
+
+:host main > section#story > .mx-auto {
+  padding-top: 0 !important;
+}
+
+// Establish a single editorial cadence between sections without changing their
+// composition. Each transition owns one gap rather than two stacked paddings.
+@media (min-width: 992px) {
+  :host main > section#philosophy > .mx-auto {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  :host main > section:nth-of-type(5) > .mx-auto,
+  :host main > section:nth-of-type(6) > .mx-auto,
+  :host main > section:nth-of-type(7) > .mx-auto,
+  :host main > section:nth-of-type(8) > .mx-auto {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  :host main > section:nth-of-type(5) > .mx-auto { padding-top: 2.5rem !important; }
+  :host main > section:nth-of-type(5) article {
+    min-height: 16.25rem !important;
+    padding: 2rem !important;
+  }
+
+  :host main > section:nth-of-type(9) > .mx-auto {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  :host footer > .mx-auto {
+    padding-top: 3.75rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
 @media (max-width: 575px) {
+  :host main > section:first-child {
+    margin-bottom: 3.75rem;
+    padding-bottom: 0 !important;
+  }
+  :host main > section#philosophy > .mx-auto {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
   :host main > section > .mx-auto.max-w-\[1440px\] {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  :host main > section#philosophy > .mx-auto {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
   }
 }

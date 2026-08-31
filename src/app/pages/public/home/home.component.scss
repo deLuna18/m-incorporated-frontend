@@ -8,7 +8,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000;
+  color: var(--public-heading);
 }
 
 /* Readable editorial metadata without changing the established type scale of
@@ -33,7 +33,7 @@ h6 {
 
 .featured-model-card h3,
 .featured-model-card p {
-  color: #fff;
+  color: var(--public-on-dark);
   text-shadow: 0 2px 7px rgba(0, 0, 0, .8);
 }
 
@@ -51,7 +51,7 @@ h6 {
 /* Gallery captions are revealed on hover; keep them legible over every image. */
 #gallery a.group:hover > .absolute.bottom-0 h3,
 #gallery a.group:hover > .absolute.bottom-0 p {
-  color: #fff !important;
+  color: var(--public-on-dark) !important;
   text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
 }
 
@@ -62,7 +62,7 @@ h6 {
 
 .clients-section,
 .clients-section h2 {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 .clients-grid {
@@ -83,14 +83,14 @@ h6 {
 
 .services-dark h2,
 .services-dark h3 {
-  color: #000;
+  color: var(--public-heading);
 }
 
 .services-panel {
   width: 100%;
   max-width: 1552px;
   overflow: hidden;
-  border: 1px solid #d4d4d4;
+  border: 1px solid var(--public-border);
   border-radius: 20px;
   background: #fff;
   box-shadow: none;
@@ -150,7 +150,7 @@ h6 {
   gap: 1.75rem;
   padding: 2.5rem;
   border-radius: 16px;
-  color: #000;
+  color: var(--public-heading);
   background: #f7f7f7;
 }
 
@@ -158,18 +158,20 @@ h6 {
   margin-top: 0;
 }
 
-:host .social-copy h2,
-.social-copy .text-gold,
-.social-copy .text-charcoal {
-  color: #000 !important;
+:host .social-copy h2 {
+  color: var(--public-heading) !important;
+}
+
+.social-copy .text-gold {
+  color: var(--public-muted) !important;
 }
 
 .social-copy .text-charcoal {
-  color: #525252 !important;
+  color: var(--public-body) !important;
 }
 
 .social-copy a {
-  color: #000;
+  color: var(--public-heading);
 }
 
 .social-mosaic {
@@ -195,7 +197,7 @@ h6 {
   right: .55rem;
   bottom: .55rem;
   padding: .36rem .48rem;
-  color: #000;
+  color: var(--public-heading);
   background: rgba(255, 255, 255, .92);
   font-size: .45rem;
   font-weight: 700;
@@ -232,15 +234,15 @@ h6 {
 
 .services-dark .text-gold,
 .services-dark .text-charcoal {
-  color: #525252 !important;
+  color: var(--public-muted) !important;
 }
 
 .services-dark .border-line {
-  border-color: #d4d4d4;
+  border-color: var(--public-border);
 }
 
 .services-dark .stroke-gold {
-  stroke: #000 !important;
+  stroke: var(--public-heading) !important;
 }
 
 .hero-portrait {
@@ -273,27 +275,27 @@ h6 {
 }
 
 :host .final-cta h2 {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 :host .final-cta p {
-  color: rgba(255, 255, 255, .88);
+  color: var(--public-on-dark-body);
 }
 
 :host .final-cta .cta-button {
-  color: #000;
+  color: var(--public-heading);
 }
 
 :host .final-cta-simple h2 {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 :host .final-cta-simple p {
-  color: rgba(255, 255, 255, .75);
+  color: var(--public-on-dark-body);
 }
 
 .what-to-send-list > div {
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid var(--public-border);
 }
 
 .clients-heading,

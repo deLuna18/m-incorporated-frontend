@@ -1,6 +1,6 @@
 :host {
   display: block;
-  color: #000;
+  color: var(--public-heading);
 }
 
 :host h1,
@@ -13,32 +13,32 @@
 :host button,
 :host input,
 :host summary {
-  color: #000;
+  color: var(--public-heading);
 }
 
-:host .text-charcoal { color: #222; }
-:host .text-muted { color: #6f6b63; }
-:host .text-gold { color: #000; }
-:host .text-white { color: #fff; }
+:host .text-charcoal { color: var(--public-body); }
+:host .text-muted { color: var(--public-muted); }
+:host .text-gold { color: var(--public-muted); }
+:host .text-white { color: var(--public-on-dark); }
  summary::-webkit-details-marker { display: none; }
  .model-card[hidden] { display: none !important; }
-.filter-tab.is-active { background: #111; border-color: #111; color: #fff; }
+.filter-tab.is-active { background: var(--public-heading); border-color: var(--public-heading); color: var(--public-on-dark); }
 :host .filter-tab.is-active,
 :host #clearFilters:hover {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 :host .directory-cta a {
-  color: #000;
+  color: var(--public-heading);
 }
 
 :host .directory-cta h2,
 :host .directory-cta .text-gold {
-  color: #fff;
+  color: var(--public-on-dark);
 }
 
 :host .directory-cta .text-charcoal {
-  color: rgba(255, 255, 255, .8);
+  color: var(--public-on-dark-body);
 }
 
 // Keep the location and category together beneath each model name.
@@ -47,10 +47,10 @@
   gap: 2.25rem;
 }
 
-:host label:has(#searchInput), :host .directory-dropdown, :host #clearFilters { height: 42px !important; border-color: #d4d4d4 !important; }
+:host label:has(#searchInput), :host .directory-dropdown, :host #clearFilters { height: 42px !important; border-color: var(--public-border) !important; }
 :host .directory-dropdown summary, :host label:has(#searchInput) { padding-left: .85rem !important; padding-right: .85rem !important; }
 :host #categoryTabs { gap: .6rem; }
-:host .filter-tab { min-height: 38px; padding: .55rem .85rem !important; border-color: #d4d4d4 !important; border-radius: 2px; }
+:host .filter-tab { min-height: 38px; padding: .55rem .85rem !important; border-color: var(--public-border) !important; border-radius: 2px; }
 
 :host #modelGrid { gap: 2rem 1.25rem !important; }
 :host .model-card { background: transparent; box-shadow: none; }
@@ -60,7 +60,7 @@
 :host .model-card a > div:last-child > div { font-size: .625rem !important; line-height: 1.45; }
 :host .model-card [class~='text-[7px]'] { font-size: .625rem !important; }
 :host .model-card [class~='text-[8px]'] { font-size: .6875rem !important; }
-:host .model-card .absolute.left-4.top-4 { border: 1px solid #e0e0e0; border-radius: 1px; color: #111 !important; padding: .45rem .55rem !important; }
+:host .model-card .absolute.left-4.top-4 { border: 1px solid var(--public-border); border-radius: 1px; color: var(--public-heading) !important; padding: .45rem .55rem !important; }
 
 // Align the directory's pacing with the compact Home sections.
 :host main > section:first-child > .mx-auto {

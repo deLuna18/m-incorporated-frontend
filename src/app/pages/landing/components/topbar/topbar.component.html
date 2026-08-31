@@ -1,7 +1,7 @@
 <header class="topbar">
     <div class="topbar-content">
     <!-- Logo -->
-    <a class="brand-mark" (click)="navigate('/')" aria-label="M Incorporated home">
+    <a class="brand-mark" routerLink="/" (click)="isMobileMenuOpen = false" aria-label="M Incorporated home">
         <span class="crown">♛</span><span class="brand-letter">M</span><span>INCORPORATED</span><small>MODEL MANAGEMENT</small>
     </a>
 
@@ -15,7 +15,7 @@
         </ul>
     </nav>
     <div class="nav-actions">
-        <button pButton [text]="true" severity="secondary" [rounded]="true" pRipple class="menu-toggle lg:!hidden" (click)="toggleMobileMenu()" aria-label="Open navigation">
+        <button pButton [text]="true" severity="secondary" [rounded]="true" pRipple class="menu-toggle lg:!hidden" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Open navigation">
             <i class="pi pi-bars !text-2xl"></i>
         </button>
         <button type="button" class="book-button" (click)="bookAModel()">BOOK A MODEL <span>→</span></button>

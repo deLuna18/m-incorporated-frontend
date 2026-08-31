@@ -1,15 +1,15 @@
 :host { display: block; }
 .field { transition: border-color 160ms ease, box-shadow 160ms ease; }
-.field:focus { border-color: #000; box-shadow: 0 0 0 1px #000; }
+.field:focus { border-color: var(--public-heading); box-shadow: 0 0 0 1px var(--public-heading); }
 
 .contact-page-content {
-  max-width: 1680px;
+  max-width: 1440px;
 }
 
 .contact-layout {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns: minmax(280px, .3fr) minmax(0, .7fr);
+  gap: clamp(3rem, 5vw, 4.5rem);
   align-items: start;
 }
 
@@ -17,17 +17,22 @@
   padding-top: .55rem;
 }
 
+.form-column {
+  width: 100%;
+  max-width: 900px;
+}
+
 @media (max-width: 575px) {
   .contact-page-content {
     padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 4rem;
   }
 }
 
 @media (max-width: 991px) {
   .contact-layout {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 2.75rem;
   }
 
   .contact-details {

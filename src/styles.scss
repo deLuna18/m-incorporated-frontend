@@ -53,7 +53,7 @@ app-booking .text-gold {
 :is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) {
     display: block;
     min-width: 0;
-    color: #000;
+    color: var(--public-heading, #111111);
     background: #fff;
     font-family: Inter, sans-serif;
 }
@@ -111,4 +111,109 @@ app-blog-article > main > section:first-child {
 
 :is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) [class~='text-[12px]'] {
     font-size: .8125rem !important;
+}
+
+/* Public-only design foundation.  Sakai's dashboard styles remain outside this
+   scope, while public routes receive one container, spacing, typography and
+   control system through app-public-layout. */
+.public-site {
+    --public-heading: #111111;
+    --public-body: #4f4f4f;
+    --public-muted: #767676;
+    --public-subtle: #969696;
+    --public-on-dark: #ffffff;
+    --public-on-dark-body: #c7c7c7;
+    --public-on-dark-muted: #9d9d9d;
+    --public-container: 1380px;
+    --public-gutter-mobile: 20px;
+    --public-gutter-tablet: 32px;
+    --public-gutter-laptop: 48px;
+    --public-gutter-desktop: 64px;
+    --public-section-mobile: 56px;
+    --public-section-tablet: 72px;
+    --public-section-desktop: 88px;
+    --public-border: #e2e2e2;
+    --public-border-dark: rgba(255, 255, 255, .16);
+    --public-black: #0d0d0d;
+    --public-white: #fff;
+    --public-radius-image: 4px;
+    --public-radius-control: 4px;
+    --public-radius-container: 12px;
+    --public-transition: 350ms;
+    min-width: 0;
+    overflow: clip;
+    background: var(--public-white);
+    color: var(--public-heading);
+    font-family: Inter, sans-serif;
+}
+
+.public-site .public-container {
+    width: min(100% - (2 * var(--public-gutter-mobile)), var(--public-container));
+    margin-inline: auto;
+}
+
+.public-site .public-section { padding-block: var(--public-section-mobile); }
+.public-site .public-display,
+.public-site .public-title,
+.public-site .public-heading { color: var(--public-heading); font-family: 'Cormorant Garamond', serif; }
+.public-site .public-eyebrow,
+.public-site .public-meta,
+.public-site .public-button-text { color: var(--public-muted); font-family: Inter, sans-serif; font-size: .625rem; font-weight: 600; letter-spacing: .16em; }
+.public-site .public-body { color: var(--public-body); font-family: Inter, sans-serif; font-size: .875rem; line-height: 1.65; }
+.public-site .public-muted { color: var(--public-muted); }
+.public-site .public-subtle { color: var(--public-subtle); }
+.public-site .public-dark-heading { color: var(--public-on-dark); }
+.public-site .public-dark-body { color: var(--public-on-dark-body); }
+.public-site .public-dark-muted { color: var(--public-on-dark-muted); }
+.public-site .public-button { align-items: center; border-radius: var(--public-radius-control); display: inline-flex; font-family: Inter, sans-serif; font-size: .625rem; font-weight: 600; gap: 1rem; height: 2.875rem; letter-spacing: .15em; padding-inline: 1.5rem; transition: background-color var(--public-transition) ease, color var(--public-transition) ease, border-color var(--public-transition) ease; }
+.public-site .public-button--primary { background: var(--public-black); border: 1px solid var(--public-black); color: var(--public-white); }
+.public-site .public-button--secondary { background: var(--public-white); border: 1px solid var(--public-black); color: var(--public-black); }
+.public-site .public-button--text { border: 0; background: transparent; color: var(--public-black); height: auto; padding: 0; }
+.public-site .public-button:hover { opacity: .76; }
+.public-site .public-control { min-height: 3rem; border: 1px solid var(--public-border); border-radius: var(--public-radius-control); box-shadow: none; }
+.public-site .public-control:focus { border-color: var(--public-black); box-shadow: 0 0 0 1px var(--public-black); outline: 0; }
+.public-site img { border-radius: var(--public-radius-image); box-shadow: none; }
+
+.public-site :is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) main > section.mx-auto,
+.public-site :is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services, app-blog, app-blog-article) main > section > .mx-auto {
+    max-width: var(--public-container) !important;
+}
+
+.public-site input.field,
+.public-site select.field { height: 3rem !important; border-color: var(--public-border) !important; border-radius: var(--public-radius-control) !important; box-shadow: none !important; }
+.public-site textarea.field { min-height: 12rem; border-color: var(--public-border) !important; border-radius: var(--public-radius-control) !important; box-shadow: none !important; }
+.public-site .field:focus { border-color: var(--public-black) !important; box-shadow: 0 0 0 1px var(--public-black) !important; }
+
+/* Compatibility bridge for the existing Tailwind-heavy public templates.
+   These aliases normalize text hierarchy without touching dashboard selectors. */
+.public-site :is(h1, h2, h3, h4, h5, h6, .font-serif) { color: var(--public-heading) !important; }
+.public-site :is(.text-ink, .text-black) { color: var(--public-heading) !important; }
+.public-site :is(.text-charcoal, .text-neutral-600, .text-neutral-700) { color: var(--public-body) !important; }
+.public-site :is(.text-muted, .text-gold, .text-champagne) { color: var(--public-muted) !important; }
+.public-site :is([class*='text-black/55'], [class*='text-black/60'], [class*='text-black/65']) { color: var(--public-body) !important; }
+.public-site :is([class*='text-black/20'], [class*='text-black/25'], [class*='text-black/30']) { color: var(--public-subtle) !important; }
+.public-site input.field, .public-site select.field, .public-site textarea.field { color: var(--public-heading) !important; }
+.public-site input.field::placeholder, .public-site textarea.field::placeholder { color: var(--public-muted) !important; opacity: 1; }
+
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) { color: var(--public-on-dark); }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) :is(h1, h2, h3, h4, h5, h6, .font-serif, .text-white) { color: var(--public-on-dark) !important; }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) :is(p, a, span, .text-charcoal, .text-muted, .text-gold, .text-champagne) { color: var(--public-on-dark-body) !important; }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) :is([class*='text-white/'], [class*='text-black/']) { color: var(--public-on-dark-body) !important; }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) :is([class*='text-white/45'], [class*='text-white/50'], [class*='text-white/55'], [class*='text-white/60'], .public-dark-muted) { color: var(--public-on-dark-muted) !important; }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) .text-black { color: var(--public-heading) !important; }
+.public-site :is(.bg-ink, .bg-black, [class~='bg-[#111]'], .public-site-footer, .clients-section, .final-cta, .final-cta-simple, .directory-cta) :is(.border-white, [class*='border-white/']) { border-color: var(--public-border-dark) !important; }
+.public-site .public-site-footer .footer-bottom :is(a, a span),
+.public-site .public-site-footer .social-links a { color: var(--public-on-dark) !important; }
+.public-site .public-site-footer .social-links a { border-color: var(--public-on-dark-muted) !important; }
+.public-site .directory-cta :is(.bg-white, .bg-ivory),
+.public-site .directory-cta :is(.bg-white, .bg-ivory) * { color: var(--public-heading) !important; }
+
+@media (min-width: 576px) { .public-site .public-container { width: min(100% - (2 * var(--public-gutter-tablet)), var(--public-container)); } }
+@media (min-width: 992px) {
+    .public-site .public-container { width: min(100% - (2 * var(--public-gutter-laptop)), var(--public-container)); }
+    .public-site .public-section { padding-block: var(--public-section-tablet); }
+}
+@media (min-width: 1200px) {
+    .public-site .public-container { width: min(100% - (2 * var(--public-gutter-desktop)), var(--public-container)); }
+    .public-site .public-section { padding-block: var(--public-section-desktop); }
 }

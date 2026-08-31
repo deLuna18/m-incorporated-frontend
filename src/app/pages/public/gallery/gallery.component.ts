@@ -1,11 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
-import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
-import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
