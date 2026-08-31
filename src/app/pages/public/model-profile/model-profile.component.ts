@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
+import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 interface Model {
   slug: string;
@@ -13,7 +14,7 @@ interface Model {
 @Component({
   selector: 'app-model-profile',
   standalone: true,
-  imports: [TopbarWidget],
+  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './model-profile.component.html',
   styleUrl: './model-profile.component.scss'
 })
@@ -53,19 +54,26 @@ export class ModelProfileComponent implements AfterViewInit {
     const isMen = model.category.includes('MEN');
     document.title = `${model.name} — M Incorporated`;
     this.text('#modelName', model.name); this.text('#modelLocation', model.location); this.text('#modelCategory', model.category);
-    this.text('#baseStrip', this.titleCase(model.location)); this.text('#divisionStrip', isMen ? 'Men' : 'Women');
     this.text('#bookingHeading', `Interested in working with ${model.name}?`);
     this.text('#modelBio', `${model.name} is represented by M Incorporated and based in ${this.titleCase(model.location)}. With a distinctive presence across ${model.category.toLowerCase().replace(' · ', ', ')}, ${isMen ? 'he' : 'she'} brings a considered, contemporary point of view to editorial, commercial and creative projects worldwide.`);
     this.image('#heroImage', model.image, `${model.name} model portrait`); this.image('#portfolioHero', model.image, `${model.name} portfolio portrait`);
+    this.root.querySelectorAll<HTMLImageElement>('[data-profile-image]').forEach((image) => {
+      image.src = model.image;
+      image.alt = `${model.name} portfolio image`;
+    });
     this.root.querySelectorAll<HTMLAnchorElement>('[data-booking]').forEach((link) => link.href = `/booking?model=${model.slug}`);
     this.renderMeasurements(model, isMen); this.renderRelated(index);
   }
 
   private renderMeasurements(model: Model, isMen: boolean): void {
     const seed = [...model.slug].reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    const values = isMen ? [['HEIGHT', `${184 + seed % 7} CM`], ['CHEST', `${92 + seed % 7} CM`], ['WAIST', `${76 + seed % 7} CM`], ['SUIT', `${46 + seed % 4 * 2}`], ['SHOES', `${42 + seed % 3}`], ['HAIR / EYES', 'Brown / Hazel']] : [['HEIGHT', `${174 + seed % 7} CM`], ['BUST', `${80 + seed % 7} CM`], ['WAIST', `${58 + seed % 7} CM`], ['HIPS', `${86 + seed % 7} CM`], ['SHOES', `${37 + seed % 4}`], ['HAIR / EYES', 'Brown / Hazel']];
+    const values = model.slug === 'ava-sinclair'
+      ? [['HEIGHT', '179 CM'], ['BUST', '86 CM'], ['WAIST', '62 CM'], ['HIPS', '90 CM'], ['SHOES', '40 EU'], ['HAIR / EYES', 'BROWN / HAZEL']]
+      : isMen
+        ? [['HEIGHT', `${184 + seed % 7} CM`], ['CHEST', `${92 + seed % 7} CM`], ['WAIST', `${76 + seed % 7} CM`], ['SUIT', `${46 + seed % 4 * 2}`], ['SHOES', `${42 + seed % 3} EU`], ['HAIR / EYES', 'BROWN / HAZEL']]
+        : [['HEIGHT', `${174 + seed % 7} CM`], ['BUST', `${80 + seed % 7} CM`], ['WAIST', `${58 + seed % 7} CM`], ['HIPS', `${86 + seed % 7} CM`], ['SHOES', `${37 + seed % 4} EU`], ['HAIR / EYES', 'BROWN / HAZEL']];
     const container = this.root.querySelector('#measurements');
-    if (container) container.innerHTML = values.map(([label, value]) => `<div><p class="text-[7px] font-semibold tracking-[.15em] text-muted">${label}</p><p class="mt-1 font-serif text-[22px] leading-none">${value}</p></div>`).join('');
+    if (container) container.innerHTML = values.map(([label, value]) => `<div><p class="text-[9px] font-semibold tracking-[.15em] text-muted">${label}</p><p class="mt-2 text-[17px] font-medium leading-none">${value}</p></div>`).join('');
   }
 
   private renderRelated(index: number): void {

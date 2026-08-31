@@ -8,7 +8,7 @@
     <nav class="menu-container" aria-label="Primary navigation">
         <ul class="nav-list">
             <li *ngFor="let link of navLinks">
-                <button (click)="navigate(link.path)" [class.active]="isActive(link.path)">
+                <button (click)="navigate(link.path)" [class.active]="isActive(link.path)" [attr.aria-current]="isActive(link.path) ? 'page' : null">
                     {{ link.label }}
                 </button>
             </li>

@@ -11,20 +11,53 @@ h6 {
   color: #000;
 }
 
+/* Readable editorial metadata without changing the established type scale of
+   headlines. The global utility scale previously made much of this copy tiny. */
+:host main [class~='text-[7px]'] { font-size: .625rem !important; }
+:host main [class~='text-[8px]'] { font-size: .6875rem !important; }
+:host main [class~='text-[9px]'] { font-size: .75rem !important; }
+:host main [class~='text-[10px]'] { font-size: .8125rem !important; }
+
+/* Photography stays square and integrated; only information panels receive a
+   restrained radius and border. */
+.services-panel,
+.about-panel,
+.open-call-panel {
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.final-cta {
+  border-radius: 14px !important;
+}
+
 .featured-model-card h3,
 .featured-model-card p {
   color: #fff;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, .65);
+  text-shadow: 0 2px 7px rgba(0, 0, 0, .8);
 }
 
 .featured-model-card {
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
-  transition: transform .25s ease, box-shadow .25s ease;
+  border-radius: 0 !important;
+  box-shadow: none;
+  transition: none;
 }
 
 .featured-model-card:hover {
-  box-shadow: 0 16px 30px rgba(0, 0, 0, .18);
-  transform: translateY(-3px);
+  box-shadow: none;
+  transform: none;
+}
+
+/* Gallery captions are revealed on hover; keep them legible over every image. */
+#gallery a.group:hover > .absolute.bottom-0 h3,
+#gallery a.group:hover > .absolute.bottom-0 p {
+  color: #fff !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
+}
+
+#gallery a.group {
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .clients-section,
@@ -60,7 +93,7 @@ h6 {
   border: 1px solid #d4d4d4;
   border-radius: 20px;
   background: #fff;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, .04);
+  box-shadow: none;
 }
 
 .services-layout {
@@ -93,14 +126,14 @@ h6 {
 .about-panel {
   width: 100%;
   max-width: 1552px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, .04);
+  box-shadow: none;
 }
 
 .social-panel,
 .open-call-panel {
   width: 100%;
   max-width: 1552px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, .04);
+  box-shadow: none;
 }
 
 .social-panel {
@@ -178,6 +211,16 @@ h6 {
 }
 
 @media (min-width: 992px) {
+  #models,
+  #services,
+  #gallery,
+  #about,
+  #new-faces,
+  #become-model {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
   .social-mosaic {
     grid-template-columns: 1.15fr repeat(3, .95fr);
   }
@@ -202,7 +245,14 @@ h6 {
 
 .hero-portrait {
   border-top-left-radius: 48% 23%;
+  box-shadow: 12px 16px 30px rgba(0, 0, 0, .15);
   overflow: hidden;
+}
+
+/* Only standalone editorial imagery receives depth. Image grids, cards,
+   mosaics, and framed panels keep their existing flat treatment. */
+.campaign-story-image {
+  box-shadow: 10px 12px 24px rgba(0, 0, 0, .13);
 }
 
 .image-soft {

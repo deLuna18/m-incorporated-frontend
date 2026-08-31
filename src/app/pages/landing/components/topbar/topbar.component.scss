@@ -78,7 +78,7 @@
         }
 
         &.active { color: #111; }
-        &:hover { color: #fff; background: #111; }
+        &:hover { color: #111; }
         &:hover::after, &.active::after { transform: scaleX(1); transform-origin: left; }
     }
 }

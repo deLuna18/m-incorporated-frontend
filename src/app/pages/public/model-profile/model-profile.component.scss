@@ -31,11 +31,36 @@
 .portfolio-image { transition: transform .65s ease; }
 .portfolio-item:hover .portfolio-image { transform: scale(1.018); }
 
+/* Keep profile photography and data presentation quiet and editorial. */
+:host #measurements { gap: 1.75rem 2.5rem; }
+:host #measurements p:first-child { font-size: .625rem !important; }
+:host #measurements p:last-child { font-family: Inter, sans-serif; }
+:host [data-profile-image] { object-fit: cover; }
+:host .portfolio-item,
+:host #relatedModels > a > div { border-radius: 4px; box-shadow: none; }
+:host .shadow-editorial { box-shadow: none !important; }
+:host #relatedModels h3 { font-size: 1rem !important; font-weight: 500; }
+:host #relatedModels [class~='text-[7px]'] { font-size: .625rem !important; }
+
 :host main > section#portfolio,
 :host main > section:nth-of-type(4),
 :host main > section:nth-of-type(5) {
   padding-top: 2.75rem !important;
   padding-bottom: 2.75rem !important;
+}
+
+@media (min-width: 1024px) {
+  :host main > section#portfolio,
+  :host main > section#portfolio + section,
+  :host main > section#portfolio + section + section {
+    padding-top: 5.5rem !important;
+    padding-bottom: 5.5rem !important;
+  }
+
+  :host main > section.bg-ink > .mx-auto {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
 }
 
 :host main > section.bg-ink > .mx-auto {

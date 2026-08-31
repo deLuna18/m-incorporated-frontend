@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TopbarWidget } from '../../landing/components/topbar/topbar.component';
+import { PublicFooterComponent } from '../../../shared-component/public-footer/public-footer.component';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [TopbarWidget],
+  imports: [TopbarWidget, PublicFooterComponent],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss'
 })

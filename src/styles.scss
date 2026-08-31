@@ -70,6 +70,12 @@ app-booking .text-gold {
     display: none;
 }
 
+/* Replaced legacy footer copies remain in their page templates temporarily, but
+   the shared public footer is the only footer rendered to visitors. */
+:is(app-home, app-models, app-model-profile, app-gallery, app-booking, app-about, app-contact, app-services) footer:not(.public-site-footer) {
+    display: none;
+}
+
 /* Keep the Blog opening content aligned with the Home hero baseline. */
 app-blog > main > section:first-child > div,
 app-blog-article > main > section:first-child {

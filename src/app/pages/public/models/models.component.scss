@@ -47,6 +47,21 @@
   gap: 2.25rem;
 }
 
+:host label:has(#searchInput), :host .directory-dropdown, :host #clearFilters { height: 42px !important; border-color: #d4d4d4 !important; }
+:host .directory-dropdown summary, :host label:has(#searchInput) { padding-left: .85rem !important; padding-right: .85rem !important; }
+:host #categoryTabs { gap: .6rem; }
+:host .filter-tab { min-height: 38px; padding: .55rem .85rem !important; border-color: #d4d4d4 !important; border-radius: 2px; }
+
+:host #modelGrid { gap: 2rem 1.25rem !important; }
+:host .model-card { background: transparent; box-shadow: none; }
+:host .model-card a > div:first-child { border-radius: 4px; box-shadow: none; }
+:host .model-card img { transition-duration: 500ms !important; }
+:host .model-card h2 { font-size: 1rem !important; font-weight: 500; }
+:host .model-card a > div:last-child > div { font-size: .625rem !important; line-height: 1.45; }
+:host .model-card [class~='text-[7px]'] { font-size: .625rem !important; }
+:host .model-card [class~='text-[8px]'] { font-size: .6875rem !important; }
+:host .model-card .absolute.left-4.top-4 { border: 1px solid #e0e0e0; border-radius: 1px; color: #111 !important; padding: .45rem .55rem !important; }
+
 // Align the directory's pacing with the compact Home sections.
 :host main > section:first-child > .mx-auto {
   padding-top: 2.5rem !important;
